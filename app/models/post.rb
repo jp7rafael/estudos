@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+  #########tenant with scopes#########
+  has_one :tenant
+  default_scope { where(tenant_id: Tenant.current_id)}
 
     def self.benchmark(method_name, *args)
       @@post ||= Post.new
