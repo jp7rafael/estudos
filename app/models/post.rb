@@ -8,6 +8,8 @@ class Post < ActiveRecord::Base
       p "Time: #{(timing.real).to_i}"
     end
 
+    #########memoize#########
+
     def filesize(*args)
       @filesize1 ||= Hash.new
       @filesize1[args] ||= calculate_filesize(*args)
@@ -40,4 +42,20 @@ class Post < ActiveRecord::Base
     end
 
     #memoize :memoized_filesize
+
+
+
+    #########Cache dali#########
+    after_update :flush_name_cache
+
+
+    def cached_text
+      Rails.cache.fetch([:post, id, :text], expires_in: 5.minutes) do
+        text
+      end
+    end
+
+    def flush_name_cache
+      Rails.cache.delete([:post, id, :text]) if text_changed?
+    end
 end
