@@ -1,0 +1,18 @@
+curl -i -H "Accept: application/json" \
+	 -H "Content-Type: application/json" \
+	 -U SLKF4FBYQPR7CLN446ST1NY8OLZALVRF:IENEGBHCYNJOWICKBRNIGFMVZN9AJR1BGFDCWV42 \
+	 -X GET https://sandbox.moip.com.br/assinaturas/v1/plans
+
+curl -i -H "Accept: application/json" \
+	 -H "Content-Type: application/json" \
+	 -U ABABABABABABABABABABABABABABABABABABABAB:01010101010101010101010101010101 \
+	 -X GET https://sandbox.moip.com.br/assinaturas/v1/plans
+
+
+HTTP/1.1 401 Unauthorized
+Date: Tue, 28 Apr 2015 17:29:20 GMT
+Server: Apache
+WWW-Authenticate: Basic realm="REST_API"
+Content-Length: 0
+Vary: Accept-Encoding
+Content-Type: text/plain; charset=UTF-8

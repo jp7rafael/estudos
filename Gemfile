@@ -29,7 +29,9 @@ gem 'spring',        group: :development
 
 gem 'byebug'
 
-gem 'dalli' 
+gem 'dalli'
+
+gem 'simple_form' 
 
 
 

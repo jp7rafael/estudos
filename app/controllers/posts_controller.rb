@@ -14,11 +14,13 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    @max_post_number = Post.count+1
     @post = Post.new
   end
 
   # GET /posts/1/edit
   def edit
+    @max_post_number = Post.count+1
   end
 
   # POST /posts

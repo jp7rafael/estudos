@@ -58,4 +58,8 @@ class Post < ActiveRecord::Base
     def flush_name_cache
       Rails.cache.delete([:post, id, :text]) if text_changed?
     end
+
+    #########Simple form#########
+    validates :number, presence: true
+
 end
