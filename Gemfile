@@ -33,6 +33,8 @@ gem 'dalli'
 
 gem 'simple_form' 
 
+gem 'gon'
+
 
 
 # Use ActiveModel has_secure_password

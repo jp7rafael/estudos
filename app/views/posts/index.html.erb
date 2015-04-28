@@ -19,4 +19,10 @@
 
 <%= link_to 'New Post', new_post_path, id: "new_link", data: { remote: true }  %>
 
+<%= content_tag "div", id: "js_data", data: {posts: Post.limit(10)} do %>
+  data atribute
+<% end %> 
+
+<%= include_gon %>
+
 
