@@ -8,20 +8,15 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.cached_text %></td>
-        <td><%= post.number %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= render(post) %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path, id: "new_link", data: { remote: true }  %>
+
+
