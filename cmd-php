@@ -1,1 +1,12 @@
 php -S localhost:8888 -t public
+php artisan
+php artisan make:controller PagesController
+php artisan make:controller PagesController --plain
+
+php artisan migrate
+php artisan migrate:rollback
+php artisan make:migration  create_articles_table --create="articles"
+
+php artisan tinker
+
+php artisan command
