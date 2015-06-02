@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>Simple blog</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
@@ -28,7 +28,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
+				<a class="navbar-brand" href="#">Simple blog</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -53,10 +53,19 @@
 		</div>
 	</nav>
 
-	@yield('content')
+  <div class="container">
+  	<div class="row">
+    	<div class="col-md-10 col-md-offset-1">
+      	<div class="panel panel-default">
+					@yield('content')
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	@yield('footer')
 </body>
 </html>
