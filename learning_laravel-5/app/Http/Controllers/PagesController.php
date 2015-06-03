@@ -7,23 +7,29 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller {
 
-	public function about()
-  {
-    $first = 'Rafael';
-    $last = 'Luiz';
-    $names = [
-      'My',
-      'Rafael',
-      'Luiz',
-      'Testa'
-    ];
+    public function __construct()
+    {
+        $this->middleware('sa', ['only' => 'index']);
 
-    return view('pages.about', compact('first', 'last', 'names'));
-  }
+    }
 
-  public function contact()
-  {
-    $alert = false;
-    return view('pages.contact', compact('alert'));
-  }
+    public function about()
+    {
+        $first = 'Rafael';
+        $last = 'Luiz';
+        $names = [
+          'My',
+          'Rafael',
+          'Luiz',
+          'Testa'
+        ];
+
+        return view('pages.about', compact('first', 'last', 'names'));
+    }
+
+    public function contact()
+    {
+        $alert = false;
+        return view('pages.contact', compact('alert'));
+    }
 }
