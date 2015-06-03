@@ -10,7 +10,7 @@ class Tag extends Model {
 
     public function tags()
     {
-    return $this->belongsToMany('App\Article')->withTimestamps();
+        return $this->belongsToMany('App\Article')->withTimestamps();
     }
 
 }

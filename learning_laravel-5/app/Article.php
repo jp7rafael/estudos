@@ -46,6 +46,22 @@ class Article extends Model {
 
   public function setTags(array $tags)
   {
-    $this->tags->sync($tags);
+    $tagIds = $this->createNewTags($tags);
+    $this->tags()->sync($tagIds);
   }
+
+  public function createNewTags(array $tags)
+  {
+    $tagIds = [];
+    foreach ($tags as $key => $value) {
+        if (!is_numeric($value))
+        {
+          $newTag = $this->tags()->create(['name' => $value]);
+          $value = $newTag->id;
+        }
+        $tagIds[] = $value;
+    }
+    return $tagIds;
+  }
+
 }
