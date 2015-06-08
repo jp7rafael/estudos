@@ -12,7 +12,7 @@ class ViewComposerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this()->composerNavigation('latest', Article::latest()->first());
+        $this->composerNavigation('latest', Article::latest()->first());
     }
 
     /**

@@ -16,7 +16,9 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li>{!! link_to_action('ArticlesController@show', $latest->title, [$latest->id]) !!}</li>
+                @if ($latest)
+                    <li>{!! link_to_action('ArticlesController@show', $latest->title, [$latest->id]) !!}</li>
+                @endif
                 @if (Auth::guest())
                     <li><a href="{{ url('/auth/login') }}">Login</a></li>
                     <li><a href="{{ url('/auth/register') }}">Register</a></li>

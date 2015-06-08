@@ -1,4 +1,4 @@
-/*! jQuery v2.1.3 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */
+/*! jQuery v2.1.4 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 "use strict";
 
 !(function (a, b) {
@@ -16,7 +16,7 @@
       j = h.hasOwnProperty,
       k = {},
       l = a.document,
-      m = "2.1.3",
+      m = "2.1.4",
       n = function n(a, b) {
     return new n.fn.init(a, b);
   },
@@ -114,7 +114,7 @@
     }, now: Date.now, support: k }), n.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function (a, b) {
     h["[object " + b + "]"] = b.toLowerCase();
   });function s(a) {
-    var b = a.length,
+    var b = "length" in a && a.length,
         c = n.type(a);return "function" === c || n.isWindow(a) ? !1 : 1 === a.nodeType && b ? !0 : "array" === c || 0 === b || "number" == typeof b && b > 0 && b - 1 in a;
   }var t = (function (a) {
     var b,
@@ -140,9 +140,9 @@
         v = a.document,
         w = 0,
         x = 0,
-        y = hb(),
-        z = hb(),
-        A = hb(),
+        y = ha(),
+        z = ha(),
+        A = ha(),
         B = function B(a, b) {
       return (a === b && (l = !0), 0);
     },
@@ -174,24 +174,24 @@
         Z = /^h\d$/i,
         $ = /^[^{]+\{\s*\[native \w/,
         _ = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
-        ab = /[+~]/,
-        bb = /'|\\/g,
-        cb = new RegExp("\\\\([\\da-f]{1,6}" + L + "?|(" + L + ")|.)", "ig"),
-        db = function db(a, b, c) {
+        aa = /[+~]/,
+        ba = /'|\\/g,
+        ca = new RegExp("\\\\([\\da-f]{1,6}" + L + "?|(" + L + ")|.)", "ig"),
+        da = function da(a, b, c) {
       var d = "0x" + b - 65536;return d !== d || c ? b : 0 > d ? String.fromCharCode(d + 65536) : String.fromCharCode(d >> 10 | 55296, 1023 & d | 56320);
     },
-        eb = function eb() {
+        ea = function ea() {
       m();
     };try {
       H.apply(E = I.call(v.childNodes), v.childNodes), E[v.childNodes.length].nodeType;
-    } catch (fb) {
+    } catch (fa) {
       H = { apply: E.length ? function (a, b) {
           G.apply(a, I.call(b));
         } : function (a, b) {
           var c = a.length,
               d = 0;while (a[c++] = b[d++]);a.length = c - 1;
         } };
-    }function gb(a, b, d, e) {
+    }function ga(a, b, d, e) {
       var f, h, j, k, l, o, r, s, w, x;if (((b ? b.ownerDocument || b : v) !== n && m(b), b = b || n, d = d || [], k = b.nodeType, "string" != typeof a || !a || 1 !== k && 9 !== k && 11 !== k)) return d;if (!e && p) {
         if (11 !== k && (f = _.exec(a))) if (j = f[1]) {
           if (9 === k) {
@@ -201,7 +201,7 @@
           if (f[2]) return (H.apply(d, b.getElementsByTagName(a)), d);if ((j = f[3]) && c.getElementsByClassName) return (H.apply(d, b.getElementsByClassName(j)), d);
         }if (c.qsa && (!q || !q.test(a))) {
           if ((s = r = u, w = b, x = 1 !== k && a, 1 === k && "object" !== b.nodeName.toLowerCase())) {
-            o = g(a), (r = b.getAttribute("id")) ? s = r.replace(bb, "\\$&") : b.setAttribute("id", s), s = "[id='" + s + "'] ", l = o.length;while (l--) o[l] = s + rb(o[l]);w = ab.test(a) && pb(b.parentNode) || b, x = o.join(",");
+            o = g(a), (r = b.getAttribute("id")) ? s = r.replace(ba, "\\$&") : b.setAttribute("id", s), s = "[id='" + s + "'] ", l = o.length;while (l--) o[l] = s + ra(o[l]);w = aa.test(a) && pa(b.parentNode) || b, x = o.join(",");
           }if (x) try {
             return (H.apply(d, w.querySelectorAll(x)), d);
           } catch (y) {} finally {
@@ -209,13 +209,13 @@
           }
         }
       }return i(a.replace(R, "$1"), b, d, e);
-    }function hb() {
+    }function ha() {
       var a = [];function b(c, e) {
         return (a.push(c + " ") > d.cacheLength && delete b[a.shift()], b[c + " "] = e);
       }return b;
-    }function ib(a) {
+    }function ia(a) {
       return (a[u] = !0, a);
-    }function jb(a) {
+    }function ja(a) {
       var b = n.createElement("div");try {
         return !!a(b);
       } catch (c) {
@@ -223,51 +223,51 @@
       } finally {
         b.parentNode && b.parentNode.removeChild(b), b = null;
       }
-    }function kb(a, b) {
+    }function ka(a, b) {
       var c = a.split("|"),
           e = a.length;while (e--) d.attrHandle[c[e]] = b;
-    }function lb(a, b) {
+    }function la(a, b) {
       var c = b && a,
           d = c && 1 === a.nodeType && 1 === b.nodeType && (~b.sourceIndex || C) - (~a.sourceIndex || C);if (d) return d;if (c) while (c = c.nextSibling) if (c === b) return -1;return a ? 1 : -1;
-    }function mb(a) {
+    }function ma(a) {
       return function (b) {
         var c = b.nodeName.toLowerCase();return "input" === c && b.type === a;
       };
-    }function nb(a) {
+    }function na(a) {
       return function (b) {
         var c = b.nodeName.toLowerCase();return ("input" === c || "button" === c) && b.type === a;
       };
-    }function ob(a) {
-      return ib(function (b) {
-        return (b = +b, ib(function (c, d) {
+    }function oa(a) {
+      return ia(function (b) {
+        return (b = +b, ia(function (c, d) {
           var e,
               f = a([], c.length, b),
               g = f.length;while (g--) c[e = f[g]] && (c[e] = !(d[e] = c[e]));
         }));
       });
-    }function pb(a) {
+    }function pa(a) {
       return a && "undefined" != typeof a.getElementsByTagName && a;
-    }c = gb.support = {}, f = gb.isXML = function (a) {
+    }c = ga.support = {}, f = ga.isXML = function (a) {
       var b = a && (a.ownerDocument || a).documentElement;return b ? "HTML" !== b.nodeName : !1;
-    }, m = gb.setDocument = function (a) {
+    }, m = ga.setDocument = function (a) {
       var b,
           e,
-          g = a ? a.ownerDocument || a : v;return g !== n && 9 === g.nodeType && g.documentElement ? (n = g, o = g.documentElement, e = g.defaultView, e && e !== e.top && (e.addEventListener ? e.addEventListener("unload", eb, !1) : e.attachEvent && e.attachEvent("onunload", eb)), p = !f(g), c.attributes = jb(function (a) {
+          g = a ? a.ownerDocument || a : v;return g !== n && 9 === g.nodeType && g.documentElement ? (n = g, o = g.documentElement, e = g.defaultView, e && e !== e.top && (e.addEventListener ? e.addEventListener("unload", ea, !1) : e.attachEvent && e.attachEvent("onunload", ea)), p = !f(g), c.attributes = ja(function (a) {
         return (a.className = "i", !a.getAttribute("className"));
-      }), c.getElementsByTagName = jb(function (a) {
+      }), c.getElementsByTagName = ja(function (a) {
         return (a.appendChild(g.createComment("")), !a.getElementsByTagName("*").length);
-      }), c.getElementsByClassName = $.test(g.getElementsByClassName), c.getById = jb(function (a) {
+      }), c.getElementsByClassName = $.test(g.getElementsByClassName), c.getById = ja(function (a) {
         return (o.appendChild(a).id = u, !g.getElementsByName || !g.getElementsByName(u).length);
       }), c.getById ? (d.find.ID = function (a, b) {
         if ("undefined" != typeof b.getElementById && p) {
           var c = b.getElementById(a);return c && c.parentNode ? [c] : [];
         }
       }, d.filter.ID = function (a) {
-        var b = a.replace(cb, db);return function (a) {
+        var b = a.replace(ca, da);return function (a) {
           return a.getAttribute("id") === b;
         };
       }) : (delete d.find.ID, d.filter.ID = function (a) {
-        var b = a.replace(cb, db);return function (a) {
+        var b = a.replace(ca, da);return function (a) {
           var c = "undefined" != typeof a.getAttributeNode && a.getAttributeNode("id");return c && c.value === b;
         };
       }), d.find.TAG = c.getElementsByTagName ? function (a, b) {
@@ -281,11 +281,11 @@
         }return f;
       }, d.find.CLASS = c.getElementsByClassName && function (a, b) {
         return p ? b.getElementsByClassName(a) : void 0;
-      }, r = [], q = [], (c.qsa = $.test(g.querySelectorAll)) && (jb(function (a) {
+      }, r = [], q = [], (c.qsa = $.test(g.querySelectorAll)) && (ja(function (a) {
         o.appendChild(a).innerHTML = "<a id='" + u + "'></a><select id='" + u + "-\f]' msallowcapture=''><option selected=''></option></select>", a.querySelectorAll("[msallowcapture^='']").length && q.push("[*^$]=" + L + "*(?:''|\"\")"), a.querySelectorAll("[selected]").length || q.push("\\[" + L + "*(?:value|" + K + ")"), a.querySelectorAll("[id~=" + u + "-]").length || q.push("~="), a.querySelectorAll(":checked").length || q.push(":checked"), a.querySelectorAll("a#" + u + "+*").length || q.push(".#.+[+~]");
-      }), jb(function (a) {
+      }), ja(function (a) {
         var b = g.createElement("input");b.setAttribute("type", "hidden"), a.appendChild(b).setAttribute("name", "D"), a.querySelectorAll("[name=d]").length && q.push("name" + L + "*[*^$|!~]?="), a.querySelectorAll(":enabled").length || q.push(":enabled", ":disabled"), a.querySelectorAll("*,:x"), q.push(",.*:");
-      })), (c.matchesSelector = $.test(s = o.matches || o.webkitMatchesSelector || o.mozMatchesSelector || o.oMatchesSelector || o.msMatchesSelector)) && jb(function (a) {
+      })), (c.matchesSelector = $.test(s = o.matches || o.webkitMatchesSelector || o.mozMatchesSelector || o.oMatchesSelector || o.msMatchesSelector)) && ja(function (a) {
         c.disconnectedMatch = s.call(a, "div"), s.call(a, "[s!='']:x"), r.push("!=", P);
       }), q = q.length && new RegExp(q.join("|")), r = r.length && new RegExp(r.join("|")), b = $.test(o.compareDocumentPosition), t = b || $.test(o.contains) ? function (a, b) {
         var c = 9 === a.nodeType ? a.documentElement : a,
@@ -300,29 +300,29 @@
             e = a.parentNode,
             f = b.parentNode,
             h = [a],
-            i = [b];if (!e || !f) return a === g ? -1 : b === g ? 1 : e ? -1 : f ? 1 : k ? J(k, a) - J(k, b) : 0;if (e === f) return lb(a, b);c = a;while (c = c.parentNode) h.unshift(c);c = b;while (c = c.parentNode) i.unshift(c);while (h[d] === i[d]) d++;return d ? lb(h[d], i[d]) : h[d] === v ? -1 : i[d] === v ? 1 : 0;
+            i = [b];if (!e || !f) return a === g ? -1 : b === g ? 1 : e ? -1 : f ? 1 : k ? J(k, a) - J(k, b) : 0;if (e === f) return la(a, b);c = a;while (c = c.parentNode) h.unshift(c);c = b;while (c = c.parentNode) i.unshift(c);while (h[d] === i[d]) d++;return d ? la(h[d], i[d]) : h[d] === v ? -1 : i[d] === v ? 1 : 0;
       }, g) : n;
-    }, gb.matches = function (a, b) {
-      return gb(a, null, null, b);
-    }, gb.matchesSelector = function (a, b) {
+    }, ga.matches = function (a, b) {
+      return ga(a, null, null, b);
+    }, ga.matchesSelector = function (a, b) {
       if (((a.ownerDocument || a) !== n && m(a), b = b.replace(U, "='$1']"), !(!c.matchesSelector || !p || r && r.test(b) || q && q.test(b)))) try {
         var d = s.call(a, b);if (d || c.disconnectedMatch || a.document && 11 !== a.document.nodeType) return d;
-      } catch (e) {}return gb(b, n, null, [a]).length > 0;
-    }, gb.contains = function (a, b) {
+      } catch (e) {}return ga(b, n, null, [a]).length > 0;
+    }, ga.contains = function (a, b) {
       return ((a.ownerDocument || a) !== n && m(a), t(a, b));
-    }, gb.attr = function (a, b) {
+    }, ga.attr = function (a, b) {
       (a.ownerDocument || a) !== n && m(a);var e = d.attrHandle[b.toLowerCase()],
           f = e && D.call(d.attrHandle, b.toLowerCase()) ? e(a, b, !p) : void 0;return void 0 !== f ? f : c.attributes || !p ? a.getAttribute(b) : (f = a.getAttributeNode(b)) && f.specified ? f.value : null;
-    }, gb.error = function (a) {
+    }, ga.error = function (a) {
       throw new Error("Syntax error, unrecognized expression: " + a);
-    }, gb.uniqueSort = function (a) {
+    }, ga.uniqueSort = function (a) {
       var b,
           d = [],
           e = 0,
           f = 0;if ((l = !c.detectDuplicates, k = !c.sortStable && a.slice(0), a.sort(B), l)) {
         while (b = a[f++]) b === a[f] && (e = d.push(f));while (e--) a.splice(d[e], 1);
       }return (k = null, a);
-    }, e = gb.getText = function (a) {
+    }, e = ga.getText = function (a) {
       var b,
           c = "",
           d = 0,
@@ -331,15 +331,15 @@
           if ("string" == typeof a.textContent) return a.textContent;for (a = a.firstChild; a; a = a.nextSibling) c += e(a);
         } else if (3 === f || 4 === f) return a.nodeValue;
       } else while (b = a[d++]) c += e(b);return c;
-    }, d = gb.selectors = { cacheLength: 50, createPseudo: ib, match: X, attrHandle: {}, find: {}, relative: { ">": { dir: "parentNode", first: !0 }, " ": { dir: "parentNode" }, "+": { dir: "previousSibling", first: !0 }, "~": { dir: "previousSibling" } }, preFilter: { ATTR: function ATTR(a) {
-          return (a[1] = a[1].replace(cb, db), a[3] = (a[3] || a[4] || a[5] || "").replace(cb, db), "~=" === a[2] && (a[3] = " " + a[3] + " "), a.slice(0, 4));
+    }, d = ga.selectors = { cacheLength: 50, createPseudo: ia, match: X, attrHandle: {}, find: {}, relative: { ">": { dir: "parentNode", first: !0 }, " ": { dir: "parentNode" }, "+": { dir: "previousSibling", first: !0 }, "~": { dir: "previousSibling" } }, preFilter: { ATTR: function ATTR(a) {
+          return (a[1] = a[1].replace(ca, da), a[3] = (a[3] || a[4] || a[5] || "").replace(ca, da), "~=" === a[2] && (a[3] = " " + a[3] + " "), a.slice(0, 4));
         }, CHILD: function CHILD(a) {
-          return (a[1] = a[1].toLowerCase(), "nth" === a[1].slice(0, 3) ? (a[3] || gb.error(a[0]), a[4] = +(a[4] ? a[5] + (a[6] || 1) : 2 * ("even" === a[3] || "odd" === a[3])), a[5] = +(a[7] + a[8] || "odd" === a[3])) : a[3] && gb.error(a[0]), a);
+          return (a[1] = a[1].toLowerCase(), "nth" === a[1].slice(0, 3) ? (a[3] || ga.error(a[0]), a[4] = +(a[4] ? a[5] + (a[6] || 1) : 2 * ("even" === a[3] || "odd" === a[3])), a[5] = +(a[7] + a[8] || "odd" === a[3])) : a[3] && ga.error(a[0]), a);
         }, PSEUDO: function PSEUDO(a) {
           var b,
               c = !a[6] && a[2];return X.CHILD.test(a[0]) ? null : (a[3] ? a[2] = a[4] || a[5] || "" : c && V.test(c) && (b = g(c, !0)) && (b = c.indexOf(")", c.length - b) - c.length) && (a[0] = a[0].slice(0, b), a[2] = c.slice(0, b)), a.slice(0, 3));
         } }, filter: { TAG: function TAG(a) {
-          var b = a.replace(cb, db).toLowerCase();return "*" === a ? function () {
+          var b = a.replace(ca, da).toLowerCase();return "*" === a ? function () {
             return !0;
           } : function (a) {
             return a.nodeName && a.nodeName.toLowerCase() === b;
@@ -350,7 +350,7 @@
           });
         }, ATTR: function ATTR(a, b, c) {
           return function (d) {
-            var e = gb.attr(d, a);return null == e ? "!=" === b : b ? (e += "", "=" === b ? e === c : "!=" === b ? e !== c : "^=" === b ? c && 0 === e.indexOf(c) : "*=" === b ? c && e.indexOf(c) > -1 : "$=" === b ? c && e.slice(-c.length) === c : "~=" === b ? (" " + e.replace(Q, " ") + " ").indexOf(c) > -1 : "|=" === b ? e === c || e.slice(0, c.length + 1) === c + "-" : !1) : !0;
+            var e = ga.attr(d, a);return null == e ? "!=" === b : b ? (e += "", "=" === b ? e === c : "!=" === b ? e !== c : "^=" === b ? c && 0 === e.indexOf(c) : "*=" === b ? c && e.indexOf(c) > -1 : "$=" === b ? c && e.slice(-c.length) === c : "~=" === b ? (" " + e.replace(Q, " ") + " ").indexOf(c) > -1 : "|=" === b ? e === c || e.slice(0, c.length + 1) === c + "-" : !1) : !0;
           };
         }, CHILD: function CHILD(a, b, c, d, e) {
           var f = "nth" !== a.slice(0, 3),
@@ -381,33 +381,33 @@
           };
         }, PSEUDO: function PSEUDO(a, b) {
           var c,
-              e = d.pseudos[a] || d.setFilters[a.toLowerCase()] || gb.error("unsupported pseudo: " + a);return e[u] ? e(b) : e.length > 1 ? (c = [a, a, "", b], d.setFilters.hasOwnProperty(a.toLowerCase()) ? ib(function (a, c) {
+              e = d.pseudos[a] || d.setFilters[a.toLowerCase()] || ga.error("unsupported pseudo: " + a);return e[u] ? e(b) : e.length > 1 ? (c = [a, a, "", b], d.setFilters.hasOwnProperty(a.toLowerCase()) ? ia(function (a, c) {
             var d,
                 f = e(a, b),
                 g = f.length;while (g--) d = J(a, f[g]), a[d] = !(c[d] = f[g]);
           }) : function (a) {
             return e(a, 0, c);
           }) : e;
-        } }, pseudos: { not: ib(function (a) {
+        } }, pseudos: { not: ia(function (a) {
           var b = [],
               c = [],
-              d = h(a.replace(R, "$1"));return d[u] ? ib(function (a, b, c, e) {
+              d = h(a.replace(R, "$1"));return d[u] ? ia(function (a, b, c, e) {
             var f,
                 g = d(a, null, e, []),
                 h = a.length;while (h--) (f = g[h]) && (a[h] = !(b[h] = f));
           }) : function (a, e, f) {
             return (b[0] = a, d(b, null, f, c), b[0] = null, !c.pop());
           };
-        }), has: ib(function (a) {
+        }), has: ia(function (a) {
           return function (b) {
-            return gb(a, b).length > 0;
+            return ga(a, b).length > 0;
           };
-        }), contains: ib(function (a) {
-          return (a = a.replace(cb, db), function (b) {
+        }), contains: ia(function (a) {
+          return (a = a.replace(ca, da), function (b) {
             return (b.textContent || b.innerText || e(b)).indexOf(a) > -1;
           });
-        }), lang: ib(function (a) {
-          return (W.test(a || "") || gb.error("unsupported lang: " + a), a = a.replace(cb, db).toLowerCase(), function (b) {
+        }), lang: ia(function (a) {
+          return (W.test(a || "") || ga.error("unsupported lang: " + a), a = a.replace(ca, da).toLowerCase(), function (b) {
             var c;do if (c = p ? b.lang : b.getAttribute("xml:lang") || b.getAttribute("lang")) return (c = c.toLowerCase(), c === a || 0 === c.indexOf(a + "-")); while ((b = b.parentNode) && 1 === b.nodeType);return !1;
           });
         }), target: function target(b) {
@@ -436,21 +436,21 @@
           var b = a.nodeName.toLowerCase();return "input" === b && "button" === a.type || "button" === b;
         }, text: function text(a) {
           var b;return "input" === a.nodeName.toLowerCase() && "text" === a.type && (null == (b = a.getAttribute("type")) || "text" === b.toLowerCase());
-        }, first: ob(function () {
+        }, first: oa(function () {
           return [0];
-        }), last: ob(function (a, b) {
+        }), last: oa(function (a, b) {
           return [b - 1];
-        }), eq: ob(function (a, b, c) {
+        }), eq: oa(function (a, b, c) {
           return [0 > c ? c + b : c];
-        }), even: ob(function (a, b) {
+        }), even: oa(function (a, b) {
           for (var c = 0; b > c; c += 2) a.push(c);return a;
-        }), odd: ob(function (a, b) {
+        }), odd: oa(function (a, b) {
           for (var c = 1; b > c; c += 2) a.push(c);return a;
-        }), lt: ob(function (a, b, c) {
+        }), lt: oa(function (a, b, c) {
           for (var d = 0 > c ? c + b : c; --d >= 0;) a.push(d);return a;
-        }), gt: ob(function (a, b, c) {
+        }), gt: oa(function (a, b, c) {
           for (var d = 0 > c ? c + b : c; ++d < b;) a.push(d);return a;
-        }) } }, d.pseudos.nth = d.pseudos.eq;for (b in { radio: !0, checkbox: !0, file: !0, password: !0, image: !0 }) d.pseudos[b] = mb(b);for (b in { submit: !0, reset: !0 }) d.pseudos[b] = nb(b);function qb() {}qb.prototype = d.filters = d.pseudos, d.setFilters = new qb(), g = gb.tokenize = function (a, b) {
+        }) } }, d.pseudos.nth = d.pseudos.eq;for (b in { radio: !0, checkbox: !0, file: !0, password: !0, image: !0 }) d.pseudos[b] = ma(b);for (b in { submit: !0, reset: !0 }) d.pseudos[b] = na(b);function qa() {}qa.prototype = d.filters = d.pseudos, d.setFilters = new qa(), g = ga.tokenize = function (a, b) {
       var c,
           e,
           f,
@@ -460,10 +460,10 @@
           j,
           k = z[a + " "];if (k) return b ? 0 : k.slice(0);h = a, i = [], j = d.preFilter;while (h) {
         (!c || (e = S.exec(h))) && (e && (h = h.slice(e[0].length) || h), i.push(f = [])), c = !1, (e = T.exec(h)) && (c = e.shift(), f.push({ value: c, type: e[0].replace(R, " ") }), h = h.slice(c.length));for (g in d.filter) !(e = X[g].exec(h)) || j[g] && !(e = j[g](e)) || (c = e.shift(), f.push({ value: c, type: g, matches: e }), h = h.slice(c.length));if (!c) break;
-      }return b ? h.length : h ? gb.error(a) : z(a, i).slice(0);
-    };function rb(a) {
+      }return b ? h.length : h ? ga.error(a) : z(a, i).slice(0);
+    };function ra(a) {
       for (var b = 0, c = a.length, d = ""; c > b; b++) d += a[b].value;return d;
-    }function sb(a, b, c) {
+    }function sa(a, b, c) {
       var d = b.dir,
           e = c && "parentNode" === d,
           f = x++;return b.first ? function (b, c, f) {
@@ -477,47 +477,47 @@
           if ((i = b[u] || (b[u] = {}), (h = i[d]) && h[0] === w && h[1] === f)) return j[2] = h[2];if ((i[d] = j, j[2] = a(b, c, g))) return !0;
         }
       };
-    }function tb(a) {
+    }function ta(a) {
       return a.length > 1 ? function (b, c, d) {
         var e = a.length;while (e--) if (!a[e](b, c, d)) return !1;return !0;
       } : a[0];
-    }function ub(a, b, c) {
-      for (var d = 0, e = b.length; e > d; d++) gb(a, b[d], c);return c;
-    }function vb(a, b, c, d, e) {
+    }function ua(a, b, c) {
+      for (var d = 0, e = b.length; e > d; d++) ga(a, b[d], c);return c;
+    }function va(a, b, c, d, e) {
       for (var f, g = [], h = 0, i = a.length, j = null != b; i > h; h++) (f = a[h]) && (!c || c(f, d, e)) && (g.push(f), j && b.push(h));return g;
-    }function wb(a, b, c, d, e, f) {
-      return (d && !d[u] && (d = wb(d)), e && !e[u] && (e = wb(e, f)), ib(function (f, g, h, i) {
+    }function wa(a, b, c, d, e, f) {
+      return (d && !d[u] && (d = wa(d)), e && !e[u] && (e = wa(e, f)), ia(function (f, g, h, i) {
         var j,
             k,
             l,
             m = [],
             n = [],
             o = g.length,
-            p = f || ub(b || "*", h.nodeType ? [h] : h, []),
-            q = !a || !f && b ? p : vb(p, m, a, h, i),
+            p = f || ua(b || "*", h.nodeType ? [h] : h, []),
+            q = !a || !f && b ? p : va(p, m, a, h, i),
             r = c ? e || (f ? a : o || d) ? [] : g : q;if ((c && c(q, r, h, i), d)) {
-          j = vb(r, n), d(j, [], h, i), k = j.length;while (k--) (l = j[k]) && (r[n[k]] = !(q[n[k]] = l));
+          j = va(r, n), d(j, [], h, i), k = j.length;while (k--) (l = j[k]) && (r[n[k]] = !(q[n[k]] = l));
         }if (f) {
           if (e || a) {
             if (e) {
               j = [], k = r.length;while (k--) (l = r[k]) && j.push(q[k] = l);e(null, r = [], j, i);
             }k = r.length;while (k--) (l = r[k]) && (j = e ? J(f, l) : m[k]) > -1 && (f[j] = !(g[j] = l));
           }
-        } else r = vb(r === g ? r.splice(o, r.length) : r), e ? e(null, g, r, i) : H.apply(g, r);
+        } else r = va(r === g ? r.splice(o, r.length) : r), e ? e(null, g, r, i) : H.apply(g, r);
       }));
-    }function xb(a) {
-      for (var b, c, e, f = a.length, g = d.relative[a[0].type], h = g || d.relative[" "], i = g ? 1 : 0, k = sb(function (a) {
+    }function xa(a) {
+      for (var b, c, e, f = a.length, g = d.relative[a[0].type], h = g || d.relative[" "], i = g ? 1 : 0, k = sa(function (a) {
         return a === b;
-      }, h, !0), l = sb(function (a) {
+      }, h, !0), l = sa(function (a) {
         return J(b, a) > -1;
       }, h, !0), m = [function (a, c, d) {
         var e = !g && (d || c !== j) || ((b = c).nodeType ? k(a, c, d) : l(a, c, d));return (b = null, e);
-      }]; f > i; i++) if (c = d.relative[a[i].type]) m = [sb(tb(m), c)];else {
+      }]; f > i; i++) if (c = d.relative[a[i].type]) m = [sa(ta(m), c)];else {
         if ((c = d.filter[a[i].type].apply(null, a[i].matches), c[u])) {
-          for (e = ++i; f > e; e++) if (d.relative[a[e].type]) break;return wb(i > 1 && tb(m), i > 1 && rb(a.slice(0, i - 1).concat({ value: " " === a[i - 2].type ? "*" : "" })).replace(R, "$1"), c, e > i && xb(a.slice(i, e)), f > e && xb(a = a.slice(e)), f > e && rb(a));
+          for (e = ++i; f > e; e++) if (d.relative[a[e].type]) break;return wa(i > 1 && ta(m), i > 1 && ra(a.slice(0, i - 1).concat({ value: " " === a[i - 2].type ? "*" : "" })).replace(R, "$1"), c, e > i && xa(a.slice(i, e)), f > e && xa(a = a.slice(e)), f > e && ra(a));
         }m.push(c);
-      }return tb(m);
-    }function yb(a, b) {
+      }return ta(m);
+    }function ya(a, b) {
       var c = b.length > 0,
           e = a.length > 0,
           f = function f(_f, g, h, i, k) {
@@ -539,18 +539,18 @@
           }c && ((l = !o && l) && p--, _f && r.push(l));
         }if ((p += q, c && q !== p)) {
           m = 0;while (o = b[m++]) o(r, s, g, h);if (_f) {
-            if (p > 0) while (q--) r[q] || s[q] || (s[q] = F.call(i));s = vb(s);
-          }H.apply(i, s), k && !_f && s.length > 0 && p + b.length > 1 && gb.uniqueSort(i);
+            if (p > 0) while (q--) r[q] || s[q] || (s[q] = F.call(i));s = va(s);
+          }H.apply(i, s), k && !_f && s.length > 0 && p + b.length > 1 && ga.uniqueSort(i);
         }return (k && (w = v, j = t), r);
-      };return c ? ib(f) : f;
-    }return (h = gb.compile = function (a, b) {
+      };return c ? ia(f) : f;
+    }return (h = ga.compile = function (a, b) {
       var c,
           d = [],
           e = [],
           f = A[a + " "];if (!f) {
-        b || (b = g(a)), c = b.length;while (c--) f = xb(b[c]), f[u] ? d.push(f) : e.push(f);f = A(a, yb(e, d)), f.selector = a;
+        b || (b = g(a)), c = b.length;while (c--) f = xa(b[c]), f[u] ? d.push(f) : e.push(f);f = A(a, ya(e, d)), f.selector = a;
       }return f;
-    }, i = gb.select = function (a, b, e, f) {
+    }, i = ga.select = function (a, b, e, f) {
       var i,
           j,
           k,
@@ -559,28 +559,28 @@
           n = "function" == typeof a && a,
           o = !f && g(a = n.selector || a);if ((e = e || [], 1 === o.length)) {
         if ((j = o[0] = o[0].slice(0), j.length > 2 && "ID" === (k = j[0]).type && c.getById && 9 === b.nodeType && p && d.relative[j[1].type])) {
-          if ((b = (d.find.ID(k.matches[0].replace(cb, db), b) || [])[0], !b)) return e;n && (b = b.parentNode), a = a.slice(j.shift().value.length);
+          if ((b = (d.find.ID(k.matches[0].replace(ca, da), b) || [])[0], !b)) return e;n && (b = b.parentNode), a = a.slice(j.shift().value.length);
         }i = X.needsContext.test(a) ? 0 : j.length;while (i--) {
-          if ((k = j[i], d.relative[l = k.type])) break;if ((m = d.find[l]) && (f = m(k.matches[0].replace(cb, db), ab.test(j[0].type) && pb(b.parentNode) || b))) {
-            if ((j.splice(i, 1), a = f.length && rb(j), !a)) return (H.apply(e, f), e);break;
+          if ((k = j[i], d.relative[l = k.type])) break;if ((m = d.find[l]) && (f = m(k.matches[0].replace(ca, da), aa.test(j[0].type) && pa(b.parentNode) || b))) {
+            if ((j.splice(i, 1), a = f.length && ra(j), !a)) return (H.apply(e, f), e);break;
           }
         }
-      }return ((n || h(a, o))(f, b, !p, e, ab.test(a) && pb(b.parentNode) || b), e);
-    }, c.sortStable = u.split("").sort(B).join("") === u, c.detectDuplicates = !!l, m(), c.sortDetached = jb(function (a) {
+      }return ((n || h(a, o))(f, b, !p, e, aa.test(a) && pa(b.parentNode) || b), e);
+    }, c.sortStable = u.split("").sort(B).join("") === u, c.detectDuplicates = !!l, m(), c.sortDetached = ja(function (a) {
       return 1 & a.compareDocumentPosition(n.createElement("div"));
-    }), jb(function (a) {
+    }), ja(function (a) {
       return (a.innerHTML = "<a href='#'></a>", "#" === a.firstChild.getAttribute("href"));
-    }) || kb("type|href|height|width", function (a, b, c) {
+    }) || ka("type|href|height|width", function (a, b, c) {
       return c ? void 0 : a.getAttribute(b, "type" === b.toLowerCase() ? 1 : 2);
-    }), c.attributes && jb(function (a) {
+    }), c.attributes && ja(function (a) {
       return (a.innerHTML = "<input/>", a.firstChild.setAttribute("value", ""), "" === a.firstChild.getAttribute("value"));
-    }) || kb("value", function (a, b, c) {
+    }) || ka("value", function (a, b, c) {
       return c || "input" !== a.nodeName.toLowerCase() ? void 0 : a.defaultValue;
-    }), jb(function (a) {
+    }), ja(function (a) {
       return null == a.getAttribute("disabled");
-    }) || kb(K, function (a, b, c) {
+    }) || ka(K, function (a, b, c) {
       var d;return c ? void 0 : a[b] === !0 ? b.toLowerCase() : (d = a.getAttributeNode(b)) && d.specified ? d.value : null;
-    }), gb);
+    }), ga);
   })(a);n.find = t, n.expr = t.selectors, n.expr[":"] = n.expr.pseudos, n.unique = t.uniqueSort, n.text = t.getText, n.isXMLDoc = t.isXML, n.contains = t.contains;var u = n.expr.match.needsContext,
       v = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
       w = /^.[^:#\[\.,]*$/;function x(a, b, c) {
@@ -1057,31 +1057,31 @@
       });
     }, triggerHandler: function triggerHandler(a, b) {
       var c = this[0];return c ? n.event.trigger(a, b, c, !0) : void 0;
-    } });var ab = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
-      bb = /<([\w:]+)/,
-      cb = /<|&#?\w+;/,
-      db = /<(?:script|style|link)/i,
-      eb = /checked\s*(?:[^=]|=\s*.checked.)/i,
-      fb = /^$|\/(?:java|ecma)script/i,
-      gb = /^true\/(.*)/,
-      hb = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g,
-      ib = { option: [1, "<select multiple='multiple'>", "</select>"], thead: [1, "<table>", "</table>"], col: [2, "<table><colgroup>", "</colgroup></table>"], tr: [2, "<table><tbody>", "</tbody></table>"], td: [3, "<table><tbody><tr>", "</tr></tbody></table>"], _default: [0, "", ""] };ib.optgroup = ib.option, ib.tbody = ib.tfoot = ib.colgroup = ib.caption = ib.thead, ib.th = ib.td;function jb(a, b) {
+    } });var aa = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
+      ba = /<([\w:]+)/,
+      ca = /<|&#?\w+;/,
+      da = /<(?:script|style|link)/i,
+      ea = /checked\s*(?:[^=]|=\s*.checked.)/i,
+      fa = /^$|\/(?:java|ecma)script/i,
+      ga = /^true\/(.*)/,
+      ha = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g,
+      ia = { option: [1, "<select multiple='multiple'>", "</select>"], thead: [1, "<table>", "</table>"], col: [2, "<table><colgroup>", "</colgroup></table>"], tr: [2, "<table><tbody>", "</tbody></table>"], td: [3, "<table><tbody><tr>", "</tr></tbody></table>"], _default: [0, "", ""] };ia.optgroup = ia.option, ia.tbody = ia.tfoot = ia.colgroup = ia.caption = ia.thead, ia.th = ia.td;function ja(a, b) {
     return n.nodeName(a, "table") && n.nodeName(11 !== b.nodeType ? b : b.firstChild, "tr") ? a.getElementsByTagName("tbody")[0] || a.appendChild(a.ownerDocument.createElement("tbody")) : a;
-  }function kb(a) {
+  }function ka(a) {
     return (a.type = (null !== a.getAttribute("type")) + "/" + a.type, a);
-  }function lb(a) {
-    var b = gb.exec(a.type);return (b ? a.type = b[1] : a.removeAttribute("type"), a);
-  }function mb(a, b) {
+  }function la(a) {
+    var b = ga.exec(a.type);return (b ? a.type = b[1] : a.removeAttribute("type"), a);
+  }function ma(a, b) {
     for (var c = 0, d = a.length; d > c; c++) L.set(a[c], "globalEval", !b || L.get(b[c], "globalEval"));
-  }function nb(a, b) {
+  }function na(a, b) {
     var c, d, e, f, g, h, i, j;if (1 === b.nodeType) {
       if (L.hasData(a) && (f = L.access(a), g = L.set(b, f), j = f.events)) {
         delete g.handle, g.events = {};for (e in j) for (c = 0, d = j[e].length; d > c; c++) n.event.add(b, e, j[e][c]);
       }M.hasData(a) && (h = M.access(a), i = n.extend({}, h), M.set(b, i));
     }
-  }function ob(a, b) {
+  }function oa(a, b) {
     var c = a.getElementsByTagName ? a.getElementsByTagName(b || "*") : a.querySelectorAll ? a.querySelectorAll(b || "*") : [];return void 0 === b || b && n.nodeName(a, b) ? n.merge([a], c) : c;
-  }function pb(a, b) {
+  }function pa(a, b) {
     var c = b.nodeName.toLowerCase();"input" === c && T.test(a.type) ? b.checked = a.checked : ("input" === c || "textarea" === c) && (b.defaultValue = a.defaultValue);
   }n.extend({ clone: function clone(a, b, c) {
       var d,
@@ -1089,12 +1089,12 @@
           f,
           g,
           h = a.cloneNode(!0),
-          i = n.contains(a.ownerDocument, a);if (!(k.noCloneChecked || 1 !== a.nodeType && 11 !== a.nodeType || n.isXMLDoc(a))) for (g = ob(h), f = ob(a), d = 0, e = f.length; e > d; d++) pb(f[d], g[d]);if (b) if (c) for (f = f || ob(a), g = g || ob(h), d = 0, e = f.length; e > d; d++) nb(f[d], g[d]);else nb(a, h);return (g = ob(h, "script"), g.length > 0 && mb(g, !i && ob(a, "script")), h);
+          i = n.contains(a.ownerDocument, a);if (!(k.noCloneChecked || 1 !== a.nodeType && 11 !== a.nodeType || n.isXMLDoc(a))) for (g = oa(h), f = oa(a), d = 0, e = f.length; e > d; d++) pa(f[d], g[d]);if (b) if (c) for (f = f || oa(a), g = g || oa(h), d = 0, e = f.length; e > d; d++) na(f[d], g[d]);else na(a, h);return (g = oa(h, "script"), g.length > 0 && ma(g, !i && oa(a, "script")), h);
     }, buildFragment: function buildFragment(a, b, c, d) {
-      for (var e, f, g, h, i, j, k = b.createDocumentFragment(), l = [], m = 0, o = a.length; o > m; m++) if ((e = a[m], e || 0 === e)) if ("object" === n.type(e)) n.merge(l, e.nodeType ? [e] : e);else if (cb.test(e)) {
-        f = f || k.appendChild(b.createElement("div")), g = (bb.exec(e) || ["", ""])[1].toLowerCase(), h = ib[g] || ib._default, f.innerHTML = h[1] + e.replace(ab, "<$1></$2>") + h[2], j = h[0];while (j--) f = f.lastChild;n.merge(l, f.childNodes), f = k.firstChild, f.textContent = "";
-      } else l.push(b.createTextNode(e));k.textContent = "", m = 0;while (e = l[m++]) if ((!d || -1 === n.inArray(e, d)) && (i = n.contains(e.ownerDocument, e), f = ob(k.appendChild(e), "script"), i && mb(f), c)) {
-        j = 0;while (e = f[j++]) fb.test(e.type || "") && c.push(e);
+      for (var e, f, g, h, i, j, k = b.createDocumentFragment(), l = [], m = 0, o = a.length; o > m; m++) if ((e = a[m], e || 0 === e)) if ("object" === n.type(e)) n.merge(l, e.nodeType ? [e] : e);else if (ca.test(e)) {
+        f = f || k.appendChild(b.createElement("div")), g = (ba.exec(e) || ["", ""])[1].toLowerCase(), h = ia[g] || ia._default, f.innerHTML = h[1] + e.replace(aa, "<$1></$2>") + h[2], j = h[0];while (j--) f = f.lastChild;n.merge(l, f.childNodes), f = k.firstChild, f.textContent = "";
+      } else l.push(b.createTextNode(e));k.textContent = "", m = 0;while (e = l[m++]) if ((!d || -1 === n.inArray(e, d)) && (i = n.contains(e.ownerDocument, e), f = oa(k.appendChild(e), "script"), i && ma(f), c)) {
+        j = 0;while (e = f[j++]) fa.test(e.type || "") && c.push(e);
       }return k;
     }, cleanData: function cleanData(a) {
       for (var b, c, d, e, f = n.event.special, g = 0; void 0 !== (c = a[g]); g++) {
@@ -1111,13 +1111,13 @@
     }, append: function append() {
       return this.domManip(arguments, function (a) {
         if (1 === this.nodeType || 11 === this.nodeType || 9 === this.nodeType) {
-          var b = jb(this, a);b.appendChild(a);
+          var b = ja(this, a);b.appendChild(a);
         }
       });
     }, prepend: function prepend() {
       return this.domManip(arguments, function (a) {
         if (1 === this.nodeType || 11 === this.nodeType || 9 === this.nodeType) {
-          var b = jb(this, a);b.insertBefore(a, b.firstChild);
+          var b = ja(this, a);b.insertBefore(a, b.firstChild);
         }
       });
     }, before: function before() {
@@ -1129,9 +1129,9 @@
         this.parentNode && this.parentNode.insertBefore(a, this.nextSibling);
       });
     }, remove: function remove(a, b) {
-      for (var c, d = a ? n.filter(a, this) : this, e = 0; null != (c = d[e]); e++) b || 1 !== c.nodeType || n.cleanData(ob(c)), c.parentNode && (b && n.contains(c.ownerDocument, c) && mb(ob(c, "script")), c.parentNode.removeChild(c));return this;
+      for (var c, d = a ? n.filter(a, this) : this, e = 0; null != (c = d[e]); e++) b || 1 !== c.nodeType || n.cleanData(oa(c)), c.parentNode && (b && n.contains(c.ownerDocument, c) && ma(oa(c, "script")), c.parentNode.removeChild(c));return this;
     }, empty: function empty() {
-      for (var a, b = 0; null != (a = this[b]); b++) 1 === a.nodeType && (n.cleanData(ob(a, !1)), a.textContent = "");return this;
+      for (var a, b = 0; null != (a = this[b]); b++) 1 === a.nodeType && (n.cleanData(oa(a, !1)), a.textContent = "");return this;
     }, clone: function clone(a, b) {
       return (a = null == a ? !1 : a, b = null == b ? a : b, this.map(function () {
         return n.clone(this, a, b);
@@ -1140,15 +1140,15 @@
       return J(this, function (a) {
         var b = this[0] || {},
             c = 0,
-            d = this.length;if (void 0 === a && 1 === b.nodeType) return b.innerHTML;if ("string" == typeof a && !db.test(a) && !ib[(bb.exec(a) || ["", ""])[1].toLowerCase()]) {
-          a = a.replace(ab, "<$1></$2>");try {
-            for (; d > c; c++) b = this[c] || {}, 1 === b.nodeType && (n.cleanData(ob(b, !1)), b.innerHTML = a);b = 0;
+            d = this.length;if (void 0 === a && 1 === b.nodeType) return b.innerHTML;if ("string" == typeof a && !da.test(a) && !ia[(ba.exec(a) || ["", ""])[1].toLowerCase()]) {
+          a = a.replace(aa, "<$1></$2>");try {
+            for (; d > c; c++) b = this[c] || {}, 1 === b.nodeType && (n.cleanData(oa(b, !1)), b.innerHTML = a);b = 0;
           } catch (e) {}
         }b && this.empty().append(a);
       }, null, a, arguments.length);
     }, replaceWith: function replaceWith() {
       var a = arguments[0];return (this.domManip(arguments, function (b) {
-        a = this.parentNode, n.cleanData(ob(this)), a && a.replaceChild(b, this);
+        a = this.parentNode, n.cleanData(oa(this)), a && a.replaceChild(b, this);
       }), a && (a.length || a.nodeType) ? this : this.remove());
     }, detach: function detach(a) {
       return this.remove(a, !0);
@@ -1164,34 +1164,34 @@
           m = this,
           o = l - 1,
           p = a[0],
-          q = n.isFunction(p);if (q || l > 1 && "string" == typeof p && !k.checkClone && eb.test(p)) return this.each(function (c) {
+          q = n.isFunction(p);if (q || l > 1 && "string" == typeof p && !k.checkClone && ea.test(p)) return this.each(function (c) {
         var d = m.eq(c);q && (a[0] = p.call(this, c, d.html())), d.domManip(a, b);
       });if (l && (c = n.buildFragment(a, this[0].ownerDocument, !1, this), d = c.firstChild, 1 === c.childNodes.length && (c = d), d)) {
-        for (f = n.map(ob(c, "script"), kb), g = f.length; l > j; j++) h = c, j !== o && (h = n.clone(h, !0, !0), g && n.merge(f, ob(h, "script"))), b.call(this[j], h, j);if (g) for (i = f[f.length - 1].ownerDocument, n.map(f, lb), j = 0; g > j; j++) h = f[j], fb.test(h.type || "") && !L.access(h, "globalEval") && n.contains(i, h) && (h.src ? n._evalUrl && n._evalUrl(h.src) : n.globalEval(h.textContent.replace(hb, "")));
+        for (f = n.map(oa(c, "script"), ka), g = f.length; l > j; j++) h = c, j !== o && (h = n.clone(h, !0, !0), g && n.merge(f, oa(h, "script"))), b.call(this[j], h, j);if (g) for (i = f[f.length - 1].ownerDocument, n.map(f, la), j = 0; g > j; j++) h = f[j], fa.test(h.type || "") && !L.access(h, "globalEval") && n.contains(i, h) && (h.src ? n._evalUrl && n._evalUrl(h.src) : n.globalEval(h.textContent.replace(ha, "")));
       }return this;
     } }), n.each({ appendTo: "append", prependTo: "prepend", insertBefore: "before", insertAfter: "after", replaceAll: "replaceWith" }, function (a, b) {
     n.fn[a] = function (a) {
       for (var c, d = [], e = n(a), g = e.length - 1, h = 0; g >= h; h++) c = h === g ? this : this.clone(!0), n(e[h])[b](c), f.apply(d, c.get());return this.pushStack(d);
     };
-  });var qb,
-      rb = {};function sb(b, c) {
+  });var qa,
+      ra = {};function sa(b, c) {
     var d,
         e = n(c.createElement(b)).appendTo(c.body),
         f = a.getDefaultComputedStyle && (d = a.getDefaultComputedStyle(e[0])) ? d.display : n.css(e[0], "display");return (e.detach(), f);
-  }function tb(a) {
+  }function ta(a) {
     var b = l,
-        c = rb[a];return (c || (c = sb(a, b), "none" !== c && c || (qb = (qb || n("<iframe frameborder='0' width='0' height='0'/>")).appendTo(b.documentElement), b = qb[0].contentDocument, b.write(), b.close(), c = sb(a, b), qb.detach()), rb[a] = c), c);
-  }var ub = /^margin/,
-      vb = new RegExp("^(" + Q + ")(?!px)[a-z%]+$", "i"),
-      wb = function wb(b) {
+        c = ra[a];return (c || (c = sa(a, b), "none" !== c && c || (qa = (qa || n("<iframe frameborder='0' width='0' height='0'/>")).appendTo(b.documentElement), b = qa[0].contentDocument, b.write(), b.close(), c = sa(a, b), qa.detach()), ra[a] = c), c);
+  }var ua = /^margin/,
+      va = new RegExp("^(" + Q + ")(?!px)[a-z%]+$", "i"),
+      wa = function wa(b) {
     return b.ownerDocument.defaultView.opener ? b.ownerDocument.defaultView.getComputedStyle(b, null) : a.getComputedStyle(b, null);
-  };function xb(a, b, c) {
+  };function xa(a, b, c) {
     var d,
         e,
         f,
         g,
-        h = a.style;return (c = c || wb(a), c && (g = c.getPropertyValue(b) || c[b]), c && ("" !== g || n.contains(a.ownerDocument, a) || (g = n.style(a, b)), vb.test(g) && ub.test(b) && (d = h.width, e = h.minWidth, f = h.maxWidth, h.minWidth = h.maxWidth = h.width = g, g = c.width, h.width = d, h.minWidth = e, h.maxWidth = f)), void 0 !== g ? g + "" : g);
-  }function yb(a, b) {
+        h = a.style;return (c = c || wa(a), c && (g = c.getPropertyValue(b) || c[b]), c && ("" !== g || n.contains(a.ownerDocument, a) || (g = n.style(a, b)), va.test(g) && ua.test(b) && (d = h.width, e = h.minWidth, f = h.maxWidth, h.minWidth = h.maxWidth = h.width = g, g = c.width, h.width = d, h.minWidth = e, h.maxWidth = f)), void 0 !== g ? g + "" : g);
+  }function ya(a, b) {
     return { get: function get() {
         return a() ? void delete this.get : (this.get = b).apply(this, arguments);
       } };
@@ -1220,31 +1220,31 @@
     var e,
         f,
         g = {};for (f in b) g[f] = a.style[f], a.style[f] = b[f];e = c.apply(a, d || []);for (f in b) a.style[f] = g[f];return e;
-  };var zb = /^(none|table(?!-c[ea]).+)/,
-      Ab = new RegExp("^(" + Q + ")(.*)$", "i"),
-      Bb = new RegExp("^([+-])=(" + Q + ")", "i"),
-      Cb = { position: "absolute", visibility: "hidden", display: "block" },
-      Db = { letterSpacing: "0", fontWeight: "400" },
-      Eb = ["Webkit", "O", "Moz", "ms"];function Fb(a, b) {
+  };var za = /^(none|table(?!-c[ea]).+)/,
+      Aa = new RegExp("^(" + Q + ")(.*)$", "i"),
+      Ba = new RegExp("^([+-])=(" + Q + ")", "i"),
+      Ca = { position: "absolute", visibility: "hidden", display: "block" },
+      Da = { letterSpacing: "0", fontWeight: "400" },
+      Ea = ["Webkit", "O", "Moz", "ms"];function Fa(a, b) {
     if (b in a) return b;var c = b[0].toUpperCase() + b.slice(1),
         d = b,
-        e = Eb.length;while (e--) if ((b = Eb[e] + c, b in a)) return b;return d;
-  }function Gb(a, b, c) {
-    var d = Ab.exec(b);return d ? Math.max(0, d[1] - (c || 0)) + (d[2] || "px") : b;
-  }function Hb(a, b, c, d, e) {
+        e = Ea.length;while (e--) if ((b = Ea[e] + c, b in a)) return b;return d;
+  }function Ga(a, b, c) {
+    var d = Aa.exec(b);return d ? Math.max(0, d[1] - (c || 0)) + (d[2] || "px") : b;
+  }function Ha(a, b, c, d, e) {
     for (var f = c === (d ? "border" : "content") ? 4 : "width" === b ? 1 : 0, g = 0; 4 > f; f += 2) "margin" === c && (g += n.css(a, c + R[f], !0, e)), d ? ("content" === c && (g -= n.css(a, "padding" + R[f], !0, e)), "margin" !== c && (g -= n.css(a, "border" + R[f] + "Width", !0, e))) : (g += n.css(a, "padding" + R[f], !0, e), "padding" !== c && (g += n.css(a, "border" + R[f] + "Width", !0, e)));return g;
-  }function Ib(a, b, c) {
+  }function Ia(a, b, c) {
     var d = !0,
         e = "width" === b ? a.offsetWidth : a.offsetHeight,
-        f = wb(a),
+        f = wa(a),
         g = "border-box" === n.css(a, "boxSizing", !1, f);if (0 >= e || null == e) {
-      if ((e = xb(a, b, f), (0 > e || null == e) && (e = a.style[b]), vb.test(e))) return e;d = g && (k.boxSizingReliable() || e === a.style[b]), e = parseFloat(e) || 0;
-    }return e + Hb(a, b, c || (g ? "border" : "content"), d, f) + "px";
-  }function Jb(a, b) {
-    for (var c, d, e, f = [], g = 0, h = a.length; h > g; g++) d = a[g], d.style && (f[g] = L.get(d, "olddisplay"), c = d.style.display, b ? (f[g] || "none" !== c || (d.style.display = ""), "" === d.style.display && S(d) && (f[g] = L.access(d, "olddisplay", tb(d.nodeName)))) : (e = S(d), "none" === c && e || L.set(d, "olddisplay", e ? c : n.css(d, "display"))));for (g = 0; h > g; g++) d = a[g], d.style && (b && "none" !== d.style.display && "" !== d.style.display || (d.style.display = b ? f[g] || "" : "none"));return a;
+      if ((e = xa(a, b, f), (0 > e || null == e) && (e = a.style[b]), va.test(e))) return e;d = g && (k.boxSizingReliable() || e === a.style[b]), e = parseFloat(e) || 0;
+    }return e + Ha(a, b, c || (g ? "border" : "content"), d, f) + "px";
+  }function Ja(a, b) {
+    for (var c, d, e, f = [], g = 0, h = a.length; h > g; g++) d = a[g], d.style && (f[g] = L.get(d, "olddisplay"), c = d.style.display, b ? (f[g] || "none" !== c || (d.style.display = ""), "" === d.style.display && S(d) && (f[g] = L.access(d, "olddisplay", ta(d.nodeName)))) : (e = S(d), "none" === c && e || L.set(d, "olddisplay", e ? c : n.css(d, "display"))));for (g = 0; h > g; g++) d = a[g], d.style && (b && "none" !== d.style.display && "" !== d.style.display || (d.style.display = b ? f[g] || "" : "none"));return a;
   }n.extend({ cssHooks: { opacity: { get: function get(a, b) {
           if (b) {
-            var c = xb(a, "opacity");return "" === c ? "1" : c;
+            var c = xa(a, "opacity");return "" === c ? "1" : c;
           }
         } } }, cssNumber: { columnCount: !0, fillOpacity: !0, flexGrow: !0, flexShrink: !0, fontWeight: !0, lineHeight: !0, opacity: !0, order: !0, orphans: !0, widows: !0, zIndex: !0, zoom: !0 }, cssProps: { "float": "cssFloat" }, style: function style(a, b, c, d) {
       if (a && 3 !== a.nodeType && 8 !== a.nodeType && a.style) {
@@ -1252,90 +1252,90 @@
             f,
             g,
             h = n.camelCase(b),
-            i = a.style;return (b = n.cssProps[h] || (n.cssProps[h] = Fb(i, h)), g = n.cssHooks[b] || n.cssHooks[h], void 0 === c ? g && "get" in g && void 0 !== (e = g.get(a, !1, d)) ? e : i[b] : (f = typeof c, "string" === f && (e = Bb.exec(c)) && (c = (e[1] + 1) * e[2] + parseFloat(n.css(a, b)), f = "number"), null != c && c === c && ("number" !== f || n.cssNumber[h] || (c += "px"), k.clearCloneStyle || "" !== c || 0 !== b.indexOf("background") || (i[b] = "inherit"), g && "set" in g && void 0 === (c = g.set(a, c, d)) || (i[b] = c)), void 0));
+            i = a.style;return (b = n.cssProps[h] || (n.cssProps[h] = Fa(i, h)), g = n.cssHooks[b] || n.cssHooks[h], void 0 === c ? g && "get" in g && void 0 !== (e = g.get(a, !1, d)) ? e : i[b] : (f = typeof c, "string" === f && (e = Ba.exec(c)) && (c = (e[1] + 1) * e[2] + parseFloat(n.css(a, b)), f = "number"), null != c && c === c && ("number" !== f || n.cssNumber[h] || (c += "px"), k.clearCloneStyle || "" !== c || 0 !== b.indexOf("background") || (i[b] = "inherit"), g && "set" in g && void 0 === (c = g.set(a, c, d)) || (i[b] = c)), void 0));
       }
     }, css: function css(a, b, c, d) {
       var e,
           f,
           g,
-          h = n.camelCase(b);return (b = n.cssProps[h] || (n.cssProps[h] = Fb(a.style, h)), g = n.cssHooks[b] || n.cssHooks[h], g && "get" in g && (e = g.get(a, !0, c)), void 0 === e && (e = xb(a, b, d)), "normal" === e && b in Db && (e = Db[b]), "" === c || c ? (f = parseFloat(e), c === !0 || n.isNumeric(f) ? f || 0 : e) : e);
+          h = n.camelCase(b);return (b = n.cssProps[h] || (n.cssProps[h] = Fa(a.style, h)), g = n.cssHooks[b] || n.cssHooks[h], g && "get" in g && (e = g.get(a, !0, c)), void 0 === e && (e = xa(a, b, d)), "normal" === e && b in Da && (e = Da[b]), "" === c || c ? (f = parseFloat(e), c === !0 || n.isNumeric(f) ? f || 0 : e) : e);
     } }), n.each(["height", "width"], function (a, b) {
     n.cssHooks[b] = { get: function get(a, c, d) {
-        return c ? zb.test(n.css(a, "display")) && 0 === a.offsetWidth ? n.swap(a, Cb, function () {
-          return Ib(a, b, d);
-        }) : Ib(a, b, d) : void 0;
+        return c ? za.test(n.css(a, "display")) && 0 === a.offsetWidth ? n.swap(a, Ca, function () {
+          return Ia(a, b, d);
+        }) : Ia(a, b, d) : void 0;
       }, set: function set(a, c, d) {
-        var e = d && wb(a);return Gb(a, c, d ? Hb(a, b, d, "border-box" === n.css(a, "boxSizing", !1, e), e) : 0);
+        var e = d && wa(a);return Ga(a, c, d ? Ha(a, b, d, "border-box" === n.css(a, "boxSizing", !1, e), e) : 0);
       } };
-  }), n.cssHooks.marginRight = yb(k.reliableMarginRight, function (a, b) {
-    return b ? n.swap(a, { display: "inline-block" }, xb, [a, "marginRight"]) : void 0;
+  }), n.cssHooks.marginRight = ya(k.reliableMarginRight, function (a, b) {
+    return b ? n.swap(a, { display: "inline-block" }, xa, [a, "marginRight"]) : void 0;
   }), n.each({ margin: "", padding: "", border: "Width" }, function (a, b) {
     n.cssHooks[a + b] = { expand: function expand(c) {
         for (var d = 0, e = {}, f = "string" == typeof c ? c.split(" ") : [c]; 4 > d; d++) e[a + R[d] + b] = f[d] || f[d - 2] || f[0];return e;
-      } }, ub.test(a) || (n.cssHooks[a + b].set = Gb);
+      } }, ua.test(a) || (n.cssHooks[a + b].set = Ga);
   }), n.fn.extend({ css: function css(a, b) {
       return J(this, function (a, b, c) {
         var d,
             e,
             f = {},
             g = 0;if (n.isArray(b)) {
-          for (d = wb(a), e = b.length; e > g; g++) f[b[g]] = n.css(a, b[g], !1, d);return f;
+          for (d = wa(a), e = b.length; e > g; g++) f[b[g]] = n.css(a, b[g], !1, d);return f;
         }return void 0 !== c ? n.style(a, b, c) : n.css(a, b);
       }, a, b, arguments.length > 1);
     }, show: function show() {
-      return Jb(this, !0);
+      return Ja(this, !0);
     }, hide: function hide() {
-      return Jb(this);
+      return Ja(this);
     }, toggle: function toggle(a) {
       return "boolean" == typeof a ? a ? this.show() : this.hide() : this.each(function () {
         S(this) ? n(this).show() : n(this).hide();
       });
-    } });function Kb(a, b, c, d, e) {
-    return new Kb.prototype.init(a, b, c, d, e);
-  }n.Tween = Kb, Kb.prototype = { constructor: Kb, init: function init(a, b, c, d, e, f) {
+    } });function Ka(a, b, c, d, e) {
+    return new Ka.prototype.init(a, b, c, d, e);
+  }n.Tween = Ka, Ka.prototype = { constructor: Ka, init: function init(a, b, c, d, e, f) {
       this.elem = a, this.prop = c, this.easing = e || "swing", this.options = b, this.start = this.now = this.cur(), this.end = d, this.unit = f || (n.cssNumber[c] ? "" : "px");
     }, cur: function cur() {
-      var a = Kb.propHooks[this.prop];return a && a.get ? a.get(this) : Kb.propHooks._default.get(this);
+      var a = Ka.propHooks[this.prop];return a && a.get ? a.get(this) : Ka.propHooks._default.get(this);
     }, run: function run(a) {
       var b,
-          c = Kb.propHooks[this.prop];return (this.pos = b = this.options.duration ? n.easing[this.easing](a, this.options.duration * a, 0, 1, this.options.duration) : a, this.now = (this.end - this.start) * b + this.start, this.options.step && this.options.step.call(this.elem, this.now, this), c && c.set ? c.set(this) : Kb.propHooks._default.set(this), this);
-    } }, Kb.prototype.init.prototype = Kb.prototype, Kb.propHooks = { _default: { get: function get(a) {
+          c = Ka.propHooks[this.prop];return (this.options.duration ? this.pos = b = n.easing[this.easing](a, this.options.duration * a, 0, 1, this.options.duration) : this.pos = b = a, this.now = (this.end - this.start) * b + this.start, this.options.step && this.options.step.call(this.elem, this.now, this), c && c.set ? c.set(this) : Ka.propHooks._default.set(this), this);
+    } }, Ka.prototype.init.prototype = Ka.prototype, Ka.propHooks = { _default: { get: function get(a) {
         var b;return null == a.elem[a.prop] || a.elem.style && null != a.elem.style[a.prop] ? (b = n.css(a.elem, a.prop, ""), b && "auto" !== b ? b : 0) : a.elem[a.prop];
       }, set: function set(a) {
         n.fx.step[a.prop] ? n.fx.step[a.prop](a) : a.elem.style && (null != a.elem.style[n.cssProps[a.prop]] || n.cssHooks[a.prop]) ? n.style(a.elem, a.prop, a.now + a.unit) : a.elem[a.prop] = a.now;
-      } } }, Kb.propHooks.scrollTop = Kb.propHooks.scrollLeft = { set: function set(a) {
+      } } }, Ka.propHooks.scrollTop = Ka.propHooks.scrollLeft = { set: function set(a) {
       a.elem.nodeType && a.elem.parentNode && (a.elem[a.prop] = a.now);
     } }, n.easing = { linear: function linear(a) {
       return a;
     }, swing: function swing(a) {
       return 0.5 - Math.cos(a * Math.PI) / 2;
-    } }, n.fx = Kb.prototype.init, n.fx.step = {};var Lb,
-      Mb,
-      Nb = /^(?:toggle|show|hide)$/,
-      Ob = new RegExp("^(?:([+-])=|)(" + Q + ")([a-z%]*)$", "i"),
-      Pb = /queueHooks$/,
-      Qb = [Vb],
-      Rb = { "*": [function (a, b) {
+    } }, n.fx = Ka.prototype.init, n.fx.step = {};var La,
+      Ma,
+      Na = /^(?:toggle|show|hide)$/,
+      Oa = new RegExp("^(?:([+-])=|)(" + Q + ")([a-z%]*)$", "i"),
+      Pa = /queueHooks$/,
+      Qa = [Va],
+      Ra = { "*": [function (a, b) {
       var c = this.createTween(a, b),
           d = c.cur(),
-          e = Ob.exec(b),
+          e = Oa.exec(b),
           f = e && e[3] || (n.cssNumber[a] ? "" : "px"),
-          g = (n.cssNumber[a] || "px" !== f && +d) && Ob.exec(n.css(c.elem, a)),
+          g = (n.cssNumber[a] || "px" !== f && +d) && Oa.exec(n.css(c.elem, a)),
           h = 1,
           i = 20;if (g && g[3] !== f) {
         f = f || g[3], e = e || [], g = +d || 1;do h = h || ".5", g /= h, n.style(c.elem, a, g + f); while (h !== (h = c.cur() / d) && 1 !== h && --i);
       }return (e && (g = c.start = +g || +d || 0, c.unit = f, c.end = e[1] ? g + (e[1] + 1) * e[2] : +e[2]), c);
-    }] };function Sb() {
+    }] };function Sa() {
     return (setTimeout(function () {
-      Lb = void 0;
-    }), Lb = n.now());
-  }function Tb(a, b) {
+      La = void 0;
+    }), La = n.now());
+  }function Ta(a, b) {
     var c,
         d = 0,
         e = { height: a };for (b = b ? 1 : 0; 4 > d; d += 2 - b) c = R[d], e["margin" + c] = e["padding" + c] = a;return (b && (e.opacity = e.width = a), e);
-  }function Ub(a, b, c) {
-    for (var d, e = (Rb[b] || []).concat(Rb["*"]), f = 0, g = e.length; g > f; f++) if (d = e[f].call(c, b, a)) return d;
-  }function Vb(a, b, c) {
+  }function Ua(a, b, c) {
+    for (var d, e = (Ra[b] || []).concat(Ra["*"]), f = 0, g = e.length; g > f; f++) if (d = e[f].call(c, b, a)) return d;
+  }function Va(a, b, c) {
     var d,
         e,
         f,
@@ -1354,45 +1354,45 @@
       l.always(function () {
         h.unqueued--, n.queue(a, "fx").length || h.empty.fire();
       });
-    })), 1 === a.nodeType && ("height" in b || "width" in b) && (c.overflow = [o.overflow, o.overflowX, o.overflowY], j = n.css(a, "display"), k = "none" === j ? L.get(a, "olddisplay") || tb(a.nodeName) : j, "inline" === k && "none" === n.css(a, "float") && (o.display = "inline-block")), c.overflow && (o.overflow = "hidden", l.always(function () {
+    })), 1 === a.nodeType && ("height" in b || "width" in b) && (c.overflow = [o.overflow, o.overflowX, o.overflowY], j = n.css(a, "display"), k = "none" === j ? L.get(a, "olddisplay") || ta(a.nodeName) : j, "inline" === k && "none" === n.css(a, "float") && (o.display = "inline-block")), c.overflow && (o.overflow = "hidden", l.always(function () {
       o.overflow = c.overflow[0], o.overflowX = c.overflow[1], o.overflowY = c.overflow[2];
-    }));for (d in b) if ((e = b[d], Nb.exec(e))) {
+    }));for (d in b) if ((e = b[d], Na.exec(e))) {
       if ((delete b[d], f = f || "toggle" === e, e === (p ? "hide" : "show"))) {
         if ("show" !== e || !q || void 0 === q[d]) continue;p = !0;
       }m[d] = q && q[d] || n.style(a, d);
-    } else j = void 0;if (n.isEmptyObject(m)) "inline" === ("none" === j ? tb(a.nodeName) : j) && (o.display = j);else {
+    } else j = void 0;if (n.isEmptyObject(m)) "inline" === ("none" === j ? ta(a.nodeName) : j) && (o.display = j);else {
       q ? "hidden" in q && (p = q.hidden) : q = L.access(a, "fxshow", {}), f && (q.hidden = !p), p ? n(a).show() : l.done(function () {
         n(a).hide();
       }), l.done(function () {
         var b;L.remove(a, "fxshow");for (b in m) n.style(a, b, m[b]);
-      });for (d in m) g = Ub(p ? q[d] : 0, d, l), d in q || (q[d] = g.start, p && (g.end = g.start, g.start = "width" === d || "height" === d ? 1 : 0));
+      });for (d in m) g = Ua(p ? q[d] : 0, d, l), d in q || (q[d] = g.start, p && (g.end = g.start, g.start = "width" === d || "height" === d ? 1 : 0));
     }
-  }function Wb(a, b) {
+  }function Wa(a, b) {
     var c, d, e, f, g;for (c in a) if ((d = n.camelCase(c), e = b[d], f = a[c], n.isArray(f) && (e = f[1], f = a[c] = f[0]), c !== d && (a[d] = f, delete a[c]), g = n.cssHooks[d], g && "expand" in g)) {
       f = g.expand(f), delete a[d];for (c in f) c in a || (a[c] = f[c], b[c] = e);
     } else b[d] = e;
-  }function Xb(a, b, c) {
+  }function Xa(a, b, c) {
     var d,
         e,
         f = 0,
-        g = Qb.length,
+        g = Qa.length,
         h = n.Deferred().always(function () {
       delete i.elem;
     }),
         i = function i() {
-      if (e) return !1;for (var b = Lb || Sb(), c = Math.max(0, j.startTime + j.duration - b), d = c / j.duration || 0, f = 1 - d, g = 0, i = j.tweens.length; i > g; g++) j.tweens[g].run(f);return (h.notifyWith(a, [j, f, c]), 1 > f && i ? c : (h.resolveWith(a, [j]), !1));
+      if (e) return !1;for (var b = La || Sa(), c = Math.max(0, j.startTime + j.duration - b), d = c / j.duration || 0, f = 1 - d, g = 0, i = j.tweens.length; i > g; g++) j.tweens[g].run(f);return (h.notifyWith(a, [j, f, c]), 1 > f && i ? c : (h.resolveWith(a, [j]), !1));
     },
-        j = h.promise({ elem: a, props: n.extend({}, b), opts: n.extend(!0, { specialEasing: {} }, c), originalProperties: b, originalOptions: c, startTime: Lb || Sb(), duration: c.duration, tweens: [], createTween: function createTween(b, c) {
+        j = h.promise({ elem: a, props: n.extend({}, b), opts: n.extend(!0, { specialEasing: {} }, c), originalProperties: b, originalOptions: c, startTime: La || Sa(), duration: c.duration, tweens: [], createTween: function createTween(b, c) {
         var d = n.Tween(a, j.opts, b, c, j.opts.specialEasing[b] || j.opts.easing);return (j.tweens.push(d), d);
       }, stop: function stop(b) {
         var c = 0,
             d = b ? j.tweens.length : 0;if (e) return this;for (e = !0; d > c; c++) j.tweens[c].run(1);return (b ? h.resolveWith(a, [j, b]) : h.rejectWith(a, [j, b]), this);
       } }),
-        k = j.props;for (Wb(k, j.opts.specialEasing); g > f; f++) if (d = Qb[f].call(j, a, k, j.opts)) return d;return (n.map(k, Ub, j), n.isFunction(j.opts.start) && j.opts.start.call(a, j), n.fx.timer(n.extend(i, { elem: a, anim: j, queue: j.opts.queue })), j.progress(j.opts.progress).done(j.opts.done, j.opts.complete).fail(j.opts.fail).always(j.opts.always));
-  }n.Animation = n.extend(Xb, { tweener: function tweener(a, b) {
-      n.isFunction(a) ? (b = a, a = ["*"]) : a = a.split(" ");for (var c, d = 0, e = a.length; e > d; d++) c = a[d], Rb[c] = Rb[c] || [], Rb[c].unshift(b);
+        k = j.props;for (Wa(k, j.opts.specialEasing); g > f; f++) if (d = Qa[f].call(j, a, k, j.opts)) return d;return (n.map(k, Ua, j), n.isFunction(j.opts.start) && j.opts.start.call(a, j), n.fx.timer(n.extend(i, { elem: a, anim: j, queue: j.opts.queue })), j.progress(j.opts.progress).done(j.opts.done, j.opts.complete).fail(j.opts.fail).always(j.opts.always));
+  }n.Animation = n.extend(Xa, { tweener: function tweener(a, b) {
+      n.isFunction(a) ? (b = a, a = ["*"]) : a = a.split(" ");for (var c, d = 0, e = a.length; e > d; d++) c = a[d], Ra[c] = Ra[c] || [], Ra[c].unshift(b);
     }, prefilter: function prefilter(a, b) {
-      b ? Qb.unshift(a) : Qb.push(a);
+      b ? Qa.unshift(a) : Qa.push(a);
     } }), n.speed = function (a, b, c) {
     var d = a && "object" == typeof a ? n.extend({}, a) : { complete: c || !c && b || n.isFunction(a) && a, duration: a, easing: c && b || b && !n.isFunction(b) && b };return (d.duration = n.fx.off ? 0 : "number" == typeof d.duration ? d.duration : d.duration in n.fx.speeds ? n.fx.speeds[d.duration] : n.fx.speeds._default, (null == d.queue || d.queue === !0) && (d.queue = "fx"), d.old = d.complete, d.complete = function () {
       n.isFunction(d.old) && d.old.call(this), d.queue && n.dequeue(this, d.queue);
@@ -1403,7 +1403,7 @@
       var e = n.isEmptyObject(a),
           f = n.speed(b, c, d),
           g = function g() {
-        var b = Xb(this, n.extend({}, a), f);(e || L.get(this, "finish")) && b.stop(!0);
+        var b = Xa(this, n.extend({}, a), f);(e || L.get(this, "finish")) && b.stop(!0);
       };return (g.finish = g, e || f.queue === !1 ? this.each(g) : this.queue(f.queue, g));
     }, stop: function stop(a, b, c) {
       var d = function d(a) {
@@ -1412,7 +1412,7 @@
         var b = !0,
             e = null != a && a + "queueHooks",
             f = n.timers,
-            g = L.get(this);if (e) g[e] && g[e].stop && d(g[e]);else for (e in g) g[e] && g[e].stop && Pb.test(e) && d(g[e]);for (e = f.length; e--;) f[e].elem !== this || null != a && f[e].queue !== a || (f[e].anim.stop(c), b = !1, f.splice(e, 1));(b || !c) && n.dequeue(this, a);
+            g = L.get(this);if (e) g[e] && g[e].stop && d(g[e]);else for (e in g) g[e] && g[e].stop && Pa.test(e) && d(g[e]);for (e = f.length; e--;) f[e].elem !== this || null != a && f[e].queue !== a || (f[e].anim.stop(c), b = !1, f.splice(e, 1));(b || !c) && n.dequeue(this, a);
       }));
     }, finish: function finish(a) {
       return (a !== !1 && (a = a || "fx"), this.each(function () {
@@ -1425,22 +1425,22 @@
       }));
     } }), n.each(["toggle", "show", "hide"], function (a, b) {
     var c = n.fn[b];n.fn[b] = function (a, d, e) {
-      return null == a || "boolean" == typeof a ? c.apply(this, arguments) : this.animate(Tb(b, !0), a, d, e);
+      return null == a || "boolean" == typeof a ? c.apply(this, arguments) : this.animate(Ta(b, !0), a, d, e);
     };
-  }), n.each({ slideDown: Tb("show"), slideUp: Tb("hide"), slideToggle: Tb("toggle"), fadeIn: { opacity: "show" }, fadeOut: { opacity: "hide" }, fadeToggle: { opacity: "toggle" } }, function (a, b) {
+  }), n.each({ slideDown: Ta("show"), slideUp: Ta("hide"), slideToggle: Ta("toggle"), fadeIn: { opacity: "show" }, fadeOut: { opacity: "hide" }, fadeToggle: { opacity: "toggle" } }, function (a, b) {
     n.fn[a] = function (a, c, d) {
       return this.animate(b, a, c, d);
     };
   }), n.timers = [], n.fx.tick = function () {
     var a,
         b = 0,
-        c = n.timers;for (Lb = n.now(); b < c.length; b++) a = c[b], a() || c[b] !== a || c.splice(b--, 1);c.length || n.fx.stop(), Lb = void 0;
+        c = n.timers;for (La = n.now(); b < c.length; b++) a = c[b], a() || c[b] !== a || c.splice(b--, 1);c.length || n.fx.stop(), La = void 0;
   }, n.fx.timer = function (a) {
     n.timers.push(a), a() ? n.fx.start() : n.timers.pop();
   }, n.fx.interval = 13, n.fx.start = function () {
-    Mb || (Mb = setInterval(n.fx.tick, n.fx.interval));
+    Ma || (Ma = setInterval(n.fx.tick, n.fx.interval));
   }, n.fx.stop = function () {
-    clearInterval(Mb), Mb = null;
+    clearInterval(Ma), Ma = null;
   }, n.fx.speeds = { slow: 600, fast: 200, _default: 400 }, n.fn.delay = function (a, b) {
     return (a = n.fx ? n.fx.speeds[a] || a : a, b = b || "fx", this.queue(b, function (b, c) {
       var d = setTimeout(b, a);c.stop = function () {
@@ -1451,9 +1451,9 @@
     var a = l.createElement("input"),
         b = l.createElement("select"),
         c = b.appendChild(l.createElement("option"));a.type = "checkbox", k.checkOn = "" !== a.value, k.optSelected = c.selected, b.disabled = !0, k.optDisabled = !c.disabled, a = l.createElement("input"), a.value = "t", a.type = "radio", k.radioValue = "t" === a.value;
-  })();var Yb,
-      Zb,
-      $b = n.expr.attrHandle;n.fn.extend({ attr: function attr(a, b) {
+  })();var Ya,
+      Za,
+      $a = n.expr.attrHandle;n.fn.extend({ attr: function attr(a, b) {
       return J(this, n.attr, a, b, arguments.length > 1);
     }, removeAttr: function removeAttr(a) {
       return this.each(function () {
@@ -1462,7 +1462,7 @@
     } }), n.extend({ attr: function attr(a, b, c) {
       var d,
           e,
-          f = a.nodeType;if (a && 3 !== f && 8 !== f && 2 !== f) return typeof a.getAttribute === U ? n.prop(a, b, c) : (1 === f && n.isXMLDoc(a) || (b = b.toLowerCase(), d = n.attrHooks[b] || (n.expr.match.bool.test(b) ? Zb : Yb)), void 0 === c ? d && "get" in d && null !== (e = d.get(a, b)) ? e : (e = n.find.attr(a, b), null == e ? void 0 : e) : null !== c ? d && "set" in d && void 0 !== (e = d.set(a, c, b)) ? e : (a.setAttribute(b, c + ""), c) : void n.removeAttr(a, b));
+          f = a.nodeType;if (a && 3 !== f && 8 !== f && 2 !== f) return typeof a.getAttribute === U ? n.prop(a, b, c) : (1 === f && n.isXMLDoc(a) || (b = b.toLowerCase(), d = n.attrHooks[b] || (n.expr.match.bool.test(b) ? Za : Ya)), void 0 === c ? d && "get" in d && null !== (e = d.get(a, b)) ? e : (e = n.find.attr(a, b), null == e ? void 0 : e) : null !== c ? d && "set" in d && void 0 !== (e = d.set(a, c, b)) ? e : (a.setAttribute(b, c + ""), c) : void n.removeAttr(a, b));
     }, removeAttr: function removeAttr(a, b) {
       var c,
           d,
@@ -1472,13 +1472,13 @@
           if (!k.radioValue && "radio" === b && n.nodeName(a, "input")) {
             var c = a.value;return (a.setAttribute("type", b), c && (a.value = c), b);
           }
-        } } } }), Zb = { set: function set(a, b, c) {
+        } } } }), Za = { set: function set(a, b, c) {
       return (b === !1 ? n.removeAttr(a, c) : a.setAttribute(c, c), c);
     } }, n.each(n.expr.match.bool.source.match(/\w+/g), function (a, b) {
-    var c = $b[b] || n.find.attr;$b[b] = function (a, b, d) {
-      var e, f;return (d || (f = $b[b], $b[b] = e, e = null != c(a, b, d) ? b.toLowerCase() : null, $b[b] = f), e);
+    var c = $a[b] || n.find.attr;$a[b] = function (a, b, d) {
+      var e, f;return (d || (f = $a[b], $a[b] = e, e = null != c(a, b, d) ? b.toLowerCase() : null, $a[b] = f), e);
     };
-  });var _b = /^(?:input|select|textarea|button)$/i;n.fn.extend({ prop: function prop(a, b) {
+  });var _a = /^(?:input|select|textarea|button)$/i;n.fn.extend({ prop: function prop(a, b) {
       return J(this, n.prop, a, b, arguments.length > 1);
     }, removeProp: function removeProp(a) {
       return this.each(function () {
@@ -1490,12 +1490,12 @@
           f,
           g = a.nodeType;if (a && 3 !== g && 8 !== g && 2 !== g) return (f = 1 !== g || !n.isXMLDoc(a), f && (b = n.propFix[b] || b, e = n.propHooks[b]), void 0 !== c ? e && "set" in e && void 0 !== (d = e.set(a, c, b)) ? d : a[b] = c : e && "get" in e && null !== (d = e.get(a, b)) ? d : a[b]);
     }, propHooks: { tabIndex: { get: function get(a) {
-          return a.hasAttribute("tabindex") || _b.test(a.nodeName) || a.href ? a.tabIndex : -1;
+          return a.hasAttribute("tabindex") || _a.test(a.nodeName) || a.href ? a.tabIndex : -1;
         } } } }), k.optSelected || (n.propHooks.selected = { get: function get(a) {
       var b = a.parentNode;return (b && b.parentNode && b.parentNode.selectedIndex, null);
     } }), n.each(["tabIndex", "readOnly", "maxLength", "cellSpacing", "cellPadding", "rowSpan", "colSpan", "useMap", "frameBorder", "contentEditable"], function () {
     n.propFix[this.toLowerCase()] = this;
-  });var ac = /[\t\r\n\f]/g;n.fn.extend({ addClass: function addClass(a) {
+  });var ab = /[\t\r\n\f]/g;n.fn.extend({ addClass: function addClass(a) {
       var b,
           c,
           d,
@@ -1506,7 +1506,7 @@
           i = 0,
           j = this.length;if (n.isFunction(a)) return this.each(function (b) {
         n(this).addClass(a.call(this, b, this.className));
-      });if (h) for (b = (a || "").match(E) || []; j > i; i++) if ((c = this[i], d = 1 === c.nodeType && (c.className ? (" " + c.className + " ").replace(ac, " ") : " "))) {
+      });if (h) for (b = (a || "").match(E) || []; j > i; i++) if ((c = this[i], d = 1 === c.nodeType && (c.className ? (" " + c.className + " ").replace(ab, " ") : " "))) {
         f = 0;while (e = b[f++]) d.indexOf(" " + e + " ") < 0 && (d += e + " ");g = n.trim(d), c.className !== g && (c.className = g);
       }return this;
     }, removeClass: function removeClass(a) {
@@ -1520,7 +1520,7 @@
           i = 0,
           j = this.length;if (n.isFunction(a)) return this.each(function (b) {
         n(this).removeClass(a.call(this, b, this.className));
-      });if (h) for (b = (a || "").match(E) || []; j > i; i++) if ((c = this[i], d = 1 === c.nodeType && (c.className ? (" " + c.className + " ").replace(ac, " ") : ""))) {
+      });if (h) for (b = (a || "").match(E) || []; j > i; i++) if ((c = this[i], d = 1 === c.nodeType && (c.className ? (" " + c.className + " ").replace(ab, " ") : ""))) {
         f = 0;while (e = b[f++]) while (d.indexOf(" " + e + " ") >= 0) d = d.replace(" " + e + " ", " ");g = a ? n.trim(d) : "", c.className !== g && (c.className = g);
       }return this;
     }, toggleClass: function toggleClass(a, b) {
@@ -1535,8 +1535,8 @@
         } else (c === U || "boolean" === c) && (this.className && L.set(this, "__className__", this.className), this.className = this.className || a === !1 ? "" : L.get(this, "__className__") || "");
       });
     }, hasClass: function hasClass(a) {
-      for (var b = " " + a + " ", c = 0, d = this.length; d > c; c++) if (1 === this[c].nodeType && (" " + this[c].className + " ").replace(ac, " ").indexOf(b) >= 0) return !0;return !1;
-    } });var bc = /\r/g;n.fn.extend({ val: function val(a) {
+      for (var b = " " + a + " ", c = 0, d = this.length; d > c; c++) if (1 === this[c].nodeType && (" " + this[c].className + " ").replace(ab, " ").indexOf(b) >= 0) return !0;return !1;
+    } });var bb = /\r/g;n.fn.extend({ val: function val(a) {
       var b,
           c,
           d,
@@ -1545,7 +1545,7 @@
           var e;1 === this.nodeType && (e = d ? a.call(this, c, n(this).val()) : a, null == e ? e = "" : "number" == typeof e ? e += "" : n.isArray(e) && (e = n.map(e, function (a) {
             return null == a ? "" : a + "";
           })), b = n.valHooks[this.type] || n.valHooks[this.nodeName.toLowerCase()], b && "set" in b && void 0 !== b.set(this, e, "value") || (this.value = e));
-        }));if (e) return (b = n.valHooks[e.type] || n.valHooks[e.nodeName.toLowerCase()], b && "get" in b && void 0 !== (c = b.get(e, "value")) ? c : (c = e.value, "string" == typeof c ? c.replace(bc, "") : null == c ? "" : c));
+        }));if (e) return (b = n.valHooks[e.type] || n.valHooks[e.nodeName.toLowerCase()], b && "get" in b && void 0 !== (c = b.get(e, "value")) ? c : (c = e.value, "string" == typeof c ? c.replace(bb, "") : null == c ? "" : c));
       }
     } }), n.extend({ valHooks: { option: { get: function get(a) {
           var b = n.find.attr(a, "value");return null != b ? b : n.trim(n.text(a));
@@ -1579,8 +1579,8 @@
       return this.on(b, a, c, d);
     }, undelegate: function undelegate(a, b, c) {
       return 1 === arguments.length ? this.off(a, "**") : this.off(b, a || "**", c);
-    } });var cc = n.now(),
-      dc = /\?/;n.parseJSON = function (a) {
+    } });var cb = n.now(),
+      db = /\?/;n.parseJSON = function (a) {
     return JSON.parse(a + "");
   }, n.parseXML = function (a) {
     var b, c;if (!a || "string" != typeof a) return null;try {
@@ -1588,35 +1588,35 @@
     } catch (d) {
       b = void 0;
     }return ((!b || b.getElementsByTagName("parsererror").length) && n.error("Invalid XML: " + a), b);
-  };var ec = /#.*$/,
-      fc = /([?&])_=[^&]*/,
-      gc = /^(.*?):[ \t]*([^\r\n]*)$/gm,
-      hc = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
-      ic = /^(?:GET|HEAD)$/,
-      jc = /^\/\//,
-      kc = /^([\w.+-]+:)(?:\/\/(?:[^\/?#]*@|)([^\/?#:]*)(?::(\d+)|)|)/,
-      lc = {},
-      mc = {},
-      nc = "*/".concat("*"),
-      oc = a.location.href,
-      pc = kc.exec(oc.toLowerCase()) || [];function qc(a) {
+  };var eb = /#.*$/,
+      fb = /([?&])_=[^&]*/,
+      gb = /^(.*?):[ \t]*([^\r\n]*)$/gm,
+      hb = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
+      ib = /^(?:GET|HEAD)$/,
+      jb = /^\/\//,
+      kb = /^([\w.+-]+:)(?:\/\/(?:[^\/?#]*@|)([^\/?#:]*)(?::(\d+)|)|)/,
+      lb = {},
+      mb = {},
+      nb = "*/".concat("*"),
+      ob = a.location.href,
+      pb = kb.exec(ob.toLowerCase()) || [];function qb(a) {
     return function (b, c) {
       "string" != typeof b && (c = b, b = "*");var d,
           e = 0,
           f = b.toLowerCase().match(E) || [];if (n.isFunction(c)) while (d = f[e++]) "+" === d[0] ? (d = d.slice(1) || "*", (a[d] = a[d] || []).unshift(c)) : (a[d] = a[d] || []).push(c);
     };
-  }function rc(a, b, c, d) {
+  }function rb(a, b, c, d) {
     var e = {},
-        f = a === mc;function g(h) {
+        f = a === mb;function g(h) {
       var i;return (e[h] = !0, n.each(a[h] || [], function (a, h) {
         var j = h(b, c, d);return "string" != typeof j || f || e[j] ? f ? !(i = j) : void 0 : (b.dataTypes.unshift(j), g(j), !1);
       }), i);
     }return g(b.dataTypes[0]) || !e["*"] && g("*");
-  }function sc(a, b) {
+  }function sb(a, b) {
     var c,
         d,
         e = n.ajaxSettings.flatOptions || {};for (c in b) void 0 !== b[c] && ((e[c] ? a : d || (d = {}))[c] = b[c]);return (d && n.extend(!0, a, d), a);
-  }function tc(a, b, c) {
+  }function tb(a, b, c) {
     var d,
         e,
         f,
@@ -1631,7 +1631,7 @@
         }g || (g = e);
       }f = f || g;
     }return f ? (f !== i[0] && i.unshift(f), c[f]) : void 0;
-  }function uc(a, b, c, d) {
+  }function ub(a, b, c, d) {
     var e,
         f,
         g,
@@ -1647,9 +1647,9 @@
         return { state: "parsererror", error: g ? l : "No conversion from " + i + " to " + f };
       }
     }return { state: "success", data: b };
-  }n.extend({ active: 0, lastModified: {}, etag: {}, ajaxSettings: { url: oc, type: "GET", isLocal: hc.test(pc[1]), global: !0, processData: !0, async: !0, contentType: "application/x-www-form-urlencoded; charset=UTF-8", accepts: { "*": nc, text: "text/plain", html: "text/html", xml: "application/xml, text/xml", json: "application/json, text/javascript" }, contents: { xml: /xml/, html: /html/, json: /json/ }, responseFields: { xml: "responseXML", text: "responseText", json: "responseJSON" }, converters: { "* text": String, "text html": !0, "text json": n.parseJSON, "text xml": n.parseXML }, flatOptions: { url: !0, context: !0 } }, ajaxSetup: function ajaxSetup(a, b) {
-      return b ? sc(sc(a, n.ajaxSettings), b) : sc(n.ajaxSettings, a);
-    }, ajaxPrefilter: qc(lc), ajaxTransport: qc(mc), ajax: function ajax(a, b) {
+  }n.extend({ active: 0, lastModified: {}, etag: {}, ajaxSettings: { url: ob, type: "GET", isLocal: hb.test(pb[1]), global: !0, processData: !0, async: !0, contentType: "application/x-www-form-urlencoded; charset=UTF-8", accepts: { "*": nb, text: "text/plain", html: "text/html", xml: "application/xml, text/xml", json: "application/json, text/javascript" }, contents: { xml: /xml/, html: /html/, json: /json/ }, responseFields: { xml: "responseXML", text: "responseText", json: "responseJSON" }, converters: { "* text": String, "text html": !0, "text json": n.parseJSON, "text xml": n.parseXML }, flatOptions: { url: !0, context: !0 } }, ajaxSetup: function ajaxSetup(a, b) {
+      return b ? sb(sb(a, n.ajaxSettings), b) : sb(n.ajaxSettings, a);
+    }, ajaxPrefilter: qb(lb), ajaxTransport: qb(mb), ajax: function ajax(a, b) {
       "object" == typeof a && (b = a, a = void 0), b = b || {};var c,
           d,
           e,
@@ -1671,7 +1671,7 @@
           v = { readyState: 0, getResponseHeader: function getResponseHeader(a) {
           var b;if (2 === t) {
             if (!f) {
-              f = {};while (b = gc.exec(e)) f[b[1].toLowerCase()] = b[2];
+              f = {};while (b = gb.exec(e)) f[b[1].toLowerCase()] = b[2];
             }b = f[a.toLowerCase()];
           }return null == b ? null : b;
         }, getAllResponseHeaders: function getAllResponseHeaders() {
@@ -1684,7 +1684,7 @@
           var b;if (a) if (2 > t) for (b in a) q[b] = [q[b], a[b]];else v.always(a[v.status]);return this;
         }, abort: function abort(a) {
           var b = a || u;return (c && c.abort(b), x(0, b), this);
-        } };if ((o.promise(v).complete = p.add, v.success = v.done, v.error = v.fail, k.url = ((a || k.url || oc) + "").replace(ec, "").replace(jc, pc[1] + "//"), k.type = b.method || b.type || k.method || k.type, k.dataTypes = n.trim(k.dataType || "*").toLowerCase().match(E) || [""], null == k.crossDomain && (h = kc.exec(k.url.toLowerCase()), k.crossDomain = !(!h || h[1] === pc[1] && h[2] === pc[2] && (h[3] || ("http:" === h[1] ? "80" : "443")) === (pc[3] || ("http:" === pc[1] ? "80" : "443")))), k.data && k.processData && "string" != typeof k.data && (k.data = n.param(k.data, k.traditional)), rc(lc, k, b, v), 2 === t)) return v;i = n.event && k.global, i && 0 === n.active++ && n.event.trigger("ajaxStart"), k.type = k.type.toUpperCase(), k.hasContent = !ic.test(k.type), d = k.url, k.hasContent || (k.data && (d = k.url += (dc.test(d) ? "&" : "?") + k.data, delete k.data), k.cache === !1 && (k.url = fc.test(d) ? d.replace(fc, "$1_=" + cc++) : d + (dc.test(d) ? "&" : "?") + "_=" + cc++)), k.ifModified && (n.lastModified[d] && v.setRequestHeader("If-Modified-Since", n.lastModified[d]), n.etag[d] && v.setRequestHeader("If-None-Match", n.etag[d])), (k.data && k.hasContent && k.contentType !== !1 || b.contentType) && v.setRequestHeader("Content-Type", k.contentType), v.setRequestHeader("Accept", k.dataTypes[0] && k.accepts[k.dataTypes[0]] ? k.accepts[k.dataTypes[0]] + ("*" !== k.dataTypes[0] ? ", " + nc + "; q=0.01" : "") : k.accepts["*"]);for (j in k.headers) v.setRequestHeader(j, k.headers[j]);if (k.beforeSend && (k.beforeSend.call(l, v, k) === !1 || 2 === t)) return v.abort();u = "abort";for (j in { success: 1, error: 1, complete: 1 }) v[j](k[j]);if (c = rc(mc, k, b, v)) {
+        } };if ((o.promise(v).complete = p.add, v.success = v.done, v.error = v.fail, k.url = ((a || k.url || ob) + "").replace(eb, "").replace(jb, pb[1] + "//"), k.type = b.method || b.type || k.method || k.type, k.dataTypes = n.trim(k.dataType || "*").toLowerCase().match(E) || [""], null == k.crossDomain && (h = kb.exec(k.url.toLowerCase()), k.crossDomain = !(!h || h[1] === pb[1] && h[2] === pb[2] && (h[3] || ("http:" === h[1] ? "80" : "443")) === (pb[3] || ("http:" === pb[1] ? "80" : "443")))), k.data && k.processData && "string" != typeof k.data && (k.data = n.param(k.data, k.traditional)), rb(lb, k, b, v), 2 === t)) return v;i = n.event && k.global, i && 0 === n.active++ && n.event.trigger("ajaxStart"), k.type = k.type.toUpperCase(), k.hasContent = !ib.test(k.type), d = k.url, k.hasContent || (k.data && (d = k.url += (db.test(d) ? "&" : "?") + k.data, delete k.data), k.cache === !1 && (k.url = fb.test(d) ? d.replace(fb, "$1_=" + cb++) : d + (db.test(d) ? "&" : "?") + "_=" + cb++)), k.ifModified && (n.lastModified[d] && v.setRequestHeader("If-Modified-Since", n.lastModified[d]), n.etag[d] && v.setRequestHeader("If-None-Match", n.etag[d])), (k.data && k.hasContent && k.contentType !== !1 || b.contentType) && v.setRequestHeader("Content-Type", k.contentType), v.setRequestHeader("Accept", k.dataTypes[0] && k.accepts[k.dataTypes[0]] ? k.accepts[k.dataTypes[0]] + ("*" !== k.dataTypes[0] ? ", " + nb + "; q=0.01" : "") : k.accepts["*"]);for (j in k.headers) v.setRequestHeader(j, k.headers[j]);if (k.beforeSend && (k.beforeSend.call(l, v, k) === !1 || 2 === t)) return v.abort();u = "abort";for (j in { success: 1, error: 1, complete: 1 }) v[j](k[j]);if (c = rb(mb, k, b, v)) {
         v.readyState = 1, i && m.trigger("ajaxSend", [v, k]), k.async && k.timeout > 0 && (g = setTimeout(function () {
           v.abort("timeout");
         }, k.timeout));try {
@@ -1698,7 +1698,7 @@
             s,
             u,
             w,
-            x = b;2 !== t && (t = 2, g && clearTimeout(g), c = void 0, e = h || "", v.readyState = a > 0 ? 4 : 0, j = a >= 200 && 300 > a || 304 === a, f && (u = tc(k, v, f)), u = uc(k, u, v, j), j ? (k.ifModified && (w = v.getResponseHeader("Last-Modified"), w && (n.lastModified[d] = w), w = v.getResponseHeader("etag"), w && (n.etag[d] = w)), 204 === a || "HEAD" === k.type ? x = "nocontent" : 304 === a ? x = "notmodified" : (x = u.state, r = u.data, s = u.error, j = !s)) : (s = x, (a || !x) && (x = "error", 0 > a && (a = 0))), v.status = a, v.statusText = (b || x) + "", j ? o.resolveWith(l, [r, x, v]) : o.rejectWith(l, [v, x, s]), v.statusCode(q), q = void 0, i && m.trigger(j ? "ajaxSuccess" : "ajaxError", [v, k, j ? r : s]), p.fireWith(l, [v, x]), i && (m.trigger("ajaxComplete", [v, k]), --n.active || n.event.trigger("ajaxStop")));
+            x = b;2 !== t && (t = 2, g && clearTimeout(g), c = void 0, e = h || "", v.readyState = a > 0 ? 4 : 0, j = a >= 200 && 300 > a || 304 === a, f && (u = tb(k, v, f)), u = ub(k, u, v, j), j ? (k.ifModified && (w = v.getResponseHeader("Last-Modified"), w && (n.lastModified[d] = w), w = v.getResponseHeader("etag"), w && (n.etag[d] = w)), 204 === a || "HEAD" === k.type ? x = "nocontent" : 304 === a ? x = "notmodified" : (x = u.state, r = u.data, s = u.error, j = !s)) : (s = x, (a || !x) && (x = "error", 0 > a && (a = 0))), v.status = a, v.statusText = (b || x) + "", j ? o.resolveWith(l, [r, x, v]) : o.rejectWith(l, [v, x, s]), v.statusCode(q), q = void 0, i && m.trigger(j ? "ajaxSuccess" : "ajaxError", [v, k, j ? r : s]), p.fireWith(l, [v, x]), i && (m.trigger("ajaxComplete", [v, k]), --n.active || n.event.trigger("ajaxStop")));
       }return v;
     }, getJSON: function getJSON(a, b, c) {
       return n.get(a, b, c, "json");
@@ -1735,14 +1735,14 @@
     return a.offsetWidth <= 0 && a.offsetHeight <= 0;
   }, n.expr.filters.visible = function (a) {
     return !n.expr.filters.hidden(a);
-  };var vc = /%20/g,
-      wc = /\[\]$/,
-      xc = /\r?\n/g,
-      yc = /^(?:submit|button|image|reset|file)$/i,
-      zc = /^(?:input|select|textarea|keygen)/i;function Ac(a, b, c, d) {
+  };var vb = /%20/g,
+      wb = /\[\]$/,
+      xb = /\r?\n/g,
+      yb = /^(?:submit|button|image|reset|file)$/i,
+      zb = /^(?:input|select|textarea|keygen)/i;function Ab(a, b, c, d) {
     var e;if (n.isArray(b)) n.each(b, function (b, e) {
-      c || wc.test(a) ? d(a, e) : Ac(a + "[" + ("object" == typeof e ? b : "") + "]", e, c, d);
-    });else if (c || "object" !== n.type(b)) d(a, b);else for (e in b) Ac(a + "[" + e + "]", b[e], c, d);
+      c || wb.test(a) ? d(a, e) : Ab(a + "[" + ("object" == typeof e ? b : "") + "]", e, c, d);
+    });else if (c || "object" !== n.type(b)) d(a, b);else for (e in b) Ab(a + "[" + e + "]", b[e], c, d);
   }n.param = function (a, b) {
     var c,
         d = [],
@@ -1750,37 +1750,37 @@
       b = n.isFunction(b) ? b() : null == b ? "" : b, d[d.length] = encodeURIComponent(a) + "=" + encodeURIComponent(b);
     };if ((void 0 === b && (b = n.ajaxSettings && n.ajaxSettings.traditional), n.isArray(a) || a.jquery && !n.isPlainObject(a))) n.each(a, function () {
       e(this.name, this.value);
-    });else for (c in a) Ac(c, a[c], b, e);return d.join("&").replace(vc, "+");
+    });else for (c in a) Ab(c, a[c], b, e);return d.join("&").replace(vb, "+");
   }, n.fn.extend({ serialize: function serialize() {
       return n.param(this.serializeArray());
     }, serializeArray: function serializeArray() {
       return this.map(function () {
         var a = n.prop(this, "elements");return a ? n.makeArray(a) : this;
       }).filter(function () {
-        var a = this.type;return this.name && !n(this).is(":disabled") && zc.test(this.nodeName) && !yc.test(a) && (this.checked || !T.test(a));
+        var a = this.type;return this.name && !n(this).is(":disabled") && zb.test(this.nodeName) && !yb.test(a) && (this.checked || !T.test(a));
       }).map(function (a, b) {
         var c = n(this).val();return null == c ? null : n.isArray(c) ? n.map(c, function (a) {
-          return { name: b.name, value: a.replace(xc, "\r\n") };
-        }) : { name: b.name, value: c.replace(xc, "\r\n") };
+          return { name: b.name, value: a.replace(xb, "\r\n") };
+        }) : { name: b.name, value: c.replace(xb, "\r\n") };
       }).get();
     } }), n.ajaxSettings.xhr = function () {
     try {
       return new XMLHttpRequest();
     } catch (a) {}
-  };var Bc = 0,
-      Cc = {},
-      Dc = { 0: 200, 1223: 204 },
-      Ec = n.ajaxSettings.xhr();a.attachEvent && a.attachEvent("onunload", function () {
-    for (var a in Cc) Cc[a]();
-  }), k.cors = !!Ec && "withCredentials" in Ec, k.ajax = Ec = !!Ec, n.ajaxTransport(function (a) {
-    var b;return k.cors || Ec && !a.crossDomain ? { send: function send(c, d) {
+  };var Bb = 0,
+      Cb = {},
+      Db = { 0: 200, 1223: 204 },
+      Eb = n.ajaxSettings.xhr();a.attachEvent && a.attachEvent("onunload", function () {
+    for (var a in Cb) Cb[a]();
+  }), k.cors = !!Eb && "withCredentials" in Eb, k.ajax = Eb = !!Eb, n.ajaxTransport(function (a) {
+    var b;return k.cors || Eb && !a.crossDomain ? { send: function send(c, d) {
         var e,
             f = a.xhr(),
-            g = ++Bc;if ((f.open(a.type, a.url, a.async, a.username, a.password), a.xhrFields)) for (e in a.xhrFields) f[e] = a.xhrFields[e];a.mimeType && f.overrideMimeType && f.overrideMimeType(a.mimeType), a.crossDomain || c["X-Requested-With"] || (c["X-Requested-With"] = "XMLHttpRequest");for (e in c) f.setRequestHeader(e, c[e]);b = function (a) {
+            g = ++Bb;if ((f.open(a.type, a.url, a.async, a.username, a.password), a.xhrFields)) for (e in a.xhrFields) f[e] = a.xhrFields[e];a.mimeType && f.overrideMimeType && f.overrideMimeType(a.mimeType), a.crossDomain || c["X-Requested-With"] || (c["X-Requested-With"] = "XMLHttpRequest");for (e in c) f.setRequestHeader(e, c[e]);b = function (a) {
           return function () {
-            b && (delete Cc[g], b = f.onload = f.onerror = null, "abort" === a ? f.abort() : "error" === a ? d(f.status, f.statusText) : d(Dc[f.status] || f.status, f.statusText, "string" == typeof f.responseText ? { text: f.responseText } : void 0, f.getAllResponseHeaders()));
+            b && (delete Cb[g], b = f.onload = f.onerror = null, "abort" === a ? f.abort() : "error" === a ? d(f.status, f.statusText) : d(Db[f.status] || f.status, f.statusText, "string" == typeof f.responseText ? { text: f.responseText } : void 0, f.getAllResponseHeaders()));
           };
-        }, f.onload = b(), f.onerror = b("error"), b = Cc[g] = b("abort");try {
+        }, f.onload = b(), f.onerror = b("error"), b = Cb[g] = b("abort");try {
           f.send(a.hasContent && a.data || null);
         } catch (h) {
           if (b) throw h;
@@ -1802,25 +1802,25 @@
           c && c();
         } };
     }
-  });var Fc = [],
-      Gc = /(=)\?(?=&|$)|\?\?/;n.ajaxSetup({ jsonp: "callback", jsonpCallback: function jsonpCallback() {
-      var a = Fc.pop() || n.expando + "_" + cc++;return (this[a] = !0, a);
+  });var Fb = [],
+      Gb = /(=)\?(?=&|$)|\?\?/;n.ajaxSetup({ jsonp: "callback", jsonpCallback: function jsonpCallback() {
+      var a = Fb.pop() || n.expando + "_" + cb++;return (this[a] = !0, a);
     } }), n.ajaxPrefilter("json jsonp", function (b, c, d) {
     var e,
         f,
         g,
-        h = b.jsonp !== !1 && (Gc.test(b.url) ? "url" : "string" == typeof b.data && !(b.contentType || "").indexOf("application/x-www-form-urlencoded") && Gc.test(b.data) && "data");return h || "jsonp" === b.dataTypes[0] ? (e = b.jsonpCallback = n.isFunction(b.jsonpCallback) ? b.jsonpCallback() : b.jsonpCallback, h ? b[h] = b[h].replace(Gc, "$1" + e) : b.jsonp !== !1 && (b.url += (dc.test(b.url) ? "&" : "?") + b.jsonp + "=" + e), b.converters["script json"] = function () {
+        h = b.jsonp !== !1 && (Gb.test(b.url) ? "url" : "string" == typeof b.data && !(b.contentType || "").indexOf("application/x-www-form-urlencoded") && Gb.test(b.data) && "data");return h || "jsonp" === b.dataTypes[0] ? (e = b.jsonpCallback = n.isFunction(b.jsonpCallback) ? b.jsonpCallback() : b.jsonpCallback, h ? b[h] = b[h].replace(Gb, "$1" + e) : b.jsonp !== !1 && (b.url += (db.test(b.url) ? "&" : "?") + b.jsonp + "=" + e), b.converters["script json"] = function () {
       return (g || n.error(e + " was not called"), g[0]);
     }, b.dataTypes[0] = "json", f = a[e], a[e] = function () {
       g = arguments;
     }, d.always(function () {
-      a[e] = f, b[e] && (b.jsonpCallback = c.jsonpCallback, Fc.push(e)), g && n.isFunction(f) && f(g[0]), g = f = void 0;
+      a[e] = f, b[e] && (b.jsonpCallback = c.jsonpCallback, Fb.push(e)), g && n.isFunction(f) && f(g[0]), g = f = void 0;
     }), "script") : void 0;
   }), n.parseHTML = function (a, b, c) {
     if (!a || "string" != typeof a) return null;"boolean" == typeof b && (c = b, b = !1), b = b || l;var d = v.exec(a),
         e = !c && [];return d ? [b.createElement(d[1])] : (d = n.buildFragment([a], b, e), e && e.length && n(e).remove(), n.merge([], d.childNodes));
-  };var Hc = n.fn.load;n.fn.load = function (a, b, c) {
-    if ("string" != typeof a && Hc) return Hc.apply(this, arguments);var d,
+  };var Hb = n.fn.load;n.fn.load = function (a, b, c) {
+    if ("string" != typeof a && Hb) return Hb.apply(this, arguments);var d,
         e,
         f,
         g = this,
@@ -1837,7 +1837,7 @@
     return n.grep(n.timers, function (b) {
       return a === b.elem;
     }).length;
-  };var Ic = a.document.documentElement;function Jc(a) {
+  };var Ib = a.document.documentElement;function Jb(a) {
     return n.isWindow(a) ? a : 9 === a.nodeType && a.defaultView;
   }n.offset = { setOffset: function setOffset(a, b, c) {
       var d,
@@ -1857,7 +1857,7 @@
           c,
           d = this[0],
           e = { top: 0, left: 0 },
-          f = d && d.ownerDocument;if (f) return (b = f.documentElement, n.contains(b, d) ? (typeof d.getBoundingClientRect !== U && (e = d.getBoundingClientRect()), c = Jc(f), { top: e.top + c.pageYOffset - b.clientTop, left: e.left + c.pageXOffset - b.clientLeft }) : e);
+          f = d && d.ownerDocument;if (f) return (b = f.documentElement, n.contains(b, d) ? (typeof d.getBoundingClientRect !== U && (e = d.getBoundingClientRect()), c = Jb(f), { top: e.top + c.pageYOffset - b.clientTop, left: e.left + c.pageXOffset - b.clientLeft }) : e);
     }, position: function position() {
       if (this[0]) {
         var a,
@@ -1867,17 +1867,17 @@
       }
     }, offsetParent: function offsetParent() {
       return this.map(function () {
-        var a = this.offsetParent || Ic;while (a && !n.nodeName(a, "html") && "static" === n.css(a, "position")) a = a.offsetParent;return a || Ic;
+        var a = this.offsetParent || Ib;while (a && !n.nodeName(a, "html") && "static" === n.css(a, "position")) a = a.offsetParent;return a || Ib;
       });
     } }), n.each({ scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function (b, c) {
     var d = "pageYOffset" === c;n.fn[b] = function (e) {
       return J(this, function (b, e, f) {
-        var g = Jc(b);return void 0 === f ? g ? g[c] : b[e] : void (g ? g.scrollTo(d ? a.pageXOffset : f, d ? f : a.pageYOffset) : b[e] = f);
+        var g = Jb(b);return void 0 === f ? g ? g[c] : b[e] : void (g ? g.scrollTo(d ? a.pageXOffset : f, d ? f : a.pageYOffset) : b[e] = f);
       }, b, e, arguments.length, null);
     };
   }), n.each(["top", "left"], function (a, b) {
-    n.cssHooks[b] = yb(k.pixelPosition, function (a, c) {
-      return c ? (c = xb(a, b), vb.test(c) ? n(a).position()[b] + "px" : c) : void 0;
+    n.cssHooks[b] = ya(k.pixelPosition, function (a, c) {
+      return c ? (c = xa(a, b), va.test(c) ? n(a).position()[b] + "px" : c) : void 0;
     });
   }), n.each({ Height: "height", Width: "width" }, function (a, b) {
     n.each({ padding: "inner" + a, content: b, "": "outer" + a }, function (c, d) {
@@ -1892,12 +1892,569 @@
     return this.length;
   }, n.fn.andSelf = n.fn.addBack, "function" == typeof define && define.amd && define("jquery", [], function () {
     return n;
-  });var Kc = a.jQuery,
-      Lc = a.$;return (n.noConflict = function (b) {
-    return (a.$ === n && (a.$ = Lc), b && a.jQuery === n && (a.jQuery = Kc), n);
+  });var Kb = a.jQuery,
+      Lb = a.$;return (n.noConflict = function (b) {
+    return (a.$ === n && (a.$ = Lb), b && a.jQuery === n && (a.jQuery = Kb), n);
   }, typeof b === U && (a.jQuery = a.$ = n), n);
 });
 //# sourceMappingURL=jquery.min.map
+/*!
+ * Bootstrap v3.3.4 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requires jQuery");+(function (a) {
+  "use strict";var b = a.fn.jquery.split(" ")[0].split(".");if (b[0] < 2 && b[1] < 9 || 1 == b[0] && 9 == b[1] && b[2] < 1) throw new Error("Bootstrap's JavaScript requires jQuery version 1.9.1 or higher");
+})(jQuery), +(function (a) {
+  "use strict";function b() {
+    var a = document.createElement("bootstrap"),
+        b = { WebkitTransition: "webkitTransitionEnd", MozTransition: "transitionend", OTransition: "oTransitionEnd otransitionend", transition: "transitionend" };for (var c in b) if (void 0 !== a.style[c]) return { end: b[c] };return !1;
+  }a.fn.emulateTransitionEnd = function (b) {
+    var c = !1,
+        d = this;a(this).one("bsTransitionEnd", function () {
+      c = !0;
+    });var e = function e() {
+      c || a(d).trigger(a.support.transition.end);
+    };return (setTimeout(e, b), this);
+  }, a(function () {
+    a.support.transition = b(), a.support.transition && (a.event.special.bsTransitionEnd = { bindType: a.support.transition.end, delegateType: a.support.transition.end, handle: function handle(b) {
+        return a(b.target).is(this) ? b.handleObj.handler.apply(this, arguments) : void 0;
+      } });
+  });
+})(jQuery), +(function (a) {
+  "use strict";function b(b) {
+    return this.each(function () {
+      var c = a(this),
+          e = c.data("bs.alert");e || c.data("bs.alert", e = new d(this)), "string" == typeof b && e[b].call(c);
+    });
+  }var c = "[data-dismiss=\"alert\"]",
+      d = function d(b) {
+    a(b).on("click", c, this.close);
+  };d.VERSION = "3.3.4", d.TRANSITION_DURATION = 150, d.prototype.close = function (b) {
+    function c() {
+      g.detach().trigger("closed.bs.alert").remove();
+    }var e = a(this),
+        f = e.attr("data-target");f || (f = e.attr("href"), f = f && f.replace(/.*(?=#[^\s]*$)/, ""));var g = a(f);b && b.preventDefault(), g.length || (g = e.closest(".alert")), g.trigger(b = a.Event("close.bs.alert")), b.isDefaultPrevented() || (g.removeClass("in"), a.support.transition && g.hasClass("fade") ? g.one("bsTransitionEnd", c).emulateTransitionEnd(d.TRANSITION_DURATION) : c());
+  };var e = a.fn.alert;a.fn.alert = b, a.fn.alert.Constructor = d, a.fn.alert.noConflict = function () {
+    return (a.fn.alert = e, this);
+  }, a(document).on("click.bs.alert.data-api", c, d.prototype.close);
+})(jQuery), +(function (a) {
+  "use strict";function b(b) {
+    return this.each(function () {
+      var d = a(this),
+          e = d.data("bs.button"),
+          f = "object" == typeof b && b;e || d.data("bs.button", e = new c(this, f)), "toggle" == b ? e.toggle() : b && e.setState(b);
+    });
+  }var c = function c(b, d) {
+    this.$element = a(b), this.options = a.extend({}, c.DEFAULTS, d), this.isLoading = !1;
+  };c.VERSION = "3.3.4", c.DEFAULTS = { loadingText: "loading..." }, c.prototype.setState = function (b) {
+    var c = "disabled",
+        d = this.$element,
+        e = d.is("input") ? "val" : "html",
+        f = d.data();b += "Text", null == f.resetText && d.data("resetText", d[e]()), setTimeout(a.proxy(function () {
+      d[e](null == f[b] ? this.options[b] : f[b]), "loadingText" == b ? (this.isLoading = !0, d.addClass(c).attr(c, c)) : this.isLoading && (this.isLoading = !1, d.removeClass(c).removeAttr(c));
+    }, this), 0);
+  }, c.prototype.toggle = function () {
+    var a = !0,
+        b = this.$element.closest("[data-toggle=\"buttons\"]");if (b.length) {
+      var c = this.$element.find("input");"radio" == c.prop("type") && (c.prop("checked") && this.$element.hasClass("active") ? a = !1 : b.find(".active").removeClass("active")), a && c.prop("checked", !this.$element.hasClass("active")).trigger("change");
+    } else this.$element.attr("aria-pressed", !this.$element.hasClass("active"));a && this.$element.toggleClass("active");
+  };var d = a.fn.button;a.fn.button = b, a.fn.button.Constructor = c, a.fn.button.noConflict = function () {
+    return (a.fn.button = d, this);
+  }, a(document).on("click.bs.button.data-api", "[data-toggle^=\"button\"]", function (c) {
+    var d = a(c.target);d.hasClass("btn") || (d = d.closest(".btn")), b.call(d, "toggle"), c.preventDefault();
+  }).on("focus.bs.button.data-api blur.bs.button.data-api", "[data-toggle^=\"button\"]", function (b) {
+    a(b.target).closest(".btn").toggleClass("focus", /^focus(in)?$/.test(b.type));
+  });
+})(jQuery), +(function (a) {
+  "use strict";function b(b) {
+    return this.each(function () {
+      var d = a(this),
+          e = d.data("bs.carousel"),
+          f = a.extend({}, c.DEFAULTS, d.data(), "object" == typeof b && b),
+          g = "string" == typeof b ? b : f.slide;e || d.data("bs.carousel", e = new c(this, f)), "number" == typeof b ? e.to(b) : g ? e[g]() : f.interval && e.pause().cycle();
+    });
+  }var c = function c(b, _c) {
+    this.$element = a(b), this.$indicators = this.$element.find(".carousel-indicators"), this.options = _c, this.paused = null, this.sliding = null, this.interval = null, this.$active = null, this.$items = null, this.options.keyboard && this.$element.on("keydown.bs.carousel", a.proxy(this.keydown, this)), "hover" == this.options.pause && !("ontouchstart" in document.documentElement) && this.$element.on("mouseenter.bs.carousel", a.proxy(this.pause, this)).on("mouseleave.bs.carousel", a.proxy(this.cycle, this));
+  };c.VERSION = "3.3.4", c.TRANSITION_DURATION = 600, c.DEFAULTS = { interval: 5000, pause: "hover", wrap: !0, keyboard: !0 }, c.prototype.keydown = function (a) {
+    if (!/input|textarea/i.test(a.target.tagName)) {
+      switch (a.which) {case 37:
+          this.prev();break;case 39:
+          this.next();break;default:
+          return;}a.preventDefault();
+    }
+  }, c.prototype.cycle = function (b) {
+    return (b || (this.paused = !1), this.interval && clearInterval(this.interval), this.options.interval && !this.paused && (this.interval = setInterval(a.proxy(this.next, this), this.options.interval)), this);
+  }, c.prototype.getItemIndex = function (a) {
+    return (this.$items = a.parent().children(".item"), this.$items.index(a || this.$active));
+  }, c.prototype.getItemForDirection = function (a, b) {
+    var c = this.getItemIndex(b),
+        d = "prev" == a && 0 === c || "next" == a && c == this.$items.length - 1;if (d && !this.options.wrap) return b;var e = "prev" == a ? -1 : 1,
+        f = (c + e) % this.$items.length;return this.$items.eq(f);
+  }, c.prototype.to = function (a) {
+    var b = this,
+        c = this.getItemIndex(this.$active = this.$element.find(".item.active"));return a > this.$items.length - 1 || 0 > a ? void 0 : this.sliding ? this.$element.one("slid.bs.carousel", function () {
+      b.to(a);
+    }) : c == a ? this.pause().cycle() : this.slide(a > c ? "next" : "prev", this.$items.eq(a));
+  }, c.prototype.pause = function (b) {
+    return (b || (this.paused = !0), this.$element.find(".next, .prev").length && a.support.transition && (this.$element.trigger(a.support.transition.end), this.cycle(!0)), this.interval = clearInterval(this.interval), this);
+  }, c.prototype.next = function () {
+    return this.sliding ? void 0 : this.slide("next");
+  }, c.prototype.prev = function () {
+    return this.sliding ? void 0 : this.slide("prev");
+  }, c.prototype.slide = function (b, d) {
+    var e = this.$element.find(".item.active"),
+        f = d || this.getItemForDirection(b, e),
+        g = this.interval,
+        h = "next" == b ? "left" : "right",
+        i = this;if (f.hasClass("active")) return this.sliding = !1;var j = f[0],
+        k = a.Event("slide.bs.carousel", { relatedTarget: j, direction: h });if ((this.$element.trigger(k), !k.isDefaultPrevented())) {
+      if ((this.sliding = !0, g && this.pause(), this.$indicators.length)) {
+        this.$indicators.find(".active").removeClass("active");var l = a(this.$indicators.children()[this.getItemIndex(f)]);l && l.addClass("active");
+      }var m = a.Event("slid.bs.carousel", { relatedTarget: j, direction: h });return (a.support.transition && this.$element.hasClass("slide") ? (f.addClass(b), f[0].offsetWidth, e.addClass(h), f.addClass(h), e.one("bsTransitionEnd", function () {
+        f.removeClass([b, h].join(" ")).addClass("active"), e.removeClass(["active", h].join(" ")), i.sliding = !1, setTimeout(function () {
+          i.$element.trigger(m);
+        }, 0);
+      }).emulateTransitionEnd(c.TRANSITION_DURATION)) : (e.removeClass("active"), f.addClass("active"), this.sliding = !1, this.$element.trigger(m)), g && this.cycle(), this);
+    }
+  };var d = a.fn.carousel;a.fn.carousel = b, a.fn.carousel.Constructor = c, a.fn.carousel.noConflict = function () {
+    return (a.fn.carousel = d, this);
+  };var e = function e(c) {
+    var d,
+        e = a(this),
+        f = a(e.attr("data-target") || (d = e.attr("href")) && d.replace(/.*(?=#[^\s]+$)/, ""));if (f.hasClass("carousel")) {
+      var g = a.extend({}, f.data(), e.data()),
+          h = e.attr("data-slide-to");h && (g.interval = !1), b.call(f, g), h && f.data("bs.carousel").to(h), c.preventDefault();
+    }
+  };a(document).on("click.bs.carousel.data-api", "[data-slide]", e).on("click.bs.carousel.data-api", "[data-slide-to]", e), a(window).on("load", function () {
+    a("[data-ride=\"carousel\"]").each(function () {
+      var c = a(this);b.call(c, c.data());
+    });
+  });
+})(jQuery), +(function (a) {
+  "use strict";function b(b) {
+    var c,
+        d = b.attr("data-target") || (c = b.attr("href")) && c.replace(/.*(?=#[^\s]+$)/, "");return a(d);
+  }function c(b) {
+    return this.each(function () {
+      var c = a(this),
+          e = c.data("bs.collapse"),
+          f = a.extend({}, d.DEFAULTS, c.data(), "object" == typeof b && b);!e && f.toggle && /show|hide/.test(b) && (f.toggle = !1), e || c.data("bs.collapse", e = new d(this, f)), "string" == typeof b && e[b]();
+    });
+  }var d = function d(b, c) {
+    this.$element = a(b), this.options = a.extend({}, d.DEFAULTS, c), this.$trigger = a("[data-toggle=\"collapse\"][href=\"#" + b.id + "\"],[data-toggle=\"collapse\"][data-target=\"#" + b.id + "\"]"), this.transitioning = null, this.options.parent ? this.$parent = this.getParent() : this.addAriaAndCollapsedClass(this.$element, this.$trigger), this.options.toggle && this.toggle();
+  };d.VERSION = "3.3.4", d.TRANSITION_DURATION = 350, d.DEFAULTS = { toggle: !0 }, d.prototype.dimension = function () {
+    var a = this.$element.hasClass("width");return a ? "width" : "height";
+  }, d.prototype.show = function () {
+    if (!this.transitioning && !this.$element.hasClass("in")) {
+      var b,
+          e = this.$parent && this.$parent.children(".panel").children(".in, .collapsing");if (!(e && e.length && (b = e.data("bs.collapse"), b && b.transitioning))) {
+        var f = a.Event("show.bs.collapse");if ((this.$element.trigger(f), !f.isDefaultPrevented())) {
+          e && e.length && (c.call(e, "hide"), b || e.data("bs.collapse", null));var g = this.dimension();this.$element.removeClass("collapse").addClass("collapsing")[g](0).attr("aria-expanded", !0), this.$trigger.removeClass("collapsed").attr("aria-expanded", !0), this.transitioning = 1;var h = function h() {
+            this.$element.removeClass("collapsing").addClass("collapse in")[g](""), this.transitioning = 0, this.$element.trigger("shown.bs.collapse");
+          };if (!a.support.transition) return h.call(this);var i = a.camelCase(["scroll", g].join("-"));this.$element.one("bsTransitionEnd", a.proxy(h, this)).emulateTransitionEnd(d.TRANSITION_DURATION)[g](this.$element[0][i]);
+        }
+      }
+    }
+  }, d.prototype.hide = function () {
+    if (!this.transitioning && this.$element.hasClass("in")) {
+      var b = a.Event("hide.bs.collapse");if ((this.$element.trigger(b), !b.isDefaultPrevented())) {
+        var c = this.dimension();this.$element[c](this.$element[c]())[0].offsetHeight, this.$element.addClass("collapsing").removeClass("collapse in").attr("aria-expanded", !1), this.$trigger.addClass("collapsed").attr("aria-expanded", !1), this.transitioning = 1;var e = function e() {
+          this.transitioning = 0, this.$element.removeClass("collapsing").addClass("collapse").trigger("hidden.bs.collapse");
+        };return a.support.transition ? void this.$element[c](0).one("bsTransitionEnd", a.proxy(e, this)).emulateTransitionEnd(d.TRANSITION_DURATION) : e.call(this);
+      }
+    }
+  }, d.prototype.toggle = function () {
+    this[this.$element.hasClass("in") ? "hide" : "show"]();
+  }, d.prototype.getParent = function () {
+    return a(this.options.parent).find("[data-toggle=\"collapse\"][data-parent=\"" + this.options.parent + "\"]").each(a.proxy(function (c, d) {
+      var e = a(d);this.addAriaAndCollapsedClass(b(e), e);
+    }, this)).end();
+  }, d.prototype.addAriaAndCollapsedClass = function (a, b) {
+    var c = a.hasClass("in");a.attr("aria-expanded", c), b.toggleClass("collapsed", !c).attr("aria-expanded", c);
+  };var e = a.fn.collapse;a.fn.collapse = c, a.fn.collapse.Constructor = d, a.fn.collapse.noConflict = function () {
+    return (a.fn.collapse = e, this);
+  }, a(document).on("click.bs.collapse.data-api", "[data-toggle=\"collapse\"]", function (d) {
+    var e = a(this);e.attr("data-target") || d.preventDefault();var f = b(e),
+        g = f.data("bs.collapse"),
+        h = g ? "toggle" : e.data();c.call(f, h);
+  });
+})(jQuery), +(function (a) {
+  "use strict";function b(b) {
+    b && 3 === b.which || (a(e).remove(), a(f).each(function () {
+      var d = a(this),
+          e = c(d),
+          f = { relatedTarget: this };e.hasClass("open") && (e.trigger(b = a.Event("hide.bs.dropdown", f)), b.isDefaultPrevented() || (d.attr("aria-expanded", "false"), e.removeClass("open").trigger("hidden.bs.dropdown", f)));
+    }));
+  }function c(b) {
+    var c = b.attr("data-target");c || (c = b.attr("href"), c = c && /#[A-Za-z]/.test(c) && c.replace(/.*(?=#[^\s]*$)/, ""));var d = c && a(c);return d && d.length ? d : b.parent();
+  }function d(b) {
+    return this.each(function () {
+      var c = a(this),
+          d = c.data("bs.dropdown");d || c.data("bs.dropdown", d = new g(this)), "string" == typeof b && d[b].call(c);
+    });
+  }var e = ".dropdown-backdrop",
+      f = "[data-toggle=\"dropdown\"]",
+      g = function g(b) {
+    a(b).on("click.bs.dropdown", this.toggle);
+  };g.VERSION = "3.3.4", g.prototype.toggle = function (d) {
+    var e = a(this);if (!e.is(".disabled, :disabled")) {
+      var f = c(e),
+          g = f.hasClass("open");if ((b(), !g)) {
+        "ontouchstart" in document.documentElement && !f.closest(".navbar-nav").length && a("<div class=\"dropdown-backdrop\"/>").insertAfter(a(this)).on("click", b);var h = { relatedTarget: this };if ((f.trigger(d = a.Event("show.bs.dropdown", h)), d.isDefaultPrevented())) return;e.trigger("focus").attr("aria-expanded", "true"), f.toggleClass("open").trigger("shown.bs.dropdown", h);
+      }return !1;
+    }
+  }, g.prototype.keydown = function (b) {
+    if (/(38|40|27|32)/.test(b.which) && !/input|textarea/i.test(b.target.tagName)) {
+      var d = a(this);if ((b.preventDefault(), b.stopPropagation(), !d.is(".disabled, :disabled"))) {
+        var e = c(d),
+            g = e.hasClass("open");if (!g && 27 != b.which || g && 27 == b.which) return (27 == b.which && e.find(f).trigger("focus"), d.trigger("click"));var h = " li:not(.disabled):visible a",
+            i = e.find("[role=\"menu\"]" + h + ", [role=\"listbox\"]" + h);if (i.length) {
+          var j = i.index(b.target);38 == b.which && j > 0 && j--, 40 == b.which && j < i.length - 1 && j++, ~j || (j = 0), i.eq(j).trigger("focus");
+        }
+      }
+    }
+  };var h = a.fn.dropdown;a.fn.dropdown = d, a.fn.dropdown.Constructor = g, a.fn.dropdown.noConflict = function () {
+    return (a.fn.dropdown = h, this);
+  }, a(document).on("click.bs.dropdown.data-api", b).on("click.bs.dropdown.data-api", ".dropdown form", function (a) {
+    a.stopPropagation();
+  }).on("click.bs.dropdown.data-api", f, g.prototype.toggle).on("keydown.bs.dropdown.data-api", f, g.prototype.keydown).on("keydown.bs.dropdown.data-api", "[role=\"menu\"]", g.prototype.keydown).on("keydown.bs.dropdown.data-api", "[role=\"listbox\"]", g.prototype.keydown);
+})(jQuery), +(function (a) {
+  "use strict";function b(b, d) {
+    return this.each(function () {
+      var e = a(this),
+          f = e.data("bs.modal"),
+          g = a.extend({}, c.DEFAULTS, e.data(), "object" == typeof b && b);f || e.data("bs.modal", f = new c(this, g)), "string" == typeof b ? f[b](d) : g.show && f.show(d);
+    });
+  }var c = function c(b, _c2) {
+    this.options = _c2, this.$body = a(document.body), this.$element = a(b), this.$dialog = this.$element.find(".modal-dialog"), this.$backdrop = null, this.isShown = null, this.originalBodyPad = null, this.scrollbarWidth = 0, this.ignoreBackdropClick = !1, this.options.remote && this.$element.find(".modal-content").load(this.options.remote, a.proxy(function () {
+      this.$element.trigger("loaded.bs.modal");
+    }, this));
+  };c.VERSION = "3.3.4", c.TRANSITION_DURATION = 300, c.BACKDROP_TRANSITION_DURATION = 150, c.DEFAULTS = { backdrop: !0, keyboard: !0, show: !0 }, c.prototype.toggle = function (a) {
+    return this.isShown ? this.hide() : this.show(a);
+  }, c.prototype.show = function (b) {
+    var d = this,
+        e = a.Event("show.bs.modal", { relatedTarget: b });this.$element.trigger(e), this.isShown || e.isDefaultPrevented() || (this.isShown = !0, this.checkScrollbar(), this.setScrollbar(), this.$body.addClass("modal-open"), this.escape(), this.resize(), this.$element.on("click.dismiss.bs.modal", "[data-dismiss=\"modal\"]", a.proxy(this.hide, this)), this.$dialog.on("mousedown.dismiss.bs.modal", function () {
+      d.$element.one("mouseup.dismiss.bs.modal", function (b) {
+        a(b.target).is(d.$element) && (d.ignoreBackdropClick = !0);
+      });
+    }), this.backdrop(function () {
+      var e = a.support.transition && d.$element.hasClass("fade");d.$element.parent().length || d.$element.appendTo(d.$body), d.$element.show().scrollTop(0), d.adjustDialog(), e && d.$element[0].offsetWidth, d.$element.addClass("in").attr("aria-hidden", !1), d.enforceFocus();var f = a.Event("shown.bs.modal", { relatedTarget: b });e ? d.$dialog.one("bsTransitionEnd", function () {
+        d.$element.trigger("focus").trigger(f);
+      }).emulateTransitionEnd(c.TRANSITION_DURATION) : d.$element.trigger("focus").trigger(f);
+    }));
+  }, c.prototype.hide = function (b) {
+    b && b.preventDefault(), b = a.Event("hide.bs.modal"), this.$element.trigger(b), this.isShown && !b.isDefaultPrevented() && (this.isShown = !1, this.escape(), this.resize(), a(document).off("focusin.bs.modal"), this.$element.removeClass("in").attr("aria-hidden", !0).off("click.dismiss.bs.modal").off("mouseup.dismiss.bs.modal"), this.$dialog.off("mousedown.dismiss.bs.modal"), a.support.transition && this.$element.hasClass("fade") ? this.$element.one("bsTransitionEnd", a.proxy(this.hideModal, this)).emulateTransitionEnd(c.TRANSITION_DURATION) : this.hideModal());
+  }, c.prototype.enforceFocus = function () {
+    a(document).off("focusin.bs.modal").on("focusin.bs.modal", a.proxy(function (a) {
+      this.$element[0] === a.target || this.$element.has(a.target).length || this.$element.trigger("focus");
+    }, this));
+  }, c.prototype.escape = function () {
+    this.isShown && this.options.keyboard ? this.$element.on("keydown.dismiss.bs.modal", a.proxy(function (a) {
+      27 == a.which && this.hide();
+    }, this)) : this.isShown || this.$element.off("keydown.dismiss.bs.modal");
+  }, c.prototype.resize = function () {
+    this.isShown ? a(window).on("resize.bs.modal", a.proxy(this.handleUpdate, this)) : a(window).off("resize.bs.modal");
+  }, c.prototype.hideModal = function () {
+    var a = this;this.$element.hide(), this.backdrop(function () {
+      a.$body.removeClass("modal-open"), a.resetAdjustments(), a.resetScrollbar(), a.$element.trigger("hidden.bs.modal");
+    });
+  }, c.prototype.removeBackdrop = function () {
+    this.$backdrop && this.$backdrop.remove(), this.$backdrop = null;
+  }, c.prototype.backdrop = function (b) {
+    var d = this,
+        e = this.$element.hasClass("fade") ? "fade" : "";if (this.isShown && this.options.backdrop) {
+      var f = a.support.transition && e;if ((this.$backdrop = a("<div class=\"modal-backdrop " + e + "\" />").appendTo(this.$body), this.$element.on("click.dismiss.bs.modal", a.proxy(function (a) {
+        return this.ignoreBackdropClick ? void (this.ignoreBackdropClick = !1) : void (a.target === a.currentTarget && ("static" == this.options.backdrop ? this.$element[0].focus() : this.hide()));
+      }, this)), f && this.$backdrop[0].offsetWidth, this.$backdrop.addClass("in"), !b)) return;f ? this.$backdrop.one("bsTransitionEnd", b).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION) : b();
+    } else if (!this.isShown && this.$backdrop) {
+      this.$backdrop.removeClass("in");var g = function g() {
+        d.removeBackdrop(), b && b();
+      };a.support.transition && this.$element.hasClass("fade") ? this.$backdrop.one("bsTransitionEnd", g).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION) : g();
+    } else b && b();
+  }, c.prototype.handleUpdate = function () {
+    this.adjustDialog();
+  }, c.prototype.adjustDialog = function () {
+    var a = this.$element[0].scrollHeight > document.documentElement.clientHeight;this.$element.css({ paddingLeft: !this.bodyIsOverflowing && a ? this.scrollbarWidth : "", paddingRight: this.bodyIsOverflowing && !a ? this.scrollbarWidth : "" });
+  }, c.prototype.resetAdjustments = function () {
+    this.$element.css({ paddingLeft: "", paddingRight: "" });
+  }, c.prototype.checkScrollbar = function () {
+    var a = window.innerWidth;if (!a) {
+      var b = document.documentElement.getBoundingClientRect();a = b.right - Math.abs(b.left);
+    }this.bodyIsOverflowing = document.body.clientWidth < a, this.scrollbarWidth = this.measureScrollbar();
+  }, c.prototype.setScrollbar = function () {
+    var a = parseInt(this.$body.css("padding-right") || 0, 10);this.originalBodyPad = document.body.style.paddingRight || "", this.bodyIsOverflowing && this.$body.css("padding-right", a + this.scrollbarWidth);
+  }, c.prototype.resetScrollbar = function () {
+    this.$body.css("padding-right", this.originalBodyPad);
+  }, c.prototype.measureScrollbar = function () {
+    var a = document.createElement("div");a.className = "modal-scrollbar-measure", this.$body.append(a);var b = a.offsetWidth - a.clientWidth;return (this.$body[0].removeChild(a), b);
+  };var d = a.fn.modal;a.fn.modal = b, a.fn.modal.Constructor = c, a.fn.modal.noConflict = function () {
+    return (a.fn.modal = d, this);
+  }, a(document).on("click.bs.modal.data-api", "[data-toggle=\"modal\"]", function (c) {
+    var d = a(this),
+        e = d.attr("href"),
+        f = a(d.attr("data-target") || e && e.replace(/.*(?=#[^\s]+$)/, "")),
+        g = f.data("bs.modal") ? "toggle" : a.extend({ remote: !/#/.test(e) && e }, f.data(), d.data());d.is("a") && c.preventDefault(), f.one("show.bs.modal", function (a) {
+      a.isDefaultPrevented() || f.one("hidden.bs.modal", function () {
+        d.is(":visible") && d.trigger("focus");
+      });
+    }), b.call(f, g, this);
+  });
+})(jQuery), +(function (a) {
+  "use strict";function b(b) {
+    return this.each(function () {
+      var d = a(this),
+          e = d.data("bs.tooltip"),
+          f = "object" == typeof b && b;(e || !/destroy|hide/.test(b)) && (e || d.data("bs.tooltip", e = new c(this, f)), "string" == typeof b && e[b]());
+    });
+  }var c = function c(a, b) {
+    this.type = null, this.options = null, this.enabled = null, this.timeout = null, this.hoverState = null, this.$element = null, this.init("tooltip", a, b);
+  };c.VERSION = "3.3.4", c.TRANSITION_DURATION = 150, c.DEFAULTS = { animation: !0, placement: "top", selector: !1, template: "<div class=\"tooltip\" role=\"tooltip\"><div class=\"tooltip-arrow\"></div><div class=\"tooltip-inner\"></div></div>", trigger: "hover focus", title: "", delay: 0, html: !1, container: !1, viewport: { selector: "body", padding: 0 } }, c.prototype.init = function (b, c, d) {
+    if ((this.enabled = !0, this.type = b, this.$element = a(c), this.options = this.getOptions(d), this.$viewport = this.options.viewport && a(this.options.viewport.selector || this.options.viewport), this.$element[0] instanceof document.constructor && !this.options.selector)) throw new Error("`selector` option must be specified when initializing " + this.type + " on the window.document object!");for (var e = this.options.trigger.split(" "), f = e.length; f--;) {
+      var g = e[f];if ("click" == g) this.$element.on("click." + this.type, this.options.selector, a.proxy(this.toggle, this));else if ("manual" != g) {
+        var h = "hover" == g ? "mouseenter" : "focusin",
+            i = "hover" == g ? "mouseleave" : "focusout";this.$element.on(h + "." + this.type, this.options.selector, a.proxy(this.enter, this)), this.$element.on(i + "." + this.type, this.options.selector, a.proxy(this.leave, this));
+      }
+    }this.options.selector ? this._options = a.extend({}, this.options, { trigger: "manual", selector: "" }) : this.fixTitle();
+  }, c.prototype.getDefaults = function () {
+    return c.DEFAULTS;
+  }, c.prototype.getOptions = function (b) {
+    return (b = a.extend({}, this.getDefaults(), this.$element.data(), b), b.delay && "number" == typeof b.delay && (b.delay = { show: b.delay, hide: b.delay }), b);
+  }, c.prototype.getDelegateOptions = function () {
+    var b = {},
+        c = this.getDefaults();return (this._options && a.each(this._options, function (a, d) {
+      c[a] != d && (b[a] = d);
+    }), b);
+  }, c.prototype.enter = function (b) {
+    var c = b instanceof this.constructor ? b : a(b.currentTarget).data("bs." + this.type);return c && c.$tip && c.$tip.is(":visible") ? void (c.hoverState = "in") : (c || (c = new this.constructor(b.currentTarget, this.getDelegateOptions()), a(b.currentTarget).data("bs." + this.type, c)), clearTimeout(c.timeout), c.hoverState = "in", c.options.delay && c.options.delay.show ? void (c.timeout = setTimeout(function () {
+      "in" == c.hoverState && c.show();
+    }, c.options.delay.show)) : c.show());
+  }, c.prototype.leave = function (b) {
+    var c = b instanceof this.constructor ? b : a(b.currentTarget).data("bs." + this.type);return (c || (c = new this.constructor(b.currentTarget, this.getDelegateOptions()), a(b.currentTarget).data("bs." + this.type, c)), clearTimeout(c.timeout), c.hoverState = "out", c.options.delay && c.options.delay.hide ? void (c.timeout = setTimeout(function () {
+      "out" == c.hoverState && c.hide();
+    }, c.options.delay.hide)) : c.hide());
+  }, c.prototype.show = function () {
+    var b = a.Event("show.bs." + this.type);if (this.hasContent() && this.enabled) {
+      this.$element.trigger(b);var d = a.contains(this.$element[0].ownerDocument.documentElement, this.$element[0]);if (b.isDefaultPrevented() || !d) return;var e = this,
+          f = this.tip(),
+          g = this.getUID(this.type);this.setContent(), f.attr("id", g), this.$element.attr("aria-describedby", g), this.options.animation && f.addClass("fade");var h = "function" == typeof this.options.placement ? this.options.placement.call(this, f[0], this.$element[0]) : this.options.placement,
+          i = /\s?auto?\s?/i,
+          j = i.test(h);j && (h = h.replace(i, "") || "top"), f.detach().css({ top: 0, left: 0, display: "block" }).addClass(h).data("bs." + this.type, this), this.options.container ? f.appendTo(this.options.container) : f.insertAfter(this.$element);var k = this.getPosition(),
+          l = f[0].offsetWidth,
+          m = f[0].offsetHeight;if (j) {
+        var n = h,
+            o = this.options.container ? a(this.options.container) : this.$element.parent(),
+            p = this.getPosition(o);h = "bottom" == h && k.bottom + m > p.bottom ? "top" : "top" == h && k.top - m < p.top ? "bottom" : "right" == h && k.right + l > p.width ? "left" : "left" == h && k.left - l < p.left ? "right" : h, f.removeClass(n).addClass(h);
+      }var q = this.getCalculatedOffset(h, k, l, m);this.applyPlacement(q, h);var r = function r() {
+        var a = e.hoverState;e.$element.trigger("shown.bs." + e.type), e.hoverState = null, "out" == a && e.leave(e);
+      };a.support.transition && this.$tip.hasClass("fade") ? f.one("bsTransitionEnd", r).emulateTransitionEnd(c.TRANSITION_DURATION) : r();
+    }
+  }, c.prototype.applyPlacement = function (b, c) {
+    var d = this.tip(),
+        e = d[0].offsetWidth,
+        f = d[0].offsetHeight,
+        g = parseInt(d.css("margin-top"), 10),
+        h = parseInt(d.css("margin-left"), 10);isNaN(g) && (g = 0), isNaN(h) && (h = 0), b.top = b.top + g, b.left = b.left + h, a.offset.setOffset(d[0], a.extend({ using: function using(a) {
+        d.css({ top: Math.round(a.top), left: Math.round(a.left) });
+      } }, b), 0), d.addClass("in");var i = d[0].offsetWidth,
+        j = d[0].offsetHeight;"top" == c && j != f && (b.top = b.top + f - j);var k = this.getViewportAdjustedDelta(c, b, i, j);k.left ? b.left += k.left : b.top += k.top;var l = /top|bottom/.test(c),
+        m = l ? 2 * k.left - e + i : 2 * k.top - f + j,
+        n = l ? "offsetWidth" : "offsetHeight";d.offset(b), this.replaceArrow(m, d[0][n], l);
+  }, c.prototype.replaceArrow = function (a, b, c) {
+    this.arrow().css(c ? "left" : "top", 50 * (1 - a / b) + "%").css(c ? "top" : "left", "");
+  }, c.prototype.setContent = function () {
+    var a = this.tip(),
+        b = this.getTitle();a.find(".tooltip-inner")[this.options.html ? "html" : "text"](b), a.removeClass("fade in top bottom left right");
+  }, c.prototype.hide = function (b) {
+    function d() {
+      "in" != e.hoverState && f.detach(), e.$element.removeAttr("aria-describedby").trigger("hidden.bs." + e.type), b && b();
+    }var e = this,
+        f = a(this.$tip),
+        g = a.Event("hide.bs." + this.type);return (this.$element.trigger(g), g.isDefaultPrevented() ? void 0 : (f.removeClass("in"), a.support.transition && f.hasClass("fade") ? f.one("bsTransitionEnd", d).emulateTransitionEnd(c.TRANSITION_DURATION) : d(), this.hoverState = null, this));
+  }, c.prototype.fixTitle = function () {
+    var a = this.$element;(a.attr("title") || "string" != typeof a.attr("data-original-title")) && a.attr("data-original-title", a.attr("title") || "").attr("title", "");
+  }, c.prototype.hasContent = function () {
+    return this.getTitle();
+  }, c.prototype.getPosition = function (b) {
+    b = b || this.$element;var c = b[0],
+        d = "BODY" == c.tagName,
+        e = c.getBoundingClientRect();null == e.width && (e = a.extend({}, e, { width: e.right - e.left, height: e.bottom - e.top }));var f = d ? { top: 0, left: 0 } : b.offset(),
+        g = { scroll: d ? document.documentElement.scrollTop || document.body.scrollTop : b.scrollTop() },
+        h = d ? { width: a(window).width(), height: a(window).height() } : null;return a.extend({}, e, g, h, f);
+  }, c.prototype.getCalculatedOffset = function (a, b, c, d) {
+    return "bottom" == a ? { top: b.top + b.height, left: b.left + b.width / 2 - c / 2 } : "top" == a ? { top: b.top - d, left: b.left + b.width / 2 - c / 2 } : "left" == a ? { top: b.top + b.height / 2 - d / 2, left: b.left - c } : { top: b.top + b.height / 2 - d / 2, left: b.left + b.width };
+  }, c.prototype.getViewportAdjustedDelta = function (a, b, c, d) {
+    var e = { top: 0, left: 0 };if (!this.$viewport) return e;var f = this.options.viewport && this.options.viewport.padding || 0,
+        g = this.getPosition(this.$viewport);if (/right|left/.test(a)) {
+      var h = b.top - f - g.scroll,
+          i = b.top + f - g.scroll + d;h < g.top ? e.top = g.top - h : i > g.top + g.height && (e.top = g.top + g.height - i);
+    } else {
+      var j = b.left - f,
+          k = b.left + f + c;j < g.left ? e.left = g.left - j : k > g.width && (e.left = g.left + g.width - k);
+    }return e;
+  }, c.prototype.getTitle = function () {
+    var a,
+        b = this.$element,
+        c = this.options;return a = b.attr("data-original-title") || ("function" == typeof c.title ? c.title.call(b[0]) : c.title);
+  }, c.prototype.getUID = function (a) {
+    do a += ~ ~(1000000 * Math.random()); while (document.getElementById(a));return a;
+  }, c.prototype.tip = function () {
+    return this.$tip = this.$tip || a(this.options.template);
+  }, c.prototype.arrow = function () {
+    return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow");
+  }, c.prototype.enable = function () {
+    this.enabled = !0;
+  }, c.prototype.disable = function () {
+    this.enabled = !1;
+  }, c.prototype.toggleEnabled = function () {
+    this.enabled = !this.enabled;
+  }, c.prototype.toggle = function (b) {
+    var c = this;b && (c = a(b.currentTarget).data("bs." + this.type), c || (c = new this.constructor(b.currentTarget, this.getDelegateOptions()), a(b.currentTarget).data("bs." + this.type, c))), c.tip().hasClass("in") ? c.leave(c) : c.enter(c);
+  }, c.prototype.destroy = function () {
+    var a = this;clearTimeout(this.timeout), this.hide(function () {
+      a.$element.off("." + a.type).removeData("bs." + a.type);
+    });
+  };var d = a.fn.tooltip;a.fn.tooltip = b, a.fn.tooltip.Constructor = c, a.fn.tooltip.noConflict = function () {
+    return (a.fn.tooltip = d, this);
+  };
+})(jQuery), +(function (a) {
+  "use strict";function b(b) {
+    return this.each(function () {
+      var d = a(this),
+          e = d.data("bs.popover"),
+          f = "object" == typeof b && b;(e || !/destroy|hide/.test(b)) && (e || d.data("bs.popover", e = new c(this, f)), "string" == typeof b && e[b]());
+    });
+  }var c = function c(a, b) {
+    this.init("popover", a, b);
+  };if (!a.fn.tooltip) throw new Error("Popover requires tooltip.js");c.VERSION = "3.3.4", c.DEFAULTS = a.extend({}, a.fn.tooltip.Constructor.DEFAULTS, { placement: "right", trigger: "click", content: "", template: "<div class=\"popover\" role=\"tooltip\"><div class=\"arrow\"></div><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div>" }), c.prototype = a.extend({}, a.fn.tooltip.Constructor.prototype), c.prototype.constructor = c, c.prototype.getDefaults = function () {
+    return c.DEFAULTS;
+  }, c.prototype.setContent = function () {
+    var a = this.tip(),
+        b = this.getTitle(),
+        c = this.getContent();a.find(".popover-title")[this.options.html ? "html" : "text"](b), a.find(".popover-content").children().detach().end()[this.options.html ? "string" == typeof c ? "html" : "append" : "text"](c), a.removeClass("fade top bottom left right in"), a.find(".popover-title").html() || a.find(".popover-title").hide();
+  }, c.prototype.hasContent = function () {
+    return this.getTitle() || this.getContent();
+  }, c.prototype.getContent = function () {
+    var a = this.$element,
+        b = this.options;return a.attr("data-content") || ("function" == typeof b.content ? b.content.call(a[0]) : b.content);
+  }, c.prototype.arrow = function () {
+    return this.$arrow = this.$arrow || this.tip().find(".arrow");
+  };var d = a.fn.popover;a.fn.popover = b, a.fn.popover.Constructor = c, a.fn.popover.noConflict = function () {
+    return (a.fn.popover = d, this);
+  };
+})(jQuery), +(function (a) {
+  "use strict";function b(c, d) {
+    this.$body = a(document.body), this.$scrollElement = a(a(c).is(document.body) ? window : c), this.options = a.extend({}, b.DEFAULTS, d), this.selector = (this.options.target || "") + " .nav li > a", this.offsets = [], this.targets = [], this.activeTarget = null, this.scrollHeight = 0, this.$scrollElement.on("scroll.bs.scrollspy", a.proxy(this.process, this)), this.refresh(), this.process();
+  }function c(c) {
+    return this.each(function () {
+      var d = a(this),
+          e = d.data("bs.scrollspy"),
+          f = "object" == typeof c && c;e || d.data("bs.scrollspy", e = new b(this, f)), "string" == typeof c && e[c]();
+    });
+  }b.VERSION = "3.3.4", b.DEFAULTS = { offset: 10 }, b.prototype.getScrollHeight = function () {
+    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight);
+  }, b.prototype.refresh = function () {
+    var b = this,
+        c = "offset",
+        d = 0;this.offsets = [], this.targets = [], this.scrollHeight = this.getScrollHeight(), a.isWindow(this.$scrollElement[0]) || (c = "position", d = this.$scrollElement.scrollTop()), this.$body.find(this.selector).map(function () {
+      var b = a(this),
+          e = b.data("target") || b.attr("href"),
+          f = /^#./.test(e) && a(e);return f && f.length && f.is(":visible") && [[f[c]().top + d, e]] || null;
+    }).sort(function (a, b) {
+      return a[0] - b[0];
+    }).each(function () {
+      b.offsets.push(this[0]), b.targets.push(this[1]);
+    });
+  }, b.prototype.process = function () {
+    var a,
+        b = this.$scrollElement.scrollTop() + this.options.offset,
+        c = this.getScrollHeight(),
+        d = this.options.offset + c - this.$scrollElement.height(),
+        e = this.offsets,
+        f = this.targets,
+        g = this.activeTarget;if ((this.scrollHeight != c && this.refresh(), b >= d)) return g != (a = f[f.length - 1]) && this.activate(a);if (g && b < e[0]) return (this.activeTarget = null, this.clear());for (a = e.length; a--;) g != f[a] && b >= e[a] && (void 0 === e[a + 1] || b < e[a + 1]) && this.activate(f[a]);
+  }, b.prototype.activate = function (b) {
+    this.activeTarget = b, this.clear();var c = this.selector + "[data-target=\"" + b + "\"]," + this.selector + "[href=\"" + b + "\"]",
+        d = a(c).parents("li").addClass("active");d.parent(".dropdown-menu").length && (d = d.closest("li.dropdown").addClass("active")), d.trigger("activate.bs.scrollspy");
+  }, b.prototype.clear = function () {
+    a(this.selector).parentsUntil(this.options.target, ".active").removeClass("active");
+  };var d = a.fn.scrollspy;a.fn.scrollspy = c, a.fn.scrollspy.Constructor = b, a.fn.scrollspy.noConflict = function () {
+    return (a.fn.scrollspy = d, this);
+  }, a(window).on("load.bs.scrollspy.data-api", function () {
+    a("[data-spy=\"scroll\"]").each(function () {
+      var b = a(this);c.call(b, b.data());
+    });
+  });
+})(jQuery), +(function (a) {
+  "use strict";function b(b) {
+    return this.each(function () {
+      var d = a(this),
+          e = d.data("bs.tab");e || d.data("bs.tab", e = new c(this)), "string" == typeof b && e[b]();
+    });
+  }var c = function c(b) {
+    this.element = a(b);
+  };c.VERSION = "3.3.4", c.TRANSITION_DURATION = 150, c.prototype.show = function () {
+    var b = this.element,
+        c = b.closest("ul:not(.dropdown-menu)"),
+        d = b.data("target");if ((d || (d = b.attr("href"), d = d && d.replace(/.*(?=#[^\s]*$)/, "")), !b.parent("li").hasClass("active"))) {
+      var e = c.find(".active:last a"),
+          f = a.Event("hide.bs.tab", { relatedTarget: b[0] }),
+          g = a.Event("show.bs.tab", { relatedTarget: e[0] });if ((e.trigger(f), b.trigger(g), !g.isDefaultPrevented() && !f.isDefaultPrevented())) {
+        var h = a(d);this.activate(b.closest("li"), c), this.activate(h, h.parent(), function () {
+          e.trigger({ type: "hidden.bs.tab", relatedTarget: b[0] }), b.trigger({ type: "shown.bs.tab", relatedTarget: e[0] });
+        });
+      }
+    }
+  }, c.prototype.activate = function (b, d, e) {
+    function f() {
+      g.removeClass("active").find("> .dropdown-menu > .active").removeClass("active").end().find("[data-toggle=\"tab\"]").attr("aria-expanded", !1), b.addClass("active").find("[data-toggle=\"tab\"]").attr("aria-expanded", !0), h ? (b[0].offsetWidth, b.addClass("in")) : b.removeClass("fade"), b.parent(".dropdown-menu").length && b.closest("li.dropdown").addClass("active").end().find("[data-toggle=\"tab\"]").attr("aria-expanded", !0), e && e();
+    }var g = d.find("> .active"),
+        h = e && a.support.transition && (g.length && g.hasClass("fade") || !!d.find("> .fade").length);g.length && h ? g.one("bsTransitionEnd", f).emulateTransitionEnd(c.TRANSITION_DURATION) : f(), g.removeClass("in");
+  };var d = a.fn.tab;a.fn.tab = b, a.fn.tab.Constructor = c, a.fn.tab.noConflict = function () {
+    return (a.fn.tab = d, this);
+  };var e = function e(c) {
+    c.preventDefault(), b.call(a(this), "show");
+  };a(document).on("click.bs.tab.data-api", "[data-toggle=\"tab\"]", e).on("click.bs.tab.data-api", "[data-toggle=\"pill\"]", e);
+})(jQuery), +(function (a) {
+  "use strict";function b(b) {
+    return this.each(function () {
+      var d = a(this),
+          e = d.data("bs.affix"),
+          f = "object" == typeof b && b;e || d.data("bs.affix", e = new c(this, f)), "string" == typeof b && e[b]();
+    });
+  }var c = function c(b, d) {
+    this.options = a.extend({}, c.DEFAULTS, d), this.$target = a(this.options.target).on("scroll.bs.affix.data-api", a.proxy(this.checkPosition, this)).on("click.bs.affix.data-api", a.proxy(this.checkPositionWithEventLoop, this)), this.$element = a(b), this.affixed = null, this.unpin = null, this.pinnedOffset = null, this.checkPosition();
+  };c.VERSION = "3.3.4", c.RESET = "affix affix-top affix-bottom", c.DEFAULTS = { offset: 0, target: window }, c.prototype.getState = function (a, b, c, d) {
+    var e = this.$target.scrollTop(),
+        f = this.$element.offset(),
+        g = this.$target.height();if (null != c && "top" == this.affixed) return c > e ? "top" : !1;if ("bottom" == this.affixed) return null != c ? e + this.unpin <= f.top ? !1 : "bottom" : a - d >= e + g ? !1 : "bottom";var h = null == this.affixed,
+        i = h ? e : f.top,
+        j = h ? g : b;return null != c && c >= e ? "top" : null != d && i + j >= a - d ? "bottom" : !1;
+  }, c.prototype.getPinnedOffset = function () {
+    if (this.pinnedOffset) return this.pinnedOffset;this.$element.removeClass(c.RESET).addClass("affix");var a = this.$target.scrollTop(),
+        b = this.$element.offset();return this.pinnedOffset = b.top - a;
+  }, c.prototype.checkPositionWithEventLoop = function () {
+    setTimeout(a.proxy(this.checkPosition, this), 1);
+  }, c.prototype.checkPosition = function () {
+    if (this.$element.is(":visible")) {
+      var b = this.$element.height(),
+          d = this.options.offset,
+          e = d.top,
+          f = d.bottom,
+          g = a(document.body).height();"object" != typeof d && (f = e = d), "function" == typeof e && (e = d.top(this.$element)), "function" == typeof f && (f = d.bottom(this.$element));var h = this.getState(g, b, e, f);if (this.affixed != h) {
+        null != this.unpin && this.$element.css("top", "");var i = "affix" + (h ? "-" + h : ""),
+            j = a.Event(i + ".bs.affix");if ((this.$element.trigger(j), j.isDefaultPrevented())) return;this.affixed = h, this.unpin = "bottom" == h ? this.getPinnedOffset() : null, this.$element.removeClass(c.RESET).addClass(i).trigger(i.replace("affix", "affixed") + ".bs.affix");
+      }"bottom" == h && this.$element.offset({ top: g - b - f });
+    }
+  };var d = a.fn.affix;a.fn.affix = b, a.fn.affix.Constructor = c, a.fn.affix.noConflict = function () {
+    return (a.fn.affix = d, this);
+  }, a(window).on("load", function () {
+    a("[data-spy=\"affix\"]").each(function () {
+      var c = a(this),
+          d = c.data();d.offset = d.offset || {}, null != d.offsetBottom && (d.offset.bottom = d.offsetBottom), null != d.offsetTop && (d.offset.top = d.offsetTop), b.call(c, d);
+    });
+  });
+})(jQuery);
 /*! Select2 4.0.0 | https://github.com/select2/select2/blob/master/LICENSE.md */!(function (a) {
   "function" == typeof define && define.amd ? define(["jquery"], a) : a("object" == typeof exports ? require("jquery") : jQuery);
 })(function (a) {
@@ -2792,12 +3349,12 @@
           function b(a) {
             return l[a] || a;
           }return a.replace(/[^\u0000-\u007E]/g, b);
-        }function c(_x, _x2) {
+        }function c(_x2, _x3) {
           var _again = true;
 
           _function: while (_again) {
-            var d = _x,
-                e = _x2;
+            var d = _x2,
+                e = _x3;
             f = g = h = i = j = k = undefined;
             _again = false;
             if ("" === a.trim(d.term)) return e;if (e.children && e.children.length > 0) {
@@ -2807,8 +3364,8 @@
               }if (f.children.length > 0) {
                 return f;
               } else {
-                _x = d;
-                _x2 = f;
+                _x2 = d;
+                _x3 = f;
                 _again = true;
                 continue _function;
               }
@@ -2961,563 +3518,510 @@
   })(),
       c = b.require("jquery.select2");return (a.fn.select2.amd = b, c);
 });
-/*!
- * Bootstrap v3.3.1 (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requires jQuery");+(function (a) {
-  var b = a.fn.jquery.split(" ")[0].split(".");if (b[0] < 2 && b[1] < 9 || 1 == b[0] && 9 == b[1] && b[2] < 1) throw new Error("Bootstrap's JavaScript requires jQuery version 1.9.1 or higher");
-})(jQuery), +(function (a) {
-  "use strict";function b() {
-    var a = document.createElement("bootstrap"),
-        b = { WebkitTransition: "webkitTransitionEnd", MozTransition: "transitionend", OTransition: "oTransitionEnd otransitionend", transition: "transitionend" };for (var c in b) if (void 0 !== a.style[c]) return { end: b[c] };return !1;
-  }a.fn.emulateTransitionEnd = function (b) {
-    var c = !1,
-        d = this;a(this).one("bsTransitionEnd", function () {
-      c = !0;
-    });var e = function e() {
-      c || a(d).trigger(a.support.transition.end);
-    };return (setTimeout(e, b), this);
-  }, a(function () {
-    a.support.transition = b(), a.support.transition && (a.event.special.bsTransitionEnd = { bindType: a.support.transition.end, delegateType: a.support.transition.end, handle: function handle(b) {
-        return a(b.target).is(this) ? b.handleObj.handler.apply(this, arguments) : void 0;
-      } });
-  });
-})(jQuery), +(function (a) {
-  "use strict";function b(b) {
-    return this.each(function () {
-      var c = a(this),
-          e = c.data("bs.alert");e || c.data("bs.alert", e = new d(this)), "string" == typeof b && e[b].call(c);
-    });
-  }var c = "[data-dismiss=\"alert\"]",
-      d = function d(b) {
-    a(b).on("click", c, this.close);
-  };d.VERSION = "3.3.1", d.TRANSITION_DURATION = 150, d.prototype.close = function (b) {
-    function c() {
-      g.detach().trigger("closed.bs.alert").remove();
-    }var e = a(this),
-        f = e.attr("data-target");f || (f = e.attr("href"), f = f && f.replace(/.*(?=#[^\s]*$)/, ""));var g = a(f);b && b.preventDefault(), g.length || (g = e.closest(".alert")), g.trigger(b = a.Event("close.bs.alert")), b.isDefaultPrevented() || (g.removeClass("in"), a.support.transition && g.hasClass("fade") ? g.one("bsTransitionEnd", c).emulateTransitionEnd(d.TRANSITION_DURATION) : c());
-  };var e = a.fn.alert;a.fn.alert = b, a.fn.alert.Constructor = d, a.fn.alert.noConflict = function () {
-    return (a.fn.alert = e, this);
-  }, a(document).on("click.bs.alert.data-api", c, d.prototype.close);
-})(jQuery), +(function (a) {
-  "use strict";function b(b) {
-    return this.each(function () {
-      var d = a(this),
-          e = d.data("bs.button"),
-          f = "object" == typeof b && b;e || d.data("bs.button", e = new c(this, f)), "toggle" == b ? e.toggle() : b && e.setState(b);
-    });
-  }var c = function c(b, d) {
-    this.$element = a(b), this.options = a.extend({}, c.DEFAULTS, d), this.isLoading = !1;
-  };c.VERSION = "3.3.1", c.DEFAULTS = { loadingText: "loading..." }, c.prototype.setState = function (b) {
-    var c = "disabled",
-        d = this.$element,
-        e = d.is("input") ? "val" : "html",
-        f = d.data();b += "Text", null == f.resetText && d.data("resetText", d[e]()), setTimeout(a.proxy(function () {
-      d[e](null == f[b] ? this.options[b] : f[b]), "loadingText" == b ? (this.isLoading = !0, d.addClass(c).attr(c, c)) : this.isLoading && (this.isLoading = !1, d.removeClass(c).removeAttr(c));
-    }, this), 0);
-  }, c.prototype.toggle = function () {
-    var a = !0,
-        b = this.$element.closest("[data-toggle=\"buttons\"]");if (b.length) {
-      var c = this.$element.find("input");"radio" == c.prop("type") && (c.prop("checked") && this.$element.hasClass("active") ? a = !1 : b.find(".active").removeClass("active")), a && c.prop("checked", !this.$element.hasClass("active")).trigger("change");
-    } else this.$element.attr("aria-pressed", !this.$element.hasClass("active"));a && this.$element.toggleClass("active");
-  };var d = a.fn.button;a.fn.button = b, a.fn.button.Constructor = c, a.fn.button.noConflict = function () {
-    return (a.fn.button = d, this);
-  }, a(document).on("click.bs.button.data-api", "[data-toggle^=\"button\"]", function (c) {
-    var d = a(c.target);d.hasClass("btn") || (d = d.closest(".btn")), b.call(d, "toggle"), c.preventDefault();
-  }).on("focus.bs.button.data-api blur.bs.button.data-api", "[data-toggle^=\"button\"]", function (b) {
-    a(b.target).closest(".btn").toggleClass("focus", /^focus(in)?$/.test(b.type));
-  });
-})(jQuery), +(function (a) {
-  "use strict";function b(b) {
-    return this.each(function () {
-      var d = a(this),
-          e = d.data("bs.carousel"),
-          f = a.extend({}, c.DEFAULTS, d.data(), "object" == typeof b && b),
-          g = "string" == typeof b ? b : f.slide;e || d.data("bs.carousel", e = new c(this, f)), "number" == typeof b ? e.to(b) : g ? e[g]() : f.interval && e.pause().cycle();
-    });
-  }var c = function c(b, _c) {
-    this.$element = a(b), this.$indicators = this.$element.find(".carousel-indicators"), this.options = _c, this.paused = this.sliding = this.interval = this.$active = this.$items = null, this.options.keyboard && this.$element.on("keydown.bs.carousel", a.proxy(this.keydown, this)), "hover" == this.options.pause && !("ontouchstart" in document.documentElement) && this.$element.on("mouseenter.bs.carousel", a.proxy(this.pause, this)).on("mouseleave.bs.carousel", a.proxy(this.cycle, this));
-  };c.VERSION = "3.3.1", c.TRANSITION_DURATION = 600, c.DEFAULTS = { interval: 5000, pause: "hover", wrap: !0, keyboard: !0 }, c.prototype.keydown = function (a) {
-    if (!/input|textarea/i.test(a.target.tagName)) {
-      switch (a.which) {case 37:
-          this.prev();break;case 39:
-          this.next();break;default:
-          return;}a.preventDefault();
-    }
-  }, c.prototype.cycle = function (b) {
-    return (b || (this.paused = !1), this.interval && clearInterval(this.interval), this.options.interval && !this.paused && (this.interval = setInterval(a.proxy(this.next, this), this.options.interval)), this);
-  }, c.prototype.getItemIndex = function (a) {
-    return (this.$items = a.parent().children(".item"), this.$items.index(a || this.$active));
-  }, c.prototype.getItemForDirection = function (a, b) {
-    var c = "prev" == a ? -1 : 1,
-        d = this.getItemIndex(b),
-        e = (d + c) % this.$items.length;return this.$items.eq(e);
-  }, c.prototype.to = function (a) {
-    var b = this,
-        c = this.getItemIndex(this.$active = this.$element.find(".item.active"));return a > this.$items.length - 1 || 0 > a ? void 0 : this.sliding ? this.$element.one("slid.bs.carousel", function () {
-      b.to(a);
-    }) : c == a ? this.pause().cycle() : this.slide(a > c ? "next" : "prev", this.$items.eq(a));
-  }, c.prototype.pause = function (b) {
-    return (b || (this.paused = !0), this.$element.find(".next, .prev").length && a.support.transition && (this.$element.trigger(a.support.transition.end), this.cycle(!0)), this.interval = clearInterval(this.interval), this);
-  }, c.prototype.next = function () {
-    return this.sliding ? void 0 : this.slide("next");
-  }, c.prototype.prev = function () {
-    return this.sliding ? void 0 : this.slide("prev");
-  }, c.prototype.slide = function (b, d) {
-    var e = this.$element.find(".item.active"),
-        f = d || this.getItemForDirection(b, e),
-        g = this.interval,
-        h = "next" == b ? "left" : "right",
-        i = "next" == b ? "first" : "last",
-        j = this;if (!f.length) {
-      if (!this.options.wrap) return;f = this.$element.find(".item")[i]();
-    }if (f.hasClass("active")) return this.sliding = !1;var k = f[0],
-        l = a.Event("slide.bs.carousel", { relatedTarget: k, direction: h });if ((this.$element.trigger(l), !l.isDefaultPrevented())) {
-      if ((this.sliding = !0, g && this.pause(), this.$indicators.length)) {
-        this.$indicators.find(".active").removeClass("active");var m = a(this.$indicators.children()[this.getItemIndex(f)]);m && m.addClass("active");
-      }var n = a.Event("slid.bs.carousel", { relatedTarget: k, direction: h });return (a.support.transition && this.$element.hasClass("slide") ? (f.addClass(b), f[0].offsetWidth, e.addClass(h), f.addClass(h), e.one("bsTransitionEnd", function () {
-        f.removeClass([b, h].join(" ")).addClass("active"), e.removeClass(["active", h].join(" ")), j.sliding = !1, setTimeout(function () {
-          j.$element.trigger(n);
-        }, 0);
-      }).emulateTransitionEnd(c.TRANSITION_DURATION)) : (e.removeClass("active"), f.addClass("active"), this.sliding = !1, this.$element.trigger(n)), g && this.cycle(), this);
-    }
-  };var d = a.fn.carousel;a.fn.carousel = b, a.fn.carousel.Constructor = c, a.fn.carousel.noConflict = function () {
-    return (a.fn.carousel = d, this);
-  };var e = function e(c) {
-    var d,
-        e = a(this),
-        f = a(e.attr("data-target") || (d = e.attr("href")) && d.replace(/.*(?=#[^\s]+$)/, ""));if (f.hasClass("carousel")) {
-      var g = a.extend({}, f.data(), e.data()),
-          h = e.attr("data-slide-to");h && (g.interval = !1), b.call(f, g), h && f.data("bs.carousel").to(h), c.preventDefault();
-    }
-  };a(document).on("click.bs.carousel.data-api", "[data-slide]", e).on("click.bs.carousel.data-api", "[data-slide-to]", e), a(window).on("load", function () {
-    a("[data-ride=\"carousel\"]").each(function () {
-      var c = a(this);b.call(c, c.data());
-    });
-  });
-})(jQuery), +(function (a) {
-  "use strict";function b(b) {
-    var c,
-        d = b.attr("data-target") || (c = b.attr("href")) && c.replace(/.*(?=#[^\s]+$)/, "");return a(d);
-  }function c(b) {
-    return this.each(function () {
-      var c = a(this),
-          e = c.data("bs.collapse"),
-          f = a.extend({}, d.DEFAULTS, c.data(), "object" == typeof b && b);!e && f.toggle && "show" == b && (f.toggle = !1), e || c.data("bs.collapse", e = new d(this, f)), "string" == typeof b && e[b]();
-    });
-  }var d = function d(b, c) {
-    this.$element = a(b), this.options = a.extend({}, d.DEFAULTS, c), this.$trigger = a(this.options.trigger).filter("[href=\"#" + b.id + "\"], [data-target=\"#" + b.id + "\"]"), this.transitioning = null, this.options.parent ? this.$parent = this.getParent() : this.addAriaAndCollapsedClass(this.$element, this.$trigger), this.options.toggle && this.toggle();
-  };d.VERSION = "3.3.1", d.TRANSITION_DURATION = 350, d.DEFAULTS = { toggle: !0, trigger: "[data-toggle=\"collapse\"]" }, d.prototype.dimension = function () {
-    var a = this.$element.hasClass("width");return a ? "width" : "height";
-  }, d.prototype.show = function () {
-    if (!this.transitioning && !this.$element.hasClass("in")) {
-      var b,
-          e = this.$parent && this.$parent.find("> .panel").children(".in, .collapsing");if (!(e && e.length && (b = e.data("bs.collapse"), b && b.transitioning))) {
-        var f = a.Event("show.bs.collapse");if ((this.$element.trigger(f), !f.isDefaultPrevented())) {
-          e && e.length && (c.call(e, "hide"), b || e.data("bs.collapse", null));var g = this.dimension();this.$element.removeClass("collapse").addClass("collapsing")[g](0).attr("aria-expanded", !0), this.$trigger.removeClass("collapsed").attr("aria-expanded", !0), this.transitioning = 1;var h = function h() {
-            this.$element.removeClass("collapsing").addClass("collapse in")[g](""), this.transitioning = 0, this.$element.trigger("shown.bs.collapse");
-          };if (!a.support.transition) return h.call(this);var i = a.camelCase(["scroll", g].join("-"));this.$element.one("bsTransitionEnd", a.proxy(h, this)).emulateTransitionEnd(d.TRANSITION_DURATION)[g](this.$element[0][i]);
+(function ($, undefined) {
+
+  /**
+   * Unobtrusive scripting adapter for jQuery
+   * https://github.com/rails/jquery-ujs
+   *
+   * Requires jQuery 1.8.0 or later.
+   *
+   * Released under the MIT license
+   *
+   */
+
+  // Cut down on the number of issues from people inadvertently including jquery_ujs twice
+  // by detecting and raising an error when it happens.
+  if ($.rails !== undefined) {
+    $.error("jquery-ujs has already been loaded!");
+  }
+
+  // Shorthand to make it a little easier to call public rails functions from within rails.js
+  var rails;
+  var $document = $(document);
+
+  $.rails = rails = {
+    // Link elements bound by jquery-ujs
+    linkClickSelector: "a[data-confirm], a[data-method], a[data-remote], a[data-disable-with], a[data-disable]",
+
+    // Button elements bound by jquery-ujs
+    buttonClickSelector: "button[data-remote]:not(form button), button[data-confirm]:not(form button)",
+
+    // Select elements bound by jquery-ujs
+    inputChangeSelector: "select[data-remote], input[data-remote], textarea[data-remote]",
+
+    // Form elements bound by jquery-ujs
+    formSubmitSelector: "form",
+
+    // Form input elements bound by jquery-ujs
+    formInputClickSelector: "form input[type=submit], form input[type=image], form button[type=submit], form button:not([type]), input[type=submit][form], input[type=image][form], button[type=submit][form], button[form]:not([type])",
+
+    // Form input elements disabled during form submission
+    disableSelector: "input[data-disable-with]:enabled, button[data-disable-with]:enabled, textarea[data-disable-with]:enabled, input[data-disable]:enabled, button[data-disable]:enabled, textarea[data-disable]:enabled",
+
+    // Form input elements re-enabled after form submission
+    enableSelector: "input[data-disable-with]:disabled, button[data-disable-with]:disabled, textarea[data-disable-with]:disabled, input[data-disable]:disabled, button[data-disable]:disabled, textarea[data-disable]:disabled",
+
+    // Form required input elements
+    requiredInputSelector: "input[name][required]:not([disabled]),textarea[name][required]:not([disabled])",
+
+    // Form file input elements
+    fileInputSelector: "input[type=file]",
+
+    // Link onClick disable selector with possible reenable after remote submission
+    linkDisableSelector: "a[data-disable-with], a[data-disable]",
+
+    // Button onClick disable selector with possible reenable after remote submission
+    buttonDisableSelector: "button[data-remote][data-disable-with], button[data-remote][data-disable]",
+
+    // Make sure that every Ajax request sends the CSRF token
+    CSRFProtection: function CSRFProtection(xhr) {
+      var token = $("meta[name=\"csrf-token\"]").attr("content");
+      if (token) xhr.setRequestHeader("X-CSRF-Token", token);
+    },
+
+    // making sure that all forms have actual up-to-date token(cached forms contain old one)
+    refreshCSRFTokens: function refreshCSRFTokens() {
+      var csrfToken = $("meta[name=csrf-token]").attr("content");
+      var csrfParam = $("meta[name=csrf-param]").attr("content");
+      $("form input[name=\"" + csrfParam + "\"]").val(csrfToken);
+    },
+
+    // Triggers an event on an element and returns false if the event result is false
+    fire: function fire(obj, name, data) {
+      var event = $.Event(name);
+      obj.trigger(event, data);
+      return event.result !== false;
+    },
+
+    // Default confirm dialog, may be overridden with custom confirm dialog in $.rails.confirm
+    confirm: (function (_confirm) {
+      function confirm(_x) {
+        return _confirm.apply(this, arguments);
+      }
+
+      confirm.toString = function () {
+        return _confirm.toString();
+      };
+
+      return confirm;
+    })(function (message) {
+      return confirm(message);
+    }),
+
+    // Default ajax function, may be overridden with custom function in $.rails.ajax
+    ajax: function ajax(options) {
+      return $.ajax(options);
+    },
+
+    // Default way to get an element's href. May be overridden at $.rails.href.
+    href: function href(element) {
+      return element.attr("href");
+    },
+
+    // Submits "remote" forms and links with ajax
+    handleRemote: function handleRemote(element) {
+      var method, url, data, elCrossDomain, crossDomain, withCredentials, dataType, options;
+
+      if (rails.fire(element, "ajax:before")) {
+        elCrossDomain = element.data("cross-domain");
+        crossDomain = elCrossDomain === undefined ? null : elCrossDomain;
+        withCredentials = element.data("with-credentials") || null;
+        dataType = element.data("type") || $.ajaxSettings && $.ajaxSettings.dataType;
+
+        if (element.is("form")) {
+          method = element.attr("method");
+          url = element.attr("action");
+          data = element.serializeArray();
+          // memoized value from clicked submit button
+          var button = element.data("ujs:submit-button");
+          if (button) {
+            data.push(button);
+            element.data("ujs:submit-button", null);
+          }
+        } else if (element.is(rails.inputChangeSelector)) {
+          method = element.data("method");
+          url = element.data("url");
+          data = element.serialize();
+          if (element.data("params")) data = data + "&" + element.data("params");
+        } else if (element.is(rails.buttonClickSelector)) {
+          method = element.data("method") || "get";
+          url = element.data("url");
+          data = element.serialize();
+          if (element.data("params")) data = data + "&" + element.data("params");
+        } else {
+          method = element.data("method");
+          url = rails.href(element);
+          data = element.data("params") || null;
         }
-      }
-    }
-  }, d.prototype.hide = function () {
-    if (!this.transitioning && this.$element.hasClass("in")) {
-      var b = a.Event("hide.bs.collapse");if ((this.$element.trigger(b), !b.isDefaultPrevented())) {
-        var c = this.dimension();this.$element[c](this.$element[c]())[0].offsetHeight, this.$element.addClass("collapsing").removeClass("collapse in").attr("aria-expanded", !1), this.$trigger.addClass("collapsed").attr("aria-expanded", !1), this.transitioning = 1;var e = function e() {
-          this.transitioning = 0, this.$element.removeClass("collapsing").addClass("collapse").trigger("hidden.bs.collapse");
-        };return a.support.transition ? void this.$element[c](0).one("bsTransitionEnd", a.proxy(e, this)).emulateTransitionEnd(d.TRANSITION_DURATION) : e.call(this);
-      }
-    }
-  }, d.prototype.toggle = function () {
-    this[this.$element.hasClass("in") ? "hide" : "show"]();
-  }, d.prototype.getParent = function () {
-    return a(this.options.parent).find("[data-toggle=\"collapse\"][data-parent=\"" + this.options.parent + "\"]").each(a.proxy(function (c, d) {
-      var e = a(d);this.addAriaAndCollapsedClass(b(e), e);
-    }, this)).end();
-  }, d.prototype.addAriaAndCollapsedClass = function (a, b) {
-    var c = a.hasClass("in");a.attr("aria-expanded", c), b.toggleClass("collapsed", !c).attr("aria-expanded", c);
-  };var e = a.fn.collapse;a.fn.collapse = c, a.fn.collapse.Constructor = d, a.fn.collapse.noConflict = function () {
-    return (a.fn.collapse = e, this);
-  }, a(document).on("click.bs.collapse.data-api", "[data-toggle=\"collapse\"]", function (d) {
-    var e = a(this);e.attr("data-target") || d.preventDefault();var f = b(e),
-        g = f.data("bs.collapse"),
-        h = g ? "toggle" : a.extend({}, e.data(), { trigger: this });c.call(f, h);
-  });
-})(jQuery), +(function (a) {
-  "use strict";function b(b) {
-    b && 3 === b.which || (a(e).remove(), a(f).each(function () {
-      var d = a(this),
-          e = c(d),
-          f = { relatedTarget: this };e.hasClass("open") && (e.trigger(b = a.Event("hide.bs.dropdown", f)), b.isDefaultPrevented() || (d.attr("aria-expanded", "false"), e.removeClass("open").trigger("hidden.bs.dropdown", f)));
-    }));
-  }function c(b) {
-    var c = b.attr("data-target");c || (c = b.attr("href"), c = c && /#[A-Za-z]/.test(c) && c.replace(/.*(?=#[^\s]*$)/, ""));var d = c && a(c);return d && d.length ? d : b.parent();
-  }function d(b) {
-    return this.each(function () {
-      var c = a(this),
-          d = c.data("bs.dropdown");d || c.data("bs.dropdown", d = new g(this)), "string" == typeof b && d[b].call(c);
-    });
-  }var e = ".dropdown-backdrop",
-      f = "[data-toggle=\"dropdown\"]",
-      g = function g(b) {
-    a(b).on("click.bs.dropdown", this.toggle);
-  };g.VERSION = "3.3.1", g.prototype.toggle = function (d) {
-    var e = a(this);if (!e.is(".disabled, :disabled")) {
-      var f = c(e),
-          g = f.hasClass("open");if ((b(), !g)) {
-        "ontouchstart" in document.documentElement && !f.closest(".navbar-nav").length && a("<div class=\"dropdown-backdrop\"/>").insertAfter(a(this)).on("click", b);var h = { relatedTarget: this };if ((f.trigger(d = a.Event("show.bs.dropdown", h)), d.isDefaultPrevented())) return;e.trigger("focus").attr("aria-expanded", "true"), f.toggleClass("open").trigger("shown.bs.dropdown", h);
-      }return !1;
-    }
-  }, g.prototype.keydown = function (b) {
-    if (/(38|40|27|32)/.test(b.which) && !/input|textarea/i.test(b.target.tagName)) {
-      var d = a(this);if ((b.preventDefault(), b.stopPropagation(), !d.is(".disabled, :disabled"))) {
-        var e = c(d),
-            g = e.hasClass("open");if (!g && 27 != b.which || g && 27 == b.which) return (27 == b.which && e.find(f).trigger("focus"), d.trigger("click"));var h = " li:not(.divider):visible a",
-            i = e.find("[role=\"menu\"]" + h + ", [role=\"listbox\"]" + h);if (i.length) {
-          var j = i.index(b.target);38 == b.which && j > 0 && j--, 40 == b.which && j < i.length - 1 && j++, ~j || (j = 0), i.eq(j).trigger("focus");
+
+        options = {
+          type: method || "GET", data: data, dataType: dataType,
+          // stopping the "ajax:beforeSend" event will cancel the ajax request
+          beforeSend: function beforeSend(xhr, settings) {
+            if (settings.dataType === undefined) {
+              xhr.setRequestHeader("accept", "*/*;q=0.5, " + settings.accepts.script);
+            }
+            if (rails.fire(element, "ajax:beforeSend", [xhr, settings])) {
+              element.trigger("ajax:send", xhr);
+            } else {
+              return false;
+            }
+          },
+          success: function success(data, status, xhr) {
+            element.trigger("ajax:success", [data, status, xhr]);
+          },
+          complete: function complete(xhr, status) {
+            element.trigger("ajax:complete", [xhr, status]);
+          },
+          error: function error(xhr, status, _error) {
+            element.trigger("ajax:error", [xhr, status, _error]);
+          },
+          crossDomain: crossDomain
+        };
+
+        // There is no withCredentials for IE6-8 when
+        // "Enable native XMLHTTP support" is disabled
+        if (withCredentials) {
+          options.xhrFields = {
+            withCredentials: withCredentials
+          };
         }
+
+        // Only pass url to `ajax` options if not blank
+        if (url) {
+          options.url = url;
+        }
+
+        return rails.ajax(options);
+      } else {
+        return false;
       }
-    }
-  };var h = a.fn.dropdown;a.fn.dropdown = d, a.fn.dropdown.Constructor = g, a.fn.dropdown.noConflict = function () {
-    return (a.fn.dropdown = h, this);
-  }, a(document).on("click.bs.dropdown.data-api", b).on("click.bs.dropdown.data-api", ".dropdown form", function (a) {
-    a.stopPropagation();
-  }).on("click.bs.dropdown.data-api", f, g.prototype.toggle).on("keydown.bs.dropdown.data-api", f, g.prototype.keydown).on("keydown.bs.dropdown.data-api", "[role=\"menu\"]", g.prototype.keydown).on("keydown.bs.dropdown.data-api", "[role=\"listbox\"]", g.prototype.keydown);
-})(jQuery), +(function (a) {
-  "use strict";function b(b, d) {
-    return this.each(function () {
-      var e = a(this),
-          f = e.data("bs.modal"),
-          g = a.extend({}, c.DEFAULTS, e.data(), "object" == typeof b && b);f || e.data("bs.modal", f = new c(this, g)), "string" == typeof b ? f[b](d) : g.show && f.show(d);
-    });
-  }var c = function c(b, _c2) {
-    this.options = _c2, this.$body = a(document.body), this.$element = a(b), this.$backdrop = this.isShown = null, this.scrollbarWidth = 0, this.options.remote && this.$element.find(".modal-content").load(this.options.remote, a.proxy(function () {
-      this.$element.trigger("loaded.bs.modal");
-    }, this));
-  };c.VERSION = "3.3.1", c.TRANSITION_DURATION = 300, c.BACKDROP_TRANSITION_DURATION = 150, c.DEFAULTS = { backdrop: !0, keyboard: !0, show: !0 }, c.prototype.toggle = function (a) {
-    return this.isShown ? this.hide() : this.show(a);
-  }, c.prototype.show = function (b) {
-    var d = this,
-        e = a.Event("show.bs.modal", { relatedTarget: b });this.$element.trigger(e), this.isShown || e.isDefaultPrevented() || (this.isShown = !0, this.checkScrollbar(), this.setScrollbar(), this.$body.addClass("modal-open"), this.escape(), this.resize(), this.$element.on("click.dismiss.bs.modal", "[data-dismiss=\"modal\"]", a.proxy(this.hide, this)), this.backdrop(function () {
-      var e = a.support.transition && d.$element.hasClass("fade");d.$element.parent().length || d.$element.appendTo(d.$body), d.$element.show().scrollTop(0), d.options.backdrop && d.adjustBackdrop(), d.adjustDialog(), e && d.$element[0].offsetWidth, d.$element.addClass("in").attr("aria-hidden", !1), d.enforceFocus();var f = a.Event("shown.bs.modal", { relatedTarget: b });e ? d.$element.find(".modal-dialog").one("bsTransitionEnd", function () {
-        d.$element.trigger("focus").trigger(f);
-      }).emulateTransitionEnd(c.TRANSITION_DURATION) : d.$element.trigger("focus").trigger(f);
-    }));
-  }, c.prototype.hide = function (b) {
-    b && b.preventDefault(), b = a.Event("hide.bs.modal"), this.$element.trigger(b), this.isShown && !b.isDefaultPrevented() && (this.isShown = !1, this.escape(), this.resize(), a(document).off("focusin.bs.modal"), this.$element.removeClass("in").attr("aria-hidden", !0).off("click.dismiss.bs.modal"), a.support.transition && this.$element.hasClass("fade") ? this.$element.one("bsTransitionEnd", a.proxy(this.hideModal, this)).emulateTransitionEnd(c.TRANSITION_DURATION) : this.hideModal());
-  }, c.prototype.enforceFocus = function () {
-    a(document).off("focusin.bs.modal").on("focusin.bs.modal", a.proxy(function (a) {
-      this.$element[0] === a.target || this.$element.has(a.target).length || this.$element.trigger("focus");
-    }, this));
-  }, c.prototype.escape = function () {
-    this.isShown && this.options.keyboard ? this.$element.on("keydown.dismiss.bs.modal", a.proxy(function (a) {
-      27 == a.which && this.hide();
-    }, this)) : this.isShown || this.$element.off("keydown.dismiss.bs.modal");
-  }, c.prototype.resize = function () {
-    this.isShown ? a(window).on("resize.bs.modal", a.proxy(this.handleUpdate, this)) : a(window).off("resize.bs.modal");
-  }, c.prototype.hideModal = function () {
-    var a = this;this.$element.hide(), this.backdrop(function () {
-      a.$body.removeClass("modal-open"), a.resetAdjustments(), a.resetScrollbar(), a.$element.trigger("hidden.bs.modal");
-    });
-  }, c.prototype.removeBackdrop = function () {
-    this.$backdrop && this.$backdrop.remove(), this.$backdrop = null;
-  }, c.prototype.backdrop = function (b) {
-    var d = this,
-        e = this.$element.hasClass("fade") ? "fade" : "";if (this.isShown && this.options.backdrop) {
-      var f = a.support.transition && e;if ((this.$backdrop = a("<div class=\"modal-backdrop " + e + "\" />").prependTo(this.$element).on("click.dismiss.bs.modal", a.proxy(function (a) {
-        a.target === a.currentTarget && ("static" == this.options.backdrop ? this.$element[0].focus.call(this.$element[0]) : this.hide.call(this));
-      }, this)), f && this.$backdrop[0].offsetWidth, this.$backdrop.addClass("in"), !b)) return;f ? this.$backdrop.one("bsTransitionEnd", b).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION) : b();
-    } else if (!this.isShown && this.$backdrop) {
-      this.$backdrop.removeClass("in");var g = function g() {
-        d.removeBackdrop(), b && b();
-      };a.support.transition && this.$element.hasClass("fade") ? this.$backdrop.one("bsTransitionEnd", g).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION) : g();
-    } else b && b();
-  }, c.prototype.handleUpdate = function () {
-    this.options.backdrop && this.adjustBackdrop(), this.adjustDialog();
-  }, c.prototype.adjustBackdrop = function () {
-    this.$backdrop.css("height", 0).css("height", this.$element[0].scrollHeight);
-  }, c.prototype.adjustDialog = function () {
-    var a = this.$element[0].scrollHeight > document.documentElement.clientHeight;this.$element.css({ paddingLeft: !this.bodyIsOverflowing && a ? this.scrollbarWidth : "", paddingRight: this.bodyIsOverflowing && !a ? this.scrollbarWidth : "" });
-  }, c.prototype.resetAdjustments = function () {
-    this.$element.css({ paddingLeft: "", paddingRight: "" });
-  }, c.prototype.checkScrollbar = function () {
-    this.bodyIsOverflowing = document.body.scrollHeight > document.documentElement.clientHeight, this.scrollbarWidth = this.measureScrollbar();
-  }, c.prototype.setScrollbar = function () {
-    var a = parseInt(this.$body.css("padding-right") || 0, 10);this.bodyIsOverflowing && this.$body.css("padding-right", a + this.scrollbarWidth);
-  }, c.prototype.resetScrollbar = function () {
-    this.$body.css("padding-right", "");
-  }, c.prototype.measureScrollbar = function () {
-    var a = document.createElement("div");a.className = "modal-scrollbar-measure", this.$body.append(a);var b = a.offsetWidth - a.clientWidth;return (this.$body[0].removeChild(a), b);
-  };var d = a.fn.modal;a.fn.modal = b, a.fn.modal.Constructor = c, a.fn.modal.noConflict = function () {
-    return (a.fn.modal = d, this);
-  }, a(document).on("click.bs.modal.data-api", "[data-toggle=\"modal\"]", function (c) {
-    var d = a(this),
-        e = d.attr("href"),
-        f = a(d.attr("data-target") || e && e.replace(/.*(?=#[^\s]+$)/, "")),
-        g = f.data("bs.modal") ? "toggle" : a.extend({ remote: !/#/.test(e) && e }, f.data(), d.data());d.is("a") && c.preventDefault(), f.one("show.bs.modal", function (a) {
-      a.isDefaultPrevented() || f.one("hidden.bs.modal", function () {
-        d.is(":visible") && d.trigger("focus");
+    },
+
+    // Handles "data-method" on links such as:
+    // <a href="/users/5" data-method="delete" rel="nofollow" data-confirm="Are you sure?">Delete</a>
+    handleMethod: function handleMethod(link) {
+      var href = rails.href(link),
+          method = link.data("method"),
+          target = link.attr("target"),
+          csrfToken = $("meta[name=csrf-token]").attr("content"),
+          csrfParam = $("meta[name=csrf-param]").attr("content"),
+          form = $("<form method=\"post\" action=\"" + href + "\"></form>"),
+          metadataInput = "<input name=\"_method\" value=\"" + method + "\" type=\"hidden\" />";
+
+      if (csrfParam !== undefined && csrfToken !== undefined) {
+        metadataInput += "<input name=\"" + csrfParam + "\" value=\"" + csrfToken + "\" type=\"hidden\" />";
+      }
+
+      if (target) {
+        form.attr("target", target);
+      }
+
+      form.hide().append(metadataInput).appendTo("body");
+      form.submit();
+    },
+
+    // Helper function that returns form elements that match the specified CSS selector
+    // If form is actually a "form" element this will return associated elements outside the from that have
+    // the html form attribute set
+    formElements: function formElements(form, selector) {
+      return form.is("form") ? $(form[0].elements).filter(selector) : form.find(selector);
+    },
+
+    /* Disables form elements:
+      - Caches element value in 'ujs:enable-with' data store
+      - Replaces element text with value of 'data-disable-with' attribute
+      - Sets disabled property to true
+    */
+    disableFormElements: function disableFormElements(form) {
+      rails.formElements(form, rails.disableSelector).each(function () {
+        rails.disableFormElement($(this));
       });
-    }), b.call(f, g, this);
-  });
-})(jQuery), +(function (a) {
-  "use strict";function b(b) {
-    return this.each(function () {
-      var d = a(this),
-          e = d.data("bs.tooltip"),
-          f = "object" == typeof b && b,
-          g = f && f.selector;(e || "destroy" != b) && (g ? (e || d.data("bs.tooltip", e = {}), e[g] || (e[g] = new c(this, f))) : e || d.data("bs.tooltip", e = new c(this, f)), "string" == typeof b && e[b]());
-    });
-  }var c = function c(a, b) {
-    this.type = this.options = this.enabled = this.timeout = this.hoverState = this.$element = null, this.init("tooltip", a, b);
-  };c.VERSION = "3.3.1", c.TRANSITION_DURATION = 150, c.DEFAULTS = { animation: !0, placement: "top", selector: !1, template: "<div class=\"tooltip\" role=\"tooltip\"><div class=\"tooltip-arrow\"></div><div class=\"tooltip-inner\"></div></div>", trigger: "hover focus", title: "", delay: 0, html: !1, container: !1, viewport: { selector: "body", padding: 0 } }, c.prototype.init = function (b, c, d) {
-    this.enabled = !0, this.type = b, this.$element = a(c), this.options = this.getOptions(d), this.$viewport = this.options.viewport && a(this.options.viewport.selector || this.options.viewport);for (var e = this.options.trigger.split(" "), f = e.length; f--;) {
-      var g = e[f];if ("click" == g) this.$element.on("click." + this.type, this.options.selector, a.proxy(this.toggle, this));else if ("manual" != g) {
-        var h = "hover" == g ? "mouseenter" : "focusin",
-            i = "hover" == g ? "mouseleave" : "focusout";this.$element.on(h + "." + this.type, this.options.selector, a.proxy(this.enter, this)), this.$element.on(i + "." + this.type, this.options.selector, a.proxy(this.leave, this));
+    },
+
+    disableFormElement: function disableFormElement(element) {
+      var method, replacement;
+
+      method = element.is("button") ? "html" : "val";
+      replacement = element.data("disable-with");
+
+      element.data("ujs:enable-with", element[method]());
+      if (replacement !== undefined) {
+        element[method](replacement);
       }
-    }this.options.selector ? this._options = a.extend({}, this.options, { trigger: "manual", selector: "" }) : this.fixTitle();
-  }, c.prototype.getDefaults = function () {
-    return c.DEFAULTS;
-  }, c.prototype.getOptions = function (b) {
-    return (b = a.extend({}, this.getDefaults(), this.$element.data(), b), b.delay && "number" == typeof b.delay && (b.delay = { show: b.delay, hide: b.delay }), b);
-  }, c.prototype.getDelegateOptions = function () {
-    var b = {},
-        c = this.getDefaults();return (this._options && a.each(this._options, function (a, d) {
-      c[a] != d && (b[a] = d);
-    }), b);
-  }, c.prototype.enter = function (b) {
-    var c = b instanceof this.constructor ? b : a(b.currentTarget).data("bs." + this.type);return c && c.$tip && c.$tip.is(":visible") ? void (c.hoverState = "in") : (c || (c = new this.constructor(b.currentTarget, this.getDelegateOptions()), a(b.currentTarget).data("bs." + this.type, c)), clearTimeout(c.timeout), c.hoverState = "in", c.options.delay && c.options.delay.show ? void (c.timeout = setTimeout(function () {
-      "in" == c.hoverState && c.show();
-    }, c.options.delay.show)) : c.show());
-  }, c.prototype.leave = function (b) {
-    var c = b instanceof this.constructor ? b : a(b.currentTarget).data("bs." + this.type);return (c || (c = new this.constructor(b.currentTarget, this.getDelegateOptions()), a(b.currentTarget).data("bs." + this.type, c)), clearTimeout(c.timeout), c.hoverState = "out", c.options.delay && c.options.delay.hide ? void (c.timeout = setTimeout(function () {
-      "out" == c.hoverState && c.hide();
-    }, c.options.delay.hide)) : c.hide());
-  }, c.prototype.show = function () {
-    var b = a.Event("show.bs." + this.type);if (this.hasContent() && this.enabled) {
-      this.$element.trigger(b);var d = a.contains(this.$element[0].ownerDocument.documentElement, this.$element[0]);if (b.isDefaultPrevented() || !d) return;var e = this,
-          f = this.tip(),
-          g = this.getUID(this.type);this.setContent(), f.attr("id", g), this.$element.attr("aria-describedby", g), this.options.animation && f.addClass("fade");var h = "function" == typeof this.options.placement ? this.options.placement.call(this, f[0], this.$element[0]) : this.options.placement,
-          i = /\s?auto?\s?/i,
-          j = i.test(h);j && (h = h.replace(i, "") || "top"), f.detach().css({ top: 0, left: 0, display: "block" }).addClass(h).data("bs." + this.type, this), this.options.container ? f.appendTo(this.options.container) : f.insertAfter(this.$element);var k = this.getPosition(),
-          l = f[0].offsetWidth,
-          m = f[0].offsetHeight;if (j) {
-        var n = h,
-            o = this.options.container ? a(this.options.container) : this.$element.parent(),
-            p = this.getPosition(o);h = "bottom" == h && k.bottom + m > p.bottom ? "top" : "top" == h && k.top - m < p.top ? "bottom" : "right" == h && k.right + l > p.width ? "left" : "left" == h && k.left - l < p.left ? "right" : h, f.removeClass(n).addClass(h);
-      }var q = this.getCalculatedOffset(h, k, l, m);this.applyPlacement(q, h);var r = function r() {
-        var a = e.hoverState;e.$element.trigger("shown.bs." + e.type), e.hoverState = null, "out" == a && e.leave(e);
-      };a.support.transition && this.$tip.hasClass("fade") ? f.one("bsTransitionEnd", r).emulateTransitionEnd(c.TRANSITION_DURATION) : r();
+
+      element.prop("disabled", true);
+    },
+
+    /* Re-enables disabled form elements:
+      - Replaces element text with cached value from 'ujs:enable-with' data store (created in `disableFormElements`)
+      - Sets disabled property to false
+    */
+    enableFormElements: function enableFormElements(form) {
+      rails.formElements(form, rails.enableSelector).each(function () {
+        rails.enableFormElement($(this));
+      });
+    },
+
+    enableFormElement: function enableFormElement(element) {
+      var method = element.is("button") ? "html" : "val";
+      if (element.data("ujs:enable-with")) element[method](element.data("ujs:enable-with"));
+      element.prop("disabled", false);
+    },
+
+    /* For 'data-confirm' attribute:
+       - Fires `confirm` event
+       - Shows the confirmation dialog
+       - Fires the `confirm:complete` event
+        Returns `true` if no function stops the chain and user chose yes; `false` otherwise.
+       Attaching a handler to the element's `confirm` event that returns a `falsy` value cancels the confirmation dialog.
+       Attaching a handler to the element's `confirm:complete` event that returns a `falsy` value makes this function
+       return false. The `confirm:complete` event is fired whether or not the user answered true or false to the dialog.
+    */
+    allowAction: function allowAction(element) {
+      var message = element.data("confirm"),
+          answer = false,
+          callback;
+      if (!message) {
+        return true;
+      }
+
+      if (rails.fire(element, "confirm")) {
+        answer = rails.confirm(message);
+        callback = rails.fire(element, "confirm:complete", [answer]);
+      }
+      return answer && callback;
+    },
+
+    // Helper function which checks for blank inputs in a form that match the specified CSS selector
+    blankInputs: function blankInputs(form, specifiedSelector, nonBlank) {
+      var inputs = $(),
+          input,
+          valueToCheck,
+          selector = specifiedSelector || "input,textarea",
+          allInputs = form.find(selector);
+
+      allInputs.each(function () {
+        input = $(this);
+        valueToCheck = input.is("input[type=checkbox],input[type=radio]") ? input.is(":checked") : input.val();
+        // If nonBlank and valueToCheck are both truthy, or nonBlank and valueToCheck are both falsey
+        if (!valueToCheck === !nonBlank) {
+
+          // Don't count unchecked required radio if other radio with same name is checked
+          if (input.is("input[type=radio]") && allInputs.filter("input[type=radio]:checked[name=\"" + input.attr("name") + "\"]").length) {
+            return true; // Skip to next input
+          }
+
+          inputs = inputs.add(input);
+        }
+      });
+      return inputs.length ? inputs : false;
+    },
+
+    // Helper function which checks for non-blank inputs in a form that match the specified CSS selector
+    nonBlankInputs: function nonBlankInputs(form, specifiedSelector) {
+      return rails.blankInputs(form, specifiedSelector, true); // true specifies nonBlank
+    },
+
+    // Helper function, needed to provide consistent behavior in IE
+    stopEverything: function stopEverything(e) {
+      $(e.target).trigger("ujs:everythingStopped");
+      e.stopImmediatePropagation();
+      return false;
+    },
+
+    //  replace element's html with the 'data-disable-with' after storing original html
+    //  and prevent clicking on it
+    disableElement: function disableElement(element) {
+      var replacement = element.data("disable-with");
+
+      element.data("ujs:enable-with", element.html()); // store enabled state
+      if (replacement !== undefined) {
+        element.html(replacement);
+      }
+
+      element.bind("click.railsDisable", function (e) {
+        // prevent further clicking
+        return rails.stopEverything(e);
+      });
+    },
+
+    // restore element to its original state which was disabled by 'disableElement' above
+    enableElement: function enableElement(element) {
+      if (element.data("ujs:enable-with") !== undefined) {
+        element.html(element.data("ujs:enable-with")); // set to old enabled state
+        element.removeData("ujs:enable-with"); // clean up cache
+      }
+      element.unbind("click.railsDisable"); // enable element
     }
-  }, c.prototype.applyPlacement = function (b, c) {
-    var d = this.tip(),
-        e = d[0].offsetWidth,
-        f = d[0].offsetHeight,
-        g = parseInt(d.css("margin-top"), 10),
-        h = parseInt(d.css("margin-left"), 10);isNaN(g) && (g = 0), isNaN(h) && (h = 0), b.top = b.top + g, b.left = b.left + h, a.offset.setOffset(d[0], a.extend({ using: function using(a) {
-        d.css({ top: Math.round(a.top), left: Math.round(a.left) });
-      } }, b), 0), d.addClass("in");var i = d[0].offsetWidth,
-        j = d[0].offsetHeight;"top" == c && j != f && (b.top = b.top + f - j);var k = this.getViewportAdjustedDelta(c, b, i, j);k.left ? b.left += k.left : b.top += k.top;var l = /top|bottom/.test(c),
-        m = l ? 2 * k.left - e + i : 2 * k.top - f + j,
-        n = l ? "offsetWidth" : "offsetHeight";d.offset(b), this.replaceArrow(m, d[0][n], l);
-  }, c.prototype.replaceArrow = function (a, b, c) {
-    this.arrow().css(c ? "left" : "top", 50 * (1 - a / b) + "%").css(c ? "top" : "left", "");
-  }, c.prototype.setContent = function () {
-    var a = this.tip(),
-        b = this.getTitle();a.find(".tooltip-inner")[this.options.html ? "html" : "text"](b), a.removeClass("fade in top bottom left right");
-  }, c.prototype.hide = function (b) {
-    function d() {
-      "in" != e.hoverState && f.detach(), e.$element.removeAttr("aria-describedby").trigger("hidden.bs." + e.type), b && b();
-    }var e = this,
-        f = this.tip(),
-        g = a.Event("hide.bs." + this.type);return (this.$element.trigger(g), g.isDefaultPrevented() ? void 0 : (f.removeClass("in"), a.support.transition && this.$tip.hasClass("fade") ? f.one("bsTransitionEnd", d).emulateTransitionEnd(c.TRANSITION_DURATION) : d(), this.hoverState = null, this));
-  }, c.prototype.fixTitle = function () {
-    var a = this.$element;(a.attr("title") || "string" != typeof a.attr("data-original-title")) && a.attr("data-original-title", a.attr("title") || "").attr("title", "");
-  }, c.prototype.hasContent = function () {
-    return this.getTitle();
-  }, c.prototype.getPosition = function (b) {
-    b = b || this.$element;var c = b[0],
-        d = "BODY" == c.tagName,
-        e = c.getBoundingClientRect();null == e.width && (e = a.extend({}, e, { width: e.right - e.left, height: e.bottom - e.top }));var f = d ? { top: 0, left: 0 } : b.offset(),
-        g = { scroll: d ? document.documentElement.scrollTop || document.body.scrollTop : b.scrollTop() },
-        h = d ? { width: a(window).width(), height: a(window).height() } : null;return a.extend({}, e, g, h, f);
-  }, c.prototype.getCalculatedOffset = function (a, b, c, d) {
-    return "bottom" == a ? { top: b.top + b.height, left: b.left + b.width / 2 - c / 2 } : "top" == a ? { top: b.top - d, left: b.left + b.width / 2 - c / 2 } : "left" == a ? { top: b.top + b.height / 2 - d / 2, left: b.left - c } : { top: b.top + b.height / 2 - d / 2, left: b.left + b.width };
-  }, c.prototype.getViewportAdjustedDelta = function (a, b, c, d) {
-    var e = { top: 0, left: 0 };if (!this.$viewport) return e;var f = this.options.viewport && this.options.viewport.padding || 0,
-        g = this.getPosition(this.$viewport);if (/right|left/.test(a)) {
-      var h = b.top - f - g.scroll,
-          i = b.top + f - g.scroll + d;h < g.top ? e.top = g.top - h : i > g.top + g.height && (e.top = g.top + g.height - i);
-    } else {
-      var j = b.left - f,
-          k = b.left + f + c;j < g.left ? e.left = g.left - j : k > g.width && (e.left = g.left + g.width - k);
-    }return e;
-  }, c.prototype.getTitle = function () {
-    var a,
-        b = this.$element,
-        c = this.options;return a = b.attr("data-original-title") || ("function" == typeof c.title ? c.title.call(b[0]) : c.title);
-  }, c.prototype.getUID = function (a) {
-    do a += ~ ~(1000000 * Math.random()); while (document.getElementById(a));return a;
-  }, c.prototype.tip = function () {
-    return this.$tip = this.$tip || a(this.options.template);
-  }, c.prototype.arrow = function () {
-    return this.$arrow = this.$arrow || this.tip().find(".tooltip-arrow");
-  }, c.prototype.enable = function () {
-    this.enabled = !0;
-  }, c.prototype.disable = function () {
-    this.enabled = !1;
-  }, c.prototype.toggleEnabled = function () {
-    this.enabled = !this.enabled;
-  }, c.prototype.toggle = function (b) {
-    var c = this;b && (c = a(b.currentTarget).data("bs." + this.type), c || (c = new this.constructor(b.currentTarget, this.getDelegateOptions()), a(b.currentTarget).data("bs." + this.type, c))), c.tip().hasClass("in") ? c.leave(c) : c.enter(c);
-  }, c.prototype.destroy = function () {
-    var a = this;clearTimeout(this.timeout), this.hide(function () {
-      a.$element.off("." + a.type).removeData("bs." + a.type);
-    });
-  };var d = a.fn.tooltip;a.fn.tooltip = b, a.fn.tooltip.Constructor = c, a.fn.tooltip.noConflict = function () {
-    return (a.fn.tooltip = d, this);
   };
-})(jQuery), +(function (a) {
-  "use strict";function b(b) {
-    return this.each(function () {
-      var d = a(this),
-          e = d.data("bs.popover"),
-          f = "object" == typeof b && b,
-          g = f && f.selector;(e || "destroy" != b) && (g ? (e || d.data("bs.popover", e = {}), e[g] || (e[g] = new c(this, f))) : e || d.data("bs.popover", e = new c(this, f)), "string" == typeof b && e[b]());
+
+  if (rails.fire($document, "rails:attachBindings")) {
+
+    $.ajaxPrefilter(function (options, originalOptions, xhr) {
+      if (!options.crossDomain) {
+        rails.CSRFProtection(xhr);
+      }
     });
-  }var c = function c(a, b) {
-    this.init("popover", a, b);
-  };if (!a.fn.tooltip) throw new Error("Popover requires tooltip.js");c.VERSION = "3.3.1", c.DEFAULTS = a.extend({}, a.fn.tooltip.Constructor.DEFAULTS, { placement: "right", trigger: "click", content: "", template: "<div class=\"popover\" role=\"tooltip\"><div class=\"arrow\"></div><h3 class=\"popover-title\"></h3><div class=\"popover-content\"></div></div>" }), c.prototype = a.extend({}, a.fn.tooltip.Constructor.prototype), c.prototype.constructor = c, c.prototype.getDefaults = function () {
-    return c.DEFAULTS;
-  }, c.prototype.setContent = function () {
-    var a = this.tip(),
-        b = this.getTitle(),
-        c = this.getContent();a.find(".popover-title")[this.options.html ? "html" : "text"](b), a.find(".popover-content").children().detach().end()[this.options.html ? "string" == typeof c ? "html" : "append" : "text"](c), a.removeClass("fade top bottom left right in"), a.find(".popover-title").html() || a.find(".popover-title").hide();
-  }, c.prototype.hasContent = function () {
-    return this.getTitle() || this.getContent();
-  }, c.prototype.getContent = function () {
-    var a = this.$element,
-        b = this.options;return a.attr("data-content") || ("function" == typeof b.content ? b.content.call(a[0]) : b.content);
-  }, c.prototype.arrow = function () {
-    return this.$arrow = this.$arrow || this.tip().find(".arrow");
-  }, c.prototype.tip = function () {
-    return (this.$tip || (this.$tip = a(this.options.template)), this.$tip);
-  };var d = a.fn.popover;a.fn.popover = b, a.fn.popover.Constructor = c, a.fn.popover.noConflict = function () {
-    return (a.fn.popover = d, this);
-  };
-})(jQuery), +(function (a) {
-  "use strict";function b(c, d) {
-    var e = a.proxy(this.process, this);this.$body = a("body"), this.$scrollElement = a(a(c).is("body") ? window : c), this.options = a.extend({}, b.DEFAULTS, d), this.selector = (this.options.target || "") + " .nav li > a", this.offsets = [], this.targets = [], this.activeTarget = null, this.scrollHeight = 0, this.$scrollElement.on("scroll.bs.scrollspy", e), this.refresh(), this.process();
-  }function c(c) {
-    return this.each(function () {
-      var d = a(this),
-          e = d.data("bs.scrollspy"),
-          f = "object" == typeof c && c;e || d.data("bs.scrollspy", e = new b(this, f)), "string" == typeof c && e[c]();
+
+    // This event works the same as the load event, except that it fires every
+    // time the page is loaded.
+    //
+    // See https://github.com/rails/jquery-ujs/issues/357
+    // See https://developer.mozilla.org/en-US/docs/Using_Firefox_1.5_caching
+    $(window).on("pageshow.rails", function () {
+      $($.rails.enableSelector).each(function () {
+        var element = $(this);
+
+        if (element.data("ujs:enable-with")) {
+          $.rails.enableFormElement(element);
+        }
+      });
+
+      $($.rails.linkDisableSelector).each(function () {
+        var element = $(this);
+
+        if (element.data("ujs:enable-with")) {
+          $.rails.enableElement(element);
+        }
+      });
     });
-  }b.VERSION = "3.3.1", b.DEFAULTS = { offset: 10 }, b.prototype.getScrollHeight = function () {
-    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight);
-  }, b.prototype.refresh = function () {
-    var b = "offset",
-        c = 0;a.isWindow(this.$scrollElement[0]) || (b = "position", c = this.$scrollElement.scrollTop()), this.offsets = [], this.targets = [], this.scrollHeight = this.getScrollHeight();var d = this;this.$body.find(this.selector).map(function () {
-      var d = a(this),
-          e = d.data("target") || d.attr("href"),
-          f = /^#./.test(e) && a(e);return f && f.length && f.is(":visible") && [[f[b]().top + c, e]] || null;
-    }).sort(function (a, b) {
-      return a[0] - b[0];
-    }).each(function () {
-      d.offsets.push(this[0]), d.targets.push(this[1]);
+
+    $document.delegate(rails.linkDisableSelector, "ajax:complete", function () {
+      rails.enableElement($(this));
     });
-  }, b.prototype.process = function () {
-    var a,
-        b = this.$scrollElement.scrollTop() + this.options.offset,
-        c = this.getScrollHeight(),
-        d = this.options.offset + c - this.$scrollElement.height(),
-        e = this.offsets,
-        f = this.targets,
-        g = this.activeTarget;if ((this.scrollHeight != c && this.refresh(), b >= d)) return g != (a = f[f.length - 1]) && this.activate(a);if (g && b < e[0]) return (this.activeTarget = null, this.clear());for (a = e.length; a--;) g != f[a] && b >= e[a] && (!e[a + 1] || b <= e[a + 1]) && this.activate(f[a]);
-  }, b.prototype.activate = function (b) {
-    this.activeTarget = b, this.clear();var c = this.selector + "[data-target=\"" + b + "\"]," + this.selector + "[href=\"" + b + "\"]",
-        d = a(c).parents("li").addClass("active");d.parent(".dropdown-menu").length && (d = d.closest("li.dropdown").addClass("active")), d.trigger("activate.bs.scrollspy");
-  }, b.prototype.clear = function () {
-    a(this.selector).parentsUntil(this.options.target, ".active").removeClass("active");
-  };var d = a.fn.scrollspy;a.fn.scrollspy = c, a.fn.scrollspy.Constructor = b, a.fn.scrollspy.noConflict = function () {
-    return (a.fn.scrollspy = d, this);
-  }, a(window).on("load.bs.scrollspy.data-api", function () {
-    a("[data-spy=\"scroll\"]").each(function () {
-      var b = a(this);c.call(b, b.data());
+
+    $document.delegate(rails.buttonDisableSelector, "ajax:complete", function () {
+      rails.enableFormElement($(this));
     });
-  });
-})(jQuery), +(function (a) {
-  "use strict";function b(b) {
-    return this.each(function () {
-      var d = a(this),
-          e = d.data("bs.tab");e || d.data("bs.tab", e = new c(this)), "string" == typeof b && e[b]();
+
+    $document.delegate(rails.linkClickSelector, "click.rails", function (e) {
+      var link = $(this),
+          method = link.data("method"),
+          data = link.data("params"),
+          metaClick = e.metaKey || e.ctrlKey;
+      if (!rails.allowAction(link)) return rails.stopEverything(e);
+
+      if (!metaClick && link.is(rails.linkDisableSelector)) rails.disableElement(link);
+
+      if (link.data("remote") !== undefined) {
+        if (metaClick && (!method || method === "GET") && !data) {
+          return true;
+        }
+
+        var handleRemote = rails.handleRemote(link);
+        // response from rails.handleRemote() will either be false or a deferred object promise.
+        if (handleRemote === false) {
+          rails.enableElement(link);
+        } else {
+          handleRemote.fail(function () {
+            rails.enableElement(link);
+          });
+        }
+        return false;
+      } else if (method) {
+        rails.handleMethod(link);
+        return false;
+      }
     });
-  }var c = function c(b) {
-    this.element = a(b);
-  };c.VERSION = "3.3.1", c.TRANSITION_DURATION = 150, c.prototype.show = function () {
-    var b = this.element,
-        c = b.closest("ul:not(.dropdown-menu)"),
-        d = b.data("target");if ((d || (d = b.attr("href"), d = d && d.replace(/.*(?=#[^\s]*$)/, "")), !b.parent("li").hasClass("active"))) {
-      var e = c.find(".active:last a"),
-          f = a.Event("hide.bs.tab", { relatedTarget: b[0] }),
-          g = a.Event("show.bs.tab", { relatedTarget: e[0] });if ((e.trigger(f), b.trigger(g), !g.isDefaultPrevented() && !f.isDefaultPrevented())) {
-        var h = a(d);this.activate(b.closest("li"), c), this.activate(h, h.parent(), function () {
-          e.trigger({ type: "hidden.bs.tab", relatedTarget: b[0] }), b.trigger({ type: "shown.bs.tab", relatedTarget: e[0] });
+
+    $document.delegate(rails.buttonClickSelector, "click.rails", function (e) {
+      var button = $(this);
+
+      if (!rails.allowAction(button)) return rails.stopEverything(e);
+
+      if (button.is(rails.buttonDisableSelector)) rails.disableFormElement(button);
+
+      var handleRemote = rails.handleRemote(button);
+      // response from rails.handleRemote() will either be false or a deferred object promise.
+      if (handleRemote === false) {
+        rails.enableFormElement(button);
+      } else {
+        handleRemote.fail(function () {
+          rails.enableFormElement(button);
         });
       }
-    }
-  }, c.prototype.activate = function (b, d, e) {
-    function f() {
-      g.removeClass("active").find("> .dropdown-menu > .active").removeClass("active").end().find("[data-toggle=\"tab\"]").attr("aria-expanded", !1), b.addClass("active").find("[data-toggle=\"tab\"]").attr("aria-expanded", !0), h ? (b[0].offsetWidth, b.addClass("in")) : b.removeClass("fade"), b.parent(".dropdown-menu") && b.closest("li.dropdown").addClass("active").end().find("[data-toggle=\"tab\"]").attr("aria-expanded", !0), e && e();
-    }var g = d.find("> .active"),
-        h = e && a.support.transition && (g.length && g.hasClass("fade") || !!d.find("> .fade").length);g.length && h ? g.one("bsTransitionEnd", f).emulateTransitionEnd(c.TRANSITION_DURATION) : f(), g.removeClass("in");
-  };var d = a.fn.tab;a.fn.tab = b, a.fn.tab.Constructor = c, a.fn.tab.noConflict = function () {
-    return (a.fn.tab = d, this);
-  };var e = function e(c) {
-    c.preventDefault(), b.call(a(this), "show");
-  };a(document).on("click.bs.tab.data-api", "[data-toggle=\"tab\"]", e).on("click.bs.tab.data-api", "[data-toggle=\"pill\"]", e);
-})(jQuery), +(function (a) {
-  "use strict";function b(b) {
-    return this.each(function () {
-      var d = a(this),
-          e = d.data("bs.affix"),
-          f = "object" == typeof b && b;e || d.data("bs.affix", e = new c(this, f)), "string" == typeof b && e[b]();
+      return false;
     });
-  }var c = function c(b, d) {
-    this.options = a.extend({}, c.DEFAULTS, d), this.$target = a(this.options.target).on("scroll.bs.affix.data-api", a.proxy(this.checkPosition, this)).on("click.bs.affix.data-api", a.proxy(this.checkPositionWithEventLoop, this)), this.$element = a(b), this.affixed = this.unpin = this.pinnedOffset = null, this.checkPosition();
-  };c.VERSION = "3.3.1", c.RESET = "affix affix-top affix-bottom", c.DEFAULTS = { offset: 0, target: window }, c.prototype.getState = function (a, b, c, d) {
-    var e = this.$target.scrollTop(),
-        f = this.$element.offset(),
-        g = this.$target.height();if (null != c && "top" == this.affixed) return c > e ? "top" : !1;if ("bottom" == this.affixed) return null != c ? e + this.unpin <= f.top ? !1 : "bottom" : a - d >= e + g ? !1 : "bottom";var h = null == this.affixed,
-        i = h ? e : f.top,
-        j = h ? g : b;return null != c && c >= i ? "top" : null != d && i + j >= a - d ? "bottom" : !1;
-  }, c.prototype.getPinnedOffset = function () {
-    if (this.pinnedOffset) return this.pinnedOffset;this.$element.removeClass(c.RESET).addClass("affix");var a = this.$target.scrollTop(),
-        b = this.$element.offset();return this.pinnedOffset = b.top - a;
-  }, c.prototype.checkPositionWithEventLoop = function () {
-    setTimeout(a.proxy(this.checkPosition, this), 1);
-  }, c.prototype.checkPosition = function () {
-    if (this.$element.is(":visible")) {
-      var b = this.$element.height(),
-          d = this.options.offset,
-          e = d.top,
-          f = d.bottom,
-          g = a("body").height();"object" != typeof d && (f = e = d), "function" == typeof e && (e = d.top(this.$element)), "function" == typeof f && (f = d.bottom(this.$element));var h = this.getState(g, b, e, f);if (this.affixed != h) {
-        null != this.unpin && this.$element.css("top", "");var i = "affix" + (h ? "-" + h : ""),
-            j = a.Event(i + ".bs.affix");if ((this.$element.trigger(j), j.isDefaultPrevented())) return;this.affixed = h, this.unpin = "bottom" == h ? this.getPinnedOffset() : null, this.$element.removeClass(c.RESET).addClass(i).trigger(i.replace("affix", "affixed") + ".bs.affix");
-      }"bottom" == h && this.$element.offset({ top: g - b - f });
-    }
-  };var d = a.fn.affix;a.fn.affix = b, a.fn.affix.Constructor = c, a.fn.affix.noConflict = function () {
-    return (a.fn.affix = d, this);
-  }, a(window).on("load", function () {
-    a("[data-spy=\"affix\"]").each(function () {
-      var c = a(this),
-          d = c.data();d.offset = d.offset || {}, null != d.offsetBottom && (d.offset.bottom = d.offsetBottom), null != d.offsetTop && (d.offset.top = d.offsetTop), b.call(c, d);
+
+    $document.delegate(rails.inputChangeSelector, "change.rails", function (e) {
+      var link = $(this);
+      if (!rails.allowAction(link)) return rails.stopEverything(e);
+
+      rails.handleRemote(link);
+      return false;
     });
-  });
+
+    $document.delegate(rails.formSubmitSelector, "submit.rails", function (e) {
+      var form = $(this),
+          remote = form.data("remote") !== undefined,
+          blankRequiredInputs,
+          nonBlankFileInputs;
+
+      if (!rails.allowAction(form)) return rails.stopEverything(e);
+
+      // skip other logic when required values are missing or file upload is present
+      if (form.attr("novalidate") == undefined) {
+        blankRequiredInputs = rails.blankInputs(form, rails.requiredInputSelector);
+        if (blankRequiredInputs && rails.fire(form, "ajax:aborted:required", [blankRequiredInputs])) {
+          return rails.stopEverything(e);
+        }
+      }
+
+      if (remote) {
+        nonBlankFileInputs = rails.nonBlankInputs(form, rails.fileInputSelector);
+        if (nonBlankFileInputs) {
+          // slight timeout so that the submit button gets properly serialized
+          // (make it easy for event handler to serialize form without disabled values)
+          setTimeout(function () {
+            rails.disableFormElements(form);
+          }, 13);
+          var aborted = rails.fire(form, "ajax:aborted:file", [nonBlankFileInputs]);
+
+          // re-enable form elements if event bindings return false (canceling normal form submission)
+          if (!aborted) {
+            setTimeout(function () {
+              rails.enableFormElements(form);
+            }, 13);
+          }
+
+          return aborted;
+        }
+
+        rails.handleRemote(form);
+        return false;
+      } else {
+        // slight timeout so that the submit button gets properly serialized
+        setTimeout(function () {
+          rails.disableFormElements(form);
+        }, 13);
+      }
+    });
+
+    $document.delegate(rails.formInputClickSelector, "click.rails", function (event) {
+      var button = $(this);
+
+      if (!rails.allowAction(button)) return rails.stopEverything(event);
+
+      // register the pressed submit button
+      var name = button.attr("name"),
+          data = name ? { name: name, value: button.val() } : null;
+
+      button.closest("form").data("ujs:submit-button", data);
+    });
+
+    $document.delegate(rails.formSubmitSelector, "ajax:send.rails", function (event) {
+      if (this == event.target) rails.disableFormElements($(this));
+    });
+
+    $document.delegate(rails.formSubmitSelector, "ajax:complete.rails", function (event) {
+      if (this == event.target) rails.enableFormElements($(this));
+    });
+
+    $(function () {
+      rails.refreshCSRFTokens();
+    });
+  }
 })(jQuery);
 //# sourceMappingURL=all.js.map

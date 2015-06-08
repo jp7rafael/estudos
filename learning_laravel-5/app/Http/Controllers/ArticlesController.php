@@ -56,4 +56,12 @@ class ArticlesController extends Controller {
         return redirect('articles');
     }
 
+    public function destroy(Article $article)
+    {
+        $title = $article->title;
+        $article->delete();
+        flash()->success("Successfully deleted $title!");
+        return $title;
+    }
+
 }

@@ -17,12 +17,13 @@ elixir(function(mix) {
 
     mix.styles([
       'app.css',
-      'libs/select2.min.css']);
+      '../bower/select2-dist/dist/css/select2.min.css']);
 
     mix.scripts([
-      'libs/jquery.min.js',
-      'libs/select2.min.js',
-      'libs/bootstrap.min.js'
+      '../bower/jquery/dist/jquery.min.js',
+      '../bower/bootstrap/dist/js/bootstrap.min.js',
+      '../bower/select2-dist/dist/js/select2.min.js',
+      '../bower/jquery-ujs/src/rails.js'
       ]);
 
 });
