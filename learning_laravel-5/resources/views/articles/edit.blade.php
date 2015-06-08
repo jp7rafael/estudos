@@ -5,8 +5,8 @@
 
   <div class="panel-body">
     @include ('errors.list')         
-    {!! Form::model($article, ['method' => 'PATCH', 'action' => ['ArticlesController@update', $article->id ]]) !!}        
-      @include ('articles.form', ['subimtButtonText' => 'update Article'])
+    {!! Form::model($article, ['method' => 'PATCH', 'action' => ['ArticlesController@update', $article->id ], 'data-remote' => 'true']) !!}        
+      @include ('articles.form-modal', ['subimtButtonText' => 'update Article'])
     {!! Form::close() !!}
   </div>
 @endsection

@@ -1,10 +1,13 @@
 @extends('app')
 
-
 @section('content')
   <div class="panel-heading">Articles</div>
 
   <div class="panel-body">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      New article
+    </button>
   <a  href="{{ action('ArticlesController@create') }}" >New article</a>
     @foreach ($articles as $article)
       <article> 
@@ -25,7 +28,6 @@
   <script type="text/javascript">
     $('.destroy-btn').bind('ajax:success', function(e, data, status, xhr){
       $(e.target).closest('article').fadeOut();
-      console.log("Deleted resource #"+data);
     });
   </script>
 @endsection
