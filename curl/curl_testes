@@ -1,0 +1,12 @@
+curl -i -H "Accept: application/json" \
+   -H "Content-Type: application/json" \
+   -u J6WFCRIMXDRAA9PEH1GLRAF75JR6KQ7M:ABKENX0FPMRG99AD6B2LOIVYR2OZ4ZJJX0LA05PM \
+   -X GET https://sandbox.moip.com.br/assinaturas/v1/plans
+
+
+curl -i -H "Accept: application/json" \
+   -H "Content-Type: application/json" \
+   -u J6WFCRIMXDRAA9PEH1GLRAF75JR6KQ7M:ABKENX0FPMRG99AD6B2LOIVYR2OZ4ZJJX0LA05PM \
+   --data-binary @plano.json \
+   -X POST https://sandbox.moip.com.br/assinaturas/v1/plans
+
