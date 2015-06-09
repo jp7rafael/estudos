@@ -28,7 +28,6 @@
         $('#myModal').modal('hide');
           var article_id = $(data).data('article');
           var article_data_id = '[data-article=' + article_id + ']';
-          debugger;
           if ($(article_data_id).length)//update
           {
             $(article_data_id).html(data);
@@ -38,6 +37,11 @@
             $('#new-button').after(data);
           }
       });
+
+      $("[data-action=show]").on('ajax:success', function(e, data, status, xhr){
+        $('.modal-content').html(data);
+      });
+
     })();
   </script>
 @endsection

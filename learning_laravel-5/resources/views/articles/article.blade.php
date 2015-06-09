@@ -1,6 +1,6 @@
 <article data-article='{{ $article->id }}'> 
   <h2>
-    <a href="{{ route('articles.show', [$article->id]) }}" > {{ $article->title }} </a>
+    <a href="{{ route('articles.show', [$article->id]) }}" data-remote='true' data-action='show' data-toggle='modal', data-target='#myModal' > {{ $article->title }} </a>
   </h2>
   <p>{{ $article->body }} </p>
   <p> 
