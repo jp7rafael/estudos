@@ -14,7 +14,6 @@
 
 @section('footer')
   <script type="text/javascript">
-  (function() {
       $('[data-method=delete]').on('ajax:success', function(e, data, status, xhr){
         $(e.target).closest('article').fadeOut();
       });
@@ -41,7 +40,5 @@
       $("[data-action=show]").on('ajax:success', function(e, data, status, xhr){
         $('.modal-content').html(data);
       });
-
-    })();
   </script>
 @endsection

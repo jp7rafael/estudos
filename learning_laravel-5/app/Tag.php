@@ -8,7 +8,7 @@ class Tag extends Model {
       ];
 
 
-    public function tags()
+    public function articles()
     {
         return $this->belongsToMany('App\Article')->withTimestamps();
     }
