@@ -40,8 +40,8 @@ class ArticlesController extends Controller {
         $article = Auth::user()->articles()->create($request->all());
         $article->setTags($request->input('tag_list'));
 
-        flash()->success('Your article has been created!');
-        return redirect('articles');
+        // flash()->success('Your article has been created!');
+        return view('articles.article', compact('article'));
     }
 
     public function edit(Article $article)
@@ -54,14 +54,14 @@ class ArticlesController extends Controller {
     {
         $article->update($request->all());
         $article->setTags($request->input('tag_list'));        
-        return redirect('articles');
+        return view('articles.article', compact('article'));
     }
 
     public function destroy(Article $article)
     {
         $title = $article->title;
         $article->delete();
-        flash()->success("Successfully deleted $title!");
+        // flash()->success("Successfully deleted $title!");
         return $title;
     }
 

@@ -1,33 +1,43 @@
 @extends('app')
 
 @section('content')
+  @include('shared.modal')
   <div class="panel-heading">Articles</div>
 
   <div class="panel-body">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-      New article
-    </button>
-  <a  href="{{ action('ArticlesController@create') }}" >New article</a>
+    {!! link_to_route('articles.create', 'New article', null, ['class' => 'btn btn-primary btn-lg', 'id'=> 'new-button', 'data-toggle' => 'modal', 'data-target' => '#myModal']) !!}
     @foreach ($articles as $article)
-      <article> 
-        <h2>
-          <a href="{{ action('ArticlesController@show', [$article->id]) }}" > {{ $article->title }} </a>
-        </h2>
-        <p>{{ $article->body }} </p>
-        <p> 
-          {!! link_to_action('ArticlesController@edit', 'Edit', [$article->id], ['class' => 'btn btn-default']) !!}
-          {!! link_to_action('ArticlesController@destroy', 'Remove', [$article->id], ['class' => 'btn btn-warning destroy-btn', 'data-method' => 'delete', 'data-remote' => 'true', 'data-confirm' => 'Are you sure you want to delete' . $article->title .' ?']) !!}
-        </p>
-      </article>
-    @endforeach
+      @include ('articles.article')
+    @endforeach 
   </div>
 @endsection
 
 @section('footer')
   <script type="text/javascript">
-    $('.destroy-btn').bind('ajax:success', function(e, data, status, xhr){
-      $(e.target).closest('article').fadeOut();
-    });
+  (function() {
+      $('[data-method=delete]').on('ajax:success', function(e, data, status, xhr){
+        $(e.target).closest('article').fadeOut();
+      });
+      
+      $('[data-toggle=modal]').on( "click", function() {
+        var url = $(this).attr('href');
+        $('.modal-content').load(url, function(response, status, xhr) {});
+      });
+
+      $('#myModal').on('ajax:success', function(e, data, status, xhr){
+        $('#myModal').modal('hide');
+          var article_id = $(data).data('article');
+          var article_data_id = '[data-article=' + article_id + ']';
+          debugger;
+          if ($(article_data_id).length)//update
+          {
+            $(article_data_id).html(data);
+          }
+          else//create
+          {
+            $('#new-button').after(data);
+          }
+      });
+    })();
   </script>
 @endsection

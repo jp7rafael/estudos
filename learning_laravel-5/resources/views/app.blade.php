@@ -22,7 +22,6 @@
 <body>
     @include('shared.nav')
     @include('flash::message')
-    @include('shared.modal', ['partial' => 'articles.create'])
 
   <div class="container">
     <div class="row">
