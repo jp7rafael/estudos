@@ -1,5 +1,7 @@
 <?php
 
+use Laracasts\TestDummy\Factory;
+
 class ExampleTest extends TestCase {
 
 	/**

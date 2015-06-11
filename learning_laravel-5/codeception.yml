@@ -9,9 +9,10 @@ settings:
     colors: true
     memory_limit: 1024M
 modules:
+    enabled: [Db]
     config:
         Db:
-            dsn: ''
+            dsn: 'sqlite:storage/testing.sqlite'
             user: ''
             password: ''
             dump: tests/_data/dump.sql
