@@ -39,9 +39,12 @@ class ArticlesController extends Controller {
     {
         $article = Auth::user()->articles()->create($request->all());
         $article->setTags($request->input('tag_list'));
-
-        // flash()->success('Your article has been created!');
-        return view('articles.article', compact('article'));
+        if ($request->ajax())
+        {
+            return view('articles.article', compact('article'));
+        }
+        flash()->success('Your article has been created!');
+        return redirect()->route('articles');
     }
 
     public function edit(Article $article)
@@ -53,8 +56,12 @@ class ArticlesController extends Controller {
     public function update(Article $article, ArticleRequest $request) 
     {
         $article->update($request->all());
-        $article->setTags($request->input('tag_list'));        
-        return view('articles.article', compact('article'));
+        $article->setTags($request->input('tag_list'));
+        if ($request->ajax())
+        {
+            return view('articles.article', compact('article'));
+        }        
+        return redirect()->route('articles');
     }
 
     public function destroy(Article $article)
