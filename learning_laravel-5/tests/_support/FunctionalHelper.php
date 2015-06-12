@@ -10,7 +10,6 @@ class FunctionalHelper extends \Codeception\Module
     /**
      * @var \League\FactoryMuffin\Factory
      */
-    protected $user;
     
     public function _initialize()
     {
@@ -25,6 +24,7 @@ class FunctionalHelper extends \Codeception\Module
     {
         $user = Factory::create('App\User');
         Auth::loginUsingId($user->id);
+        return $user->id;
     }
 
     public function _after(\Codeception\TestCase $test)

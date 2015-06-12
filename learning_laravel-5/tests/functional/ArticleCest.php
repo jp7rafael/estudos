@@ -2,9 +2,11 @@
 
 class ArticleCest
 {
+    protected $userId;
+
     public function _before(FunctionalTester $I)
     {
-        $I->logMeIn();
+        $this->userId = $I->logMeIn();
         $I->amOnPage('/articles');
     }
 
@@ -31,7 +33,6 @@ class ArticleCest
         $I->see('The title must be at least 3 characters.', '.alert');
         $I->amOnPage('/articles');
         $I->dontSee($title);
-        $I->dontSee($body);
     }
 
     private function postAnArticle(FunctionalTester $I, $title, $body)
@@ -43,22 +44,32 @@ class ArticleCest
 
     public function editAnValidArticle(FunctionalTester $I)
     {
-        $randTitle = "Edited at " . microtime();
-        $id = $I->haveRecord('articles', $this->postAttributes);
+        $id = $I->haveRecord('articles', 
+                             ['title' => 'old title', 
+                             'body' => 'old body',
+                             'published_at' => new DateTime(),
+                             'created_at' => new DateTime(),
+                             'updated_at' => new DateTime(), 
+                             'user_id' => $this->userId
+                             ]);
+        $title = 'Edited at ' . microtime();
+        $body = 'Edited at ' . microtime();
         $I->click('#new-button');
         $I->seeCurrentUrlEquals('/articles/create');
-        $this->submitTheForm($I, $title, $body, 'Add article');  
+        $this->submitTheForm($I, $title, $body, 'Add article'); 
+        $I->see($title);
+        $I->see($body);
+        $I->dontSee('old title');
+        $I->dontSee('old body'); 
     }
 
 
-    private function editAnArticle(FunctionalTester $I, $newTitle, $newBody, $id)
+    private function editAnArticle(FunctionalTester $I, $newTitle, $newBody, $article_id)
     {
-        $id = $I->haveRecord('articles', ['title' => 'old title', 'body' => 'old body']);
-        $url = 'articles/'
-        Locator::href('/login.php');
-        $I->click('#new-button');
-        $I->seeCurrentUrlEquals('/articles/create');
-        $this->submitTheForm($I, $newTitle, $newBody, 'update Article');   
+        $url = '/articles/'. $article_id .'/edit';
+        $I->click(Locator::href($url));
+        $I->seeCurrentUrlEquals($url);
+        $this->submitTheForm($I, $newTitle, $newBody, 'update Article'); 
     }
 
     private function submitTheForm(FunctionalTester $I, $title, $body, $formTitle)
