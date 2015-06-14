@@ -1,7 +1,0 @@
-<tr id='current_post_<%= post.id %>'>
-	<td><%= post.cached_text %></td>
-	<td><%= post.number %></td>
-	<td><%= link_to 'Show', post  %></td>
-	<td><%= link_to 'Edit', edit_post_path(post) %></td>
-	<td><%= link_to 'Destroy', post, method: :delete, id: "destroy_link", data: { confirm: 'Are you sure?', remote: true } %></td>
-</tr>

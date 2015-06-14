@@ -1,6 +1,0 @@
-<br \>
-<%= simple_form_for(@post, remote: true) do |f| %>
-  <%= f.input :text, label: 'texto' %>
-  <%= f.input :number, collection: 1..@max_post_number  %>
-  <%= f.button :submit %>
-<% end %>
