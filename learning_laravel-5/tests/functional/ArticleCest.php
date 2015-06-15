@@ -42,9 +42,32 @@ class ArticleCest
         $this->submitTheForm($I, $title, $body, 'Add article');   
     }
 
-    public function editAnValidArticle(FunctionalTester $I)
+    public function editWithValidArticleChange(FunctionalTester $I)
     {
-        $id = $I->haveRecord('articles', 
+        $title = 'Edited at ' . microtime();
+        $body = 'Edited at ' . microtime();
+        $this->editAnArticle($I, $title, $body);
+        $I->see($title);
+        $I->see($body);
+        $I->dontSee('old title');
+        $I->dontSee('old body'); 
+    }
+
+    public function editWithInvalidArticleChange(FunctionalTester $I)
+    {
+        $title = 'oi';
+        $body = '';
+        $this->editAnArticle($I, $title, $newBody);
+        $I->dontSee($title);
+        $I->dontSee($body);
+        $I->see('old title');
+        $I->see('old body'); 
+    }
+
+
+    private function editAnArticle(FunctionalTester $I, $newTitle, $newBody)
+    {
+        $article_id = $I->haveRecord('articles', 
                              ['title' => 'old title', 
                              'body' => 'old body',
                              'published_at' => new DateTime(),
@@ -52,24 +75,11 @@ class ArticleCest
                              'updated_at' => new DateTime(), 
                              'user_id' => $this->userId
                              ]);
-        $title = 'Edited at ' . microtime();
-        $body = 'Edited at ' . microtime();
-        $I->click('#new-button');
-        $I->seeCurrentUrlEquals('/articles/create');
-        $this->submitTheForm($I, $title, $body, 'Add article'); 
-        $I->see($title);
-        $I->see($body);
-        $I->dontSee('old title');
-        $I->dontSee('old body'); 
-    }
-
-
-    private function editAnArticle(FunctionalTester $I, $newTitle, $newBody, $article_id)
-    {
-        $url = '/articles/'. $article_id .'/edit';
-        $I->click(Locator::href($url));
+        $url = '/articles/' . $article_id . '/edit';
+        $I->seeLink('Edit', $url);
+        $I->click("[href*='" . $url . "']");
         $I->seeCurrentUrlEquals($url);
-        $this->submitTheForm($I, $newTitle, $newBody, 'update Article'); 
+        $this->submitTheForm($I, $newTitle, $newBody, 'update Article');
     }
 
     private function submitTheForm(FunctionalTester $I, $title, $body, $formTitle)
