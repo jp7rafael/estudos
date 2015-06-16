@@ -13,7 +13,9 @@
         {!! link_to_action('ArticlesController@edit', 'Edit', [$article->id], ['class' => 'btn btn-default', 'data-toggle' => 'modal', 'data-target' => '#myModal']) !!}
         {!! link_to_action('ArticlesController@destroy', 'Remove', [$article->id], ['class' => 'btn btn-warning', 'data-method' => 'delete', 'data-remote' => 'true', 'data-confirm' => 'Are you sure you want to delete' . $article->title .' ?']) !!}
       </div>
-    @endforeach 
+    @endforeach
+    <br /><br /><br /> 
+    {!! link_to_route('articles.seed', 'Automatic seed', null, ['class' => 'btn btn-primary btn-lg', 'id'=> 'seed-button']) !!}
   </div>
 @endsection
 

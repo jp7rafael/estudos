@@ -8,7 +8,9 @@ use Carbon\Carbon;
 use App\Http\Requests\ArticleRequest;
 use Auth;
 use Flash;
+use Response;
 use App\Mailers\ArticleMailer;
+use App\Commands\SeedArticles;
 
 class ArticlesController extends Controller {
 
@@ -67,13 +69,10 @@ class ArticlesController extends Controller {
         return $title;
     }
 
-    public function seed(ArticleRequest $request)
+    public function seed(SeedArticles $seedArticle)
     {
-        $article = Auth::user()->articles()->create($request->all());
-        $article->setTags($request->input('tag_list'));
-
-        // flash()->success('Your article has been created!');
-        return view('articles.article', compact('article'));
+        $this->dispatch($seedArticle);
+        return redirect('/articles');
     }
 
 }
