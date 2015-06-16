@@ -67,4 +67,13 @@ class ArticlesController extends Controller {
         return $title;
     }
 
+    public function seed(ArticleRequest $request)
+    {
+        $article = Auth::user()->articles()->create($request->all());
+        $article->setTags($request->input('tag_list'));
+
+        // flash()->success('Your article has been created!');
+        return view('articles.article', compact('article'));
+    }
+
 }

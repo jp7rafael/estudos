@@ -2,7 +2,7 @@
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h4 class="modal-title" id="myModalLabel">Send {{ $article->title }} by e-mail</h4>
 </div>
-{!! Form::open(['url' => "articles/{$article->id}/send", 'data-remote' => 'true']) !!}        
+{!! Form::open(['url' => route('articles.email.send', $article->id), 'data-remote' => 'true']) !!}        
   <div class="modal-body">
     <div class='form-group'>
     @include ('errors.list')
