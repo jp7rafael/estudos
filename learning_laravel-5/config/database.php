@@ -25,8 +25,8 @@ return [
 	| you may use many connections at once using the Database library.
 	|
 	*/
-
 	'default' => 'sqlite',
+	//'default' => $app->environment()=='testing'?'sqlite_testing':'sqlite',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -91,7 +91,7 @@ return [
 		],
 
 	],
-
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Migration Repository Table

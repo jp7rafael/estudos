@@ -6,9 +6,11 @@
 
 class_name: AcceptanceTester
 modules:
-    enabled:
-        - PhpBrowser
-        - AcceptanceHelper
+    enabled: [Laravel5, Asserts, FunctionalHelper]
     config:
-        PhpBrowser:
-            url: 'http://localhost/myapp/'
+        WebDriver:
+           url: 'http://localhost/'
+           browser: firefox
+           wait: 1
+        Laravel5:
+            environment_file: .env.testing

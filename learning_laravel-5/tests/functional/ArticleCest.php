@@ -57,26 +57,17 @@ class ArticleCest
     {
         $title = 'oi';
         $body = '';
-        $this->editAnArticle($I, $title, $newBody);
-        $I->dontSee($title);
-        $I->dontSee($body);
-        $I->see('old title');
-        $I->see('old body'); 
+        $this->editAnArticle($I, $title, $body);
+        $I->see('The title must be at least 3 characters.');
+        $I->see('The body field is required.'); 
     }
 
 
     private function editAnArticle(FunctionalTester $I, $newTitle, $newBody)
     {
-        $article_id = $I->haveRecord('articles', 
-                             ['title' => 'old title', 
-                             'body' => 'old body',
-                             'published_at' => new DateTime(),
-                             'created_at' => new DateTime(),
-                             'updated_at' => new DateTime(), 
-                             'user_id' => $this->userId
-                             ]);
+        $this->haveArticle($I, 'old title', 'body');
+        $I->amOnPage('/articles');
         $url = '/articles/' . $article_id . '/edit';
-        $I->seeLink('Edit', $url);
         $I->click("[href*='" . $url . "']");
         $I->seeCurrentUrlEquals($url);
         $this->submitTheForm($I, $newTitle, $newBody, 'update Article');
@@ -88,6 +79,25 @@ class ArticleCest
         $I->fillField('#title', $title);
         $I->fillField('#body', $body);
         $I->click($formTitle);
+    }
+
+    private function haveArticle(FunctionalTester $I, $title, $body)
+    {
+        $article_id = $I->haveRecord('articles', 
+                             ['title' => $title, 
+                             'body' => $body,
+                             'published_at' => new DateTime(),
+                             'created_at' => new DateTime(),
+                             'updated_at' => new DateTime(), 
+                             'user_id' => $this->userId
+                             ]);
+    }
+
+    private deleteAnArticle(FunctionalTester $I)
+    {
+        $this->haveArticle($I, 'delete article', 'this article will be deleted');
+        $I->seeCurrentUrlEquals('/articles');
+        $I->click();
     }
 
 }

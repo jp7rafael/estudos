@@ -8,12 +8,14 @@ use Carbon\Carbon;
 use App\Http\Requests\ArticleRequest;
 use Auth;
 use Flash;
+use App\Mailers\ArticleMailer;
 
 class ArticlesController extends Controller {
 
+
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'index']);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
 
     }
 
