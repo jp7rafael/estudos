@@ -6,7 +6,7 @@
 
 class_name: AcceptanceTester
 modules:
-    enabled: [Laravel5, Asserts, FunctionalHelper]
+    enabled: [Laravel5, Asserts, FunctionalHelper, WebDriver]
     config:
         WebDriver:
            url: 'http://localhost/'
@@ -14,3 +14,4 @@ modules:
            wait: 1
         Laravel5:
             environment_file: .env.testing
+

@@ -65,7 +65,7 @@ class ArticleCest
 
     private function editAnArticle(FunctionalTester $I, $newTitle, $newBody)
     {
-        $this->haveArticle($I, 'old title', 'body');
+        $article_id = $this->haveArticle($I, 'old title', 'body');
         $I->amOnPage('/articles');
         $url = '/articles/' . $article_id . '/edit';
         $I->click("[href*='" . $url . "']");
@@ -83,7 +83,7 @@ class ArticleCest
 
     private function haveArticle(FunctionalTester $I, $title, $body)
     {
-        $article_id = $I->haveRecord('articles', 
+        return $I->haveRecord('articles', 
                              ['title' => $title, 
                              'body' => $body,
                              'published_at' => new DateTime(),
@@ -91,13 +91,6 @@ class ArticleCest
                              'updated_at' => new DateTime(), 
                              'user_id' => $this->userId
                              ]);
-    }
-
-    private deleteAnArticle(FunctionalTester $I)
-    {
-        $this->haveArticle($I, 'delete article', 'this article will be deleted');
-        $I->seeCurrentUrlEquals('/articles');
-        $I->click();
     }
 
 }

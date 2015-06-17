@@ -26,7 +26,6 @@ return [
 	|
 	*/
 	'default' => 'sqlite',
-	//'default' => $app->environment()=='testing'?'sqlite_testing':'sqlite',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -49,12 +48,6 @@ return [
 		'sqlite' => [
 			'driver'   => 'sqlite',
 			'database' => storage_path().'/database.sqlite',
-			'prefix'   => '',
-		],
-
-		'sqlite_testing' => [
-			'driver'   => 'sqlite',
-			'database' => ':memory:',
 			'prefix'   => '',
 		],
 
