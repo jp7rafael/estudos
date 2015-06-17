@@ -1,4 +1,5 @@
-<article data-article='{{ $article->id }}' class='row'> 
+<div class='row' >
+<article data-article='{{ $article->id }}' class='md-12'> 
   <h2>
     <a href="{{ route('articles.show', [$article->id]) }}" data-remote='true' data-action='show' data-toggle='modal', data-target='#myModal' > {{ $article->title }} </a>
   </h2>
@@ -6,8 +7,14 @@
 
   {{ $article->body }} 
   </p>
-</article>  
-
+</div>
+<br />
+  <div class='row' >
+  {!! link_to_action('ArticlesEmailController@create', 'Send to me', [$article->id], ['class' => 'btn btn-default', 'data-toggle' => 'modal', 'data-target' => '#myModal']) !!}
+        {!! link_to_action('ArticlesController@edit', 'Edit', [$article->id], ['class' => 'btn btn-default', 'data-toggle' => 'modal', 'data-target' => '#myModal']) !!}
+        {!! link_to_action('ArticlesController@destroy', 'Remove', [$article->id], ['class' => 'btn btn-warning', 'data-method' => 'delete', 'data-remote' => 'true', 'data-confirm' => 'Are you sure you want to delete' . $article->title .' ?']) !!} 
+  </div>
+</article>
 @section('footer')
   @parent
   <script type='text/javascript'>

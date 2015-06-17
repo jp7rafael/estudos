@@ -4,6 +4,7 @@
 Route::get('about', ['middleware', 'PagesController@about']);
 Route::get('contact', 'PagesController@contact');
 Route::get('/', 'ArticlesController@index');
+Route::get('/home', 'ArticlesController@index');
 
 Route::get('/articles/seed', array('as' => 'articles.seed', 'uses' => 'ArticlesController@seed'));
 Route::resource('articles', 'ArticlesController');

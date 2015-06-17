@@ -17,7 +17,9 @@
 
             <ul class="nav navbar-nav navbar-right">
                 @if ($latest)
-                    <li>{!! link_to_action('ArticlesController@show', $latest->title, [$latest->id]) !!}</li>
+                <li>
+                <a href="{{ route('articles.show', [$latest->id]) }}" data-remote='true' data-action='show' data-toggle='modal', data-target='#myModal' > {{ $latest->title }} </a>
+                </li>
                 @endif
                 @if (Auth::guest())
                     <li><a href="{{ url('/auth/login') }}">Login</a></li>
