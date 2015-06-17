@@ -1,5 +1,5 @@
-<div class='row' >
 <article data-article='{{ $article->id }}' class='md-12'> 
+<div class='row' >
   <h2>
     <a href="{{ route('articles.show', [$article->id]) }}" data-remote='true' data-action='show' data-toggle='modal', data-target='#myModal' > {{ $article->title }} </a>
   </h2>
@@ -22,7 +22,7 @@
           $( document ).ready(function() {
             var flickerAPI = 'http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?';
             $.getJSON( flickerAPI, {
-              tags: "{{ implode(' ', $article->tags()->lists('name')) }}",  
+              tags: "{{ implode(' ', $article->tags()->lists('name')->all()) }}",  
               tagmode: 'any',
               format: 'json'
             })

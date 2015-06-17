@@ -17,7 +17,6 @@
 @section('footer')
   <script type="text/javascript">
       $('[data-method=delete]').on('ajax:success', function(e, data, status, xhr){
-        debugger;
         $(e.target).closest('article').fadeOut();
       });
       
