@@ -12,7 +12,6 @@ class ViewComposerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        // if \Schema::hasTable('articles')
         $this->composerNavigation('latest', Article::latest()->first());
     }
 
