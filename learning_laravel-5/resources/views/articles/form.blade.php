@@ -22,7 +22,7 @@
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-  {!! Form::submit($subimtButtonText, ['class' => 'btn btn-primary', 'data-submit' => 'modal']) !!}
+  {!! Form::submit($subimtButtonText, ['id' => 'articleSubmit', 'class' => 'btn btn-primary', 'data-submit' => 'modal']) !!}
 </div>
 
 <script type="text/javascript">

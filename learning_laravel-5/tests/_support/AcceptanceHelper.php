@@ -11,9 +11,9 @@ class AcceptanceHelper extends \Codeception\Module
     public function logMeIn($I)
     {
         //$user = Factory::create('App\User');
-        $user = \App\User::first();
-        $this->login($I, $user->email, '123456');
-        return $user->id;
+        //$user = \App\User::first();
+        $this->login($I, 'rafael@jp7.com.br', '123456');
+        return 1;
     }  
 
     public function login($I, $email, $password)
@@ -28,10 +28,10 @@ class AcceptanceHelper extends \Codeception\Module
     public function logMeOut($I)
     {
         $I->amOnPage('/auth/logout');
-        $I->seeCurrentUrlEquals('/auth/login');
+        $I->seeCurrentUrlEquals('/');
     }
 
-    public function haveArticle($I, array $attributes)
+    public function lishaveArticle($I, array $attributes)
     {
         return $I->haveRecord('articles', 
                              ['title' => $attributes['title'], 
@@ -43,3 +43,4 @@ class AcceptanceHelper extends \Codeception\Module
                              ]);
     }
 }
+    

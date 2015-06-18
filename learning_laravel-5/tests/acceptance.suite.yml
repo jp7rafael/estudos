@@ -6,7 +6,7 @@
 
 class_name: AcceptanceTester
 modules:
-    enabled: [Laravel5, Asserts, AcceptanceHelper, WebDriver, Db]
+    enabled: [Asserts, AcceptanceHelper, WebDriver, Db]
     config:
         WebDriver:
            url: 'http://localhost:8888/'
