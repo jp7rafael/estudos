@@ -16,13 +16,20 @@
 
 @section('footer')
   <script type="text/javascript">
+        function showAlert(message)
+        {
+          $('#alert-box').show().find('p').html(message);
+        }
+
       $('[data-method=delete]').on('ajax:success', function(e, data, status, xhr){
         $(e.target).closest('article').fadeOut();
+          showAlert('Your article was removed with success');
       });
       
       $('[data-toggle=modal]').on( "click", function() {
         var url = $(this).attr('href');
-        $('.modal-content').load(url, function(response, status, xhr) {});
+        $('.modal-content').load(url, function(response, status, xhr) {
+        });
       });
 
       $('#myModal').on('ajax:success', function(e, data, status, xhr){
@@ -32,10 +39,12 @@
           if ($(article_data_id).length)//update
           {
             $(article_data_id).html(data);
+            showAlert('Your article was updated with success');
           }
           else//create
           {
             $('#new-button').after(data);
+            showAlert('Your article was created with success');
           }
       });
 

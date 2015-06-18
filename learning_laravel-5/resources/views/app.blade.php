@@ -22,6 +22,7 @@
 <body>
     @include('shared.nav')
     @include('flash::message')
+    @include('shared.alert')
 
   <div class="container">
     <div class="row">
