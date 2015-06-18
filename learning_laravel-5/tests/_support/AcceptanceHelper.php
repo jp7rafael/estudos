@@ -30,4 +30,16 @@ class AcceptanceHelper extends \Codeception\Module
         $I->amOnPage('/auth/logout');
         $I->seeCurrentUrlEquals('/auth/login');
     }
+
+    public function haveArticle($I, array $attributes)
+    {
+        return $I->haveRecord('articles', 
+                             ['title' => $attributes['title'], 
+                             'body' => $attributes['body'],
+                             'published_at' => new DateTime(),
+                             'created_at' => new DateTime(),
+                             'updated_at' => new DateTime(), 
+                             'user_id' => $this->userId
+                             ]);
+    }
 }
