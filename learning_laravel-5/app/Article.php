@@ -44,10 +44,13 @@ class Article extends Model {
     return $this->tags->lists('id')->all();
   }
 
-  public function setTags(array $tags)
+  public function setTags($tags)
   {
-    $tagIds = $this->createNewTags($tags);
-    $this->tags()->sync($tagIds);
+    if ($tags)
+    {   
+      $tagIds = $this->createNewTags($tags);
+      $this->tags()->sync($tagIds);
+    }
   }
 
   public function createNewTags(array $tags)
