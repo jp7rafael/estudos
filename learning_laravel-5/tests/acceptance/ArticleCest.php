@@ -18,37 +18,34 @@ class ArticleCest
 
     // tests
     public function postAnValidArticle(AcceptanceTester $I)
-    {  
-        $title = 'New Article title';
-        $body = 'Some cool text!';
-        $this->postAnArticle($I, $title, $body);
-        $I->amOnPage('/articles');
-        $I->see($title);
-        $I->see($body);
+    {
+        $attributes = ['title' => 'New Article title', 'body' => 'Some cool text!'];
+        $this->postAnArticle($I, $attributes);
+        $I->see($attributes['title']);
+        $I->see($attributes['body']);
     }
 
     public function postAnInvalidArticle(AcceptanceTester $I)
     {  
-        $title = '32';
-        $body = '';
-        $this->postAnArticle($I, 'A', 'Some cool text!');
+        $attributes = ['title' => '32', 'body' => ''];
+        $this->postAnArticle($I, $attributes);
         $I->see('The title must be at least 3 characters.', '.alert');
         $I->amOnPage('/articles');
         $I->dontSee($title);
     }
 
-    private function postAnArticle(AcceptanceTester $I, $title, $body)
+    private function postAnArticle(AcceptanceTester $I, $attributes)
     {
         $I->click('#new-button');
-        $I->seeElement('#myModalLabel');
-        $this->submitTheForm($I, $title, $body, '#myModalLabel');   
+        $this->submitTheForm($I, $attributes, 'Add article');   
     }
 
     public function editWithValidArticleChange(AcceptanceTester $I)
     {
         $title = 'Edited at ' . microtime();
         $body = 'Edited at ' . microtime();
-        $this->editAnArticle($I, $title, $body);
+        $attributes = ['title' => $title, 'body' => $body];
+        $this->editAnArticle($I, $attributes);
         $I->see($title);
         $I->see($body);
         $I->dontSee('old title');
@@ -65,34 +62,24 @@ class ArticleCest
     }
 
 
-    private function editAnArticle(AcceptanceTester $I, $newTitle, $newBody)
+    private function editAnArticle(AcceptanceTester $I, $attributes)
     {
-        $article_id = $this->haveArticle($I, 'old title', 'body');
+        $article_id = $this->haveArticle($I, $attributes);
         $I->amOnPage('/articles');
         $url = '/articles/' . $article_id . '/edit';
         $I->click("[href*='" . $url . "']");
         $I->seeCurrentUrlEquals($url);
-        $this->submitTheForm($I, $newTitle, $newBody, 'update Article');
+        $this->submitTheForm($I, $$attributes, 'update Article');
     }
 
-    private function submitTheForm(AcceptanceTester $I, $title, $body, $formTitle)
+    private function submitTheForm(AcceptanceTester $I, $attributes, $formTitle)
     {
+        $I->waitForElement('#myModalLabel', 2);
         $I->see($formTitle, 'h4');
-        $I->fillField('#title', $title);
-        $I->fillField('#body', $body);
+        $I->fillField('#title', $attributes['title']);
+        $I->fillField('#body', $attributes['body']);
         $I->click($formTitle);
-    }
-
-    private function haveArticle(AcceptanceTester $I, $title, $body)
-    {
-        return $I->haveRecord('articles', 
-                             ['title' => $title, 
-                             'body' => $body,
-                             'published_at' => new DateTime(),
-                             'created_at' => new DateTime(),
-                             'updated_at' => new DateTime(), 
-                             'user_id' => $this->userId
-                             ]);
+        $I->waitForElementNotVisible('#myModalLabel', 5);
     }
 
 }
