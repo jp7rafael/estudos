@@ -1,0 +1,14 @@
+# Save as .codeclimate.yml (note leading .) in project root directory
+languages:
+  JavaScript: true
+  PHP: true
+# exclude_paths:
+ - ".bowerrc_files/*"
+ - ".bootstrap/*"
+ - "node_modules/*"
+ - "storage/*"
+ - "vendor/*"
+ - "resources/assets/bower/*"
+ - "public/*"
+ - "tests/_data/*"
+ - "tests/_output/*"
