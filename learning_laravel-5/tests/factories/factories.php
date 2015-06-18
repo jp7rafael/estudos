@@ -8,6 +8,6 @@ $factory('App\Article', [
 
 $factory('App\User', [
     'name' => $faker->username,
-    'email'=> $faker->username,
+    'email'=> $faker->email,
     'password' => $faker->password
 ]);

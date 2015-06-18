@@ -1,22 +1,33 @@
 <?php
 namespace Codeception\Module;
 use Laracasts\TestDummy\Factory;
-use Auth;
 
 // here you can define custom actions
 // all public methods declared in helper class will be available in $I
 
 class AcceptanceHelper extends \Codeception\Module
 {
-    public function logMeIn()
+
+    public function logMeIn($I)
     {
-        $user = Factory::create('App\User');
-        Auth::loginUsingId($user->id);
+        //$user = Factory::create('App\User');
+        $user = \App\User::first();
+        $this->login($I, $user->email, '123456');
         return $user->id;
+    }  
+
+    public function login($I, $email, $password)
+    {
+        $I->amOnPage('auth/login');
+        $I->fillField('email', $email);
+        $I->fillField('password', $password);
+        $I->click('.btn');
+        $I->seeCurrentUrlEquals('/home');
     }
 
-     public function _after(\Codeception\TestCase $test)
+    public function logMeOut($I)
     {
-        Auth::logout();
+        $I->amOnPage('/auth/logout');
+        $I->seeCurrentUrlEquals('/auth/login');
     }
 }

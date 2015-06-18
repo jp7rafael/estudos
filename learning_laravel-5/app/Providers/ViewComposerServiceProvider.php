@@ -2,6 +2,7 @@
 
 use App\Article;
 use Illuminate\Support\ServiceProvider;
+use \Illuminate\Database\Schema\Blueprint;
 
 class ViewComposerServiceProvider extends ServiceProvider {
 
@@ -12,7 +13,12 @@ class ViewComposerServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->composerNavigation('latest', Article::latest()->first());
+        //if (Schema::hasTable('articles'))
+        //{ 
+            $latest = null;
+            $latest = Article::latest()->first();       
+            $this->composerNavigation('latest',  $latest);
+        //}
     }
 
     /**

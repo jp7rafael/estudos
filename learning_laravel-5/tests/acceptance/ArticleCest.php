@@ -4,18 +4,20 @@ class ArticleCest
 {
     protected $userId;
 
-    public function _before(FunctionalTester $I)
+    public function _before(AcceptanceTester $I)
     {
-        $this->userId = $I->logMeIn();
         $I->amOnPage('/articles');
+        $this->userId = $I->logMeIn($I);
+        #$I->amLoggedAs([$this->userId]);
     }
 
-    public function _after(FunctionalTester $I)
+    public function _after(AcceptanceTester $I)
     {
+        $I->logMeOut($I);
     }
 
     // tests
-    public function postAnValidArticle(FunctionalTester $I)
+    public function postAnValidArticle(AcceptanceTester $I)
     {  
         $title = 'New Article title';
         $body = 'Some cool text!';
@@ -25,7 +27,7 @@ class ArticleCest
         $I->see($body);
     }
 
-    public function postAnInvalidArticle(FunctionalTester $I)
+    public function postAnInvalidArticle(AcceptanceTester $I)
     {  
         $title = '32';
         $body = '';
@@ -35,14 +37,14 @@ class ArticleCest
         $I->dontSee($title);
     }
 
-    private function postAnArticle(FunctionalTester $I, $title, $body)
+    private function postAnArticle(AcceptanceTester $I, $title, $body)
     {
         $I->click('#new-button');
-        $I->seeCurrentUrlEquals('/articles/create');
-        $this->submitTheForm($I, $title, $body, 'Add article');   
+        $I->seeElement('#myModalLabel');
+        $this->submitTheForm($I, $title, $body, '#myModalLabel');   
     }
 
-    public function editWithValidArticleChange(FunctionalTester $I)
+    public function editWithValidArticleChange(AcceptanceTester $I)
     {
         $title = 'Edited at ' . microtime();
         $body = 'Edited at ' . microtime();
@@ -53,7 +55,7 @@ class ArticleCest
         $I->dontSee('old body'); 
     }
 
-    public function editWithInvalidArticleChange(FunctionalTester $I)
+    public function editWithInvalidArticleChange(AcceptanceTester $I)
     {
         $title = 'oi';
         $body = '';
@@ -63,7 +65,7 @@ class ArticleCest
     }
 
 
-    private function editAnArticle(FunctionalTester $I, $newTitle, $newBody)
+    private function editAnArticle(AcceptanceTester $I, $newTitle, $newBody)
     {
         $article_id = $this->haveArticle($I, 'old title', 'body');
         $I->amOnPage('/articles');
@@ -73,7 +75,7 @@ class ArticleCest
         $this->submitTheForm($I, $newTitle, $newBody, 'update Article');
     }
 
-    private function submitTheForm(FunctionalTester $I, $title, $body, $formTitle)
+    private function submitTheForm(AcceptanceTester $I, $title, $body, $formTitle)
     {
         $I->see($formTitle, 'h4');
         $I->fillField('#title', $title);
@@ -81,7 +83,7 @@ class ArticleCest
         $I->click($formTitle);
     }
 
-    private function haveArticle(FunctionalTester $I, $title, $body)
+    private function haveArticle(AcceptanceTester $I, $title, $body)
     {
         return $I->haveRecord('articles', 
                              ['title' => $title, 
