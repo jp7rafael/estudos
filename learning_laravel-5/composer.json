@@ -17,7 +17,8 @@
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
 		"laracasts/generators": "~1.1",
-		"laracasts/testdummy": "~2.0"
+		"laracasts/testdummy": "~2.0",
+		"codeclimate/php-test-reporter": "0.1.*"
 	},
 	"autoload": {
 		"classmap": [

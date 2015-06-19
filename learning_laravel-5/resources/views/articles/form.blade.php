@@ -3,6 +3,7 @@
   <h4 class="modal-title" id="myModalLabel">{{ $subimtButtonText }}</h4>
 </div>
 <div class="modal-body">
+  @include ('errors.list')
   <div class='form-group'>
     {!! Form::label('title', 'Title:') !!}
     {!! Form::text('title', null, ['class' => 'form-control']) !!}

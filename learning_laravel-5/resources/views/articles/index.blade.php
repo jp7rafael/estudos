@@ -16,20 +16,35 @@
 
 @section('footer')
   <script type="text/javascript">
-        function showAlert(message)
+        function successAlert(element, message)
         {
-          $('#alert-box').show().find('p').html(message);
+          $(element).removeClass('alert-success').addClass('alert-danger');
+          showAlert(messge);
+        }
+
+        function errorAlert(element, message)
+        {
+          $(element).removeClass('alert-success').addClass('alert-danger');
+          showAlert(messge);
+        }
+
+        function showAlert(element, messge)
+        {
+          $(element).show().find('ul').html(message);
         }
 
       $('[data-method=delete]').on('ajax:success', function(e, data, status, xhr){
         $(e.target).closest('article').fadeOut();
-          showAlert('Your article was removed with success');
+          successAlert('#alert-box', 'Your article was removed with success');
+      });
+
+      $('[data-method=delete]').on('ajax:error', function(e, data, status, xhr){
+          errorAlert('#alert-box', "Ops... You can't remove this article " + data.responseText);
       });
       
       $('[data-toggle=modal]').on( "click", function() {
         var url = $(this).attr('href');
-        $('.modal-content').load(url, function(response, status, xhr) {
-        });
+        $('.modal-content').load(url, function(response, status, xhr) {});
       });
 
       $('#myModal').on('ajax:success', function(e, data, status, xhr){
@@ -39,13 +54,17 @@
           if ($(article_data_id).length)//update
           {
             $(article_data_id).html(data);
-            showAlert('Your article was updated with success');
+            successAlert('#alert-box', 'Your article was updated with success');
           }
           else//create
           {
             $('#new-button').after(data);
-            showAlert('Your article was created with success');
+            successAlert('#alert-box', 'Your article was created with success');
           }
+      });
+
+      $('#myModal').on('ajax:success', function(e, data, status, xhr){
+           errorAlert('#articleFormErrors', 'Ops...');       
       });
 
       $("[data-action=show]").on('ajax:success', function(e, data, status, xhr){
